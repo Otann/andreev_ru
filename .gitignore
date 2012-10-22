@@ -1,0 +1,26 @@
+# Python
+
+*.py[cod]
+
+# Django
+
+*.log
+*.pot
+*.pyc
+local_settings.py
+
+# C extensions
+*.so
+
+# Installer logs
+pip-log.txt
+
+# Translations
+*.mo
+
+# Intellij
+
+*.iml
+*.ipr
+*.iws
+.idea/
