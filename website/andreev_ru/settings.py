@@ -4,7 +4,8 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Anton Chebotaev', 'anton.chebotaev@gmail.com'),
+    ('Artur Paikin', 'arturpaikin@arturpaikin.com'),
 )
 
 MANAGERS = ADMINS
@@ -36,6 +37,8 @@ LANGUAGES = (
     ('ru', gettext('Russian')),
     ('en', gettext('English')),
 )
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
+MODELTRANSLATION_TRANSLATION_REGISTRY = 'andreev_ru.translation'
 
 SITE_ID = 1
 
@@ -74,6 +77,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    '/Users/anton/Dev/andreev/website/andreev_ru/static/',
 )
 
 # List of finder classes that know how to find static files in
@@ -131,7 +135,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     # Mosels synching applications
-    # 'south',
+    'south',
 )
 
 # A sample logging configuration. The only tangible logging

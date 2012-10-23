@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	
+	<div>
+		<h1>In local lang</h1>
+		<h3>Pages {{ page.title }}</h3>
+		<p> {{ page.content }}</p>
+	</div>
+
+	<div>
+		<h1>In English please</h1>
+		<h3>Pages {{ page.title_en }}</h3>
+		<p> {{ page.content_en }}</p>
+	</div>
+
+{% endblock %}
