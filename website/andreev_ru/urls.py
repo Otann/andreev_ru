@@ -6,9 +6,11 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
-    url(r'^$',                        'andreev_ru.main.views.home',           name='home'),
-    url(r'^pages/(?P<page_id>\d+)/$', 'andreev_ru.main.views.page',           name='page'),
-    url(r'^works/(?P<work_id>\d+)/$', 'andreev_ru.main.views.work_detail',    name='work_detail'),
+    url(r'^$',                        'andreev_ru.main.views.home', name='home'),
+    url(r'^page/(?P<slug>[-\w]+)/$', 'andreev_ru.main.views.page',  name='page'),
+
+    url(r'^works/$',                 'andreev_ru.main.views.works', name='works'),
+    url(r'^work/(?P<slug>[-\w]+)/$', 'andreev_ru.main.views.work',  name='work'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

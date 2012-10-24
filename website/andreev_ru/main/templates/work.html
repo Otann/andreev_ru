@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="span12">
+            <h1>Work description</h1>
+            <h3>Work {{ work.title }}</h3>
+            <p> {{ work.description }}</p>
+            {% if work.images.all %}
+                <div class="well" style="margin-bottom: 100px;">
+                    {% for image in work.images.all %}
+                        <img src="{{ image.image.url }}" class="img-rounded"/>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

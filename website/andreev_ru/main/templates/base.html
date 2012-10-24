@@ -11,32 +11,55 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"/></script>
 
-    {% block js %}{% endblock %}
+    {% block js %}{% endblock js %}
 
     <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.css" rel="stylesheet"/>
     <link href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
+    <link href="http://twitter.github.com/bootstrap/assets/css/docs.css" rel="stylesheet"/>
 
-    {% block css %}{% endblock %}
+    <link href="{{ STATIC_URL }}styles.css" rel="stylesheet"/>
+
+    {% block css %}{% endblock css %}
 
 </head>
-
 <body>
 
-	<div id="header">
-		<h1>Header</h1>
-	</div>
+    <div class="container">
 
-    <div class="content" id="content">
-    	{% block content %}
+        <h1 class="logo">PAVEL ANDREEV</h1>
+        {# <h1 class="logo">ПАВЕЛ АНДРЕЕВ</h1> #}
 
-    		<h1>Default content</h1>
+        <ul class="breadcrumb">
+            <li>
+                <a href="/works">Все проекты</a>
+                <span class="divider">/</span>
+            </li>
 
-    	{% endblock %}
+            {% for page in pages %}
+                <li>
+                    <a href="{% url andreev_ru.main.views.page page.slug %}">{{ page.title }}</a>
+                    {% if not forloop.last %}
+                        <span class="divider">/</span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        {% block content %}
+
+        {% endblock content %}
+
     </div>
 
-	<div id="footer">
-		<h2>Footer</h2>
-	</div>
+    <div class="navbar navbar-fixed-bottom" id="houses">
+      <div class="navbar-inner">
+        <ul class="nav">
+            {% for work in works %}
+                <li><a href="{% url andreev_ru.main.views.work work.slug %}">{{ work.title }}</a></li>
+            {% endfor %}
+        </ul>
+      </div>
+    </div>
 
 </body>
 </html>

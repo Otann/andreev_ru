@@ -12,6 +12,8 @@ class CustomPage(models.Model):
 	title = models.CharField(max_length=200)
 	content = models.TextField()
 
+	slug = models.SlugField(max_length=200, unique=True)
+
 	def __unicode__(self):
 		return self.title
 
@@ -36,9 +38,15 @@ class Work(models.Model):
 	date_built = models.DateTimeField('Last updated date')
 	categories = models.ManyToManyField(Category)
 
+	slug = models.SlugField(max_length=200, unique=True)
+
 	def __unicode__(self):
 		return self.title
 
 	class Meta:
 		verbose_name = u'Объект'
 		verbose_name_plural = u'Объекты'
+
+class WorkImage(models.Model):
+	work = models.ForeignKey(Work, related_name='images')
+	image = models.ImageField(upload_to='work_image')

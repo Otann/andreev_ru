@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	
-	<h1>Pages:</h1>
-	{% for page in pages %}
-		<a href="{% url andreev_ru.main.views.page page.pk %}">{{ page.title }}</a>
-	{% endfor %}
 
-	<h2>Index content</h2>
+    <div class="hero-unit">
+        {% for work in works %}
+            <p><a href="{% url andreev_ru.main.views.work work.slug %}">{{ work.title }}</a></p>
+        {% endfor %}
+    </div>
 
 {% endblock %}
