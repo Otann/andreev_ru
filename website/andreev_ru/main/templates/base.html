@@ -23,8 +23,12 @@
 	<body>
 		<div class="wrapper">
 			<header class="logo">
+				{% if is_main %}
 				<h1>Pavel Andreev</h1>
 				<h2>architectual workshop</h2>
+				{% else %}
+				1
+				{% endif %}
 			</header>
 		
 			<nav class="main-menu">

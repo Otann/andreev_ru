@@ -3,9 +3,20 @@
 {% block content %}
 
 	<ul>
-		 {% for work in works %}
-		 	<li><a href="{% url andreev_ru.main.views.work work.slug %}">{{ work.title }}</a>{{ work.title2|default:111 }}</li>
+		 {% for c in categories %}
+		 	<li>{{ c.name }}</li>
 		 {% endfor %}
 	</ul>
+
+
+	<ul>
+		 {% for work in works %}
+		 	<li class="{% for c in work.categories.all %}cat-{{ c.id }} {% endfor %}"><a href="{% url andreev_ru.main.views.work work.slug %}">{{ work.title }}</a>{{ work.title2|default:111 }}</li>
+		 {% endfor %}
+	</ul>
+	
+	
+ 
+
 
 {% endblock %}
