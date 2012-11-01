@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
-    url(r'^$',                        'andreev_ru.main.views.home', name='home'),
+    url(r'^$',                       'andreev_ru.main.views.home', name='home'),
     url(r'^page/(?P<slug>[-\w]+)/$', 'andreev_ru.main.views.page',  name='page'),
 
     url(r'^works/$',                 'andreev_ru.main.views.works', name='works'),

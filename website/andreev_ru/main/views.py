@@ -20,6 +20,7 @@ def works(request):
 def page(request, slug):
 	context = prepare_base()
 	context['page'] = get_object_or_404(CustomPage, slug=slug)
+	context['title'] = context['page'].title
 	return render_to_response('page.html', context, context_instance=RequestContext(request))
 
 def work(request, slug):
