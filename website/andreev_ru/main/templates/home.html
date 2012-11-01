@@ -2,10 +2,23 @@
 
 {% block content %}
 
-    <div class="hero-unit">
-        {% for work in works %}
-            <p><a href="{% url andreev_ru.main.views.work work.slug %}">{{ work.title }}</a></p>
-        {% endfor %}
-    </div>
+		<section class="what-we-do">
+			<ol>
+				<li>Архитектурное планирование, генеральное проектирование</li>
+				<li>Комплексное планирование жилых и общественных зданий</li>
+				<li>Консалтинг, комлпексное сопровождение проектов</li>
+			</ol>
+		</section>
+		
+		<section class="timeline">
+			<ul>
+				<li><a href="">ГУМ</a></li>
+				<li><a href="">Манеж</a></li>
+				<li><a href="">Детский мир</a></li>
+				<li><a href="">Шоссе энтузиастов</a></li>
+				<li><a href="">Большой театр</a></li>
+				<li><a href="">Кунцево</a></li>
+			</ul>
+		</section>
 
 {% endblock %}

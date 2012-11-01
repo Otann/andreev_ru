@@ -15,7 +15,7 @@ def home(request):
 
 def works(request):
 	context = prepare_base()
-	return render_to_response('home.html', context, context_instance=RequestContext(request))
+	return render_to_response('works.html', context, context_instance=RequestContext(request))
 
 def page(request, slug):
 	context = prepare_base()

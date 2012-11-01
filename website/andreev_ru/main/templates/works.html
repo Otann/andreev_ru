@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<ul>
+		 {% for work in works %}
+		 	<li><a href="{% url andreev_ru.main.views.work work.slug %}">{{ work.title }}</a>{{ work.title2|default:111 }}</li>
+		 {% endfor %}
+	</ul>
+
+{% endblock %}
