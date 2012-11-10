@@ -1,19 +1,89 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-	<ul>
-		 {% for c in categories %}
-		 	<li>{{ c.name }}</li>
-		 {% endfor %}
+	
+	<ul class="project-categories">
+		<li class="project-categories-active">избранное</li>
+		<li><a href="#houses">жилые дома</a></li>
+		<li><a href="#shopping">торговые центры</a></li>
+		<li><a href="#list">списком</a></li>
 	</ul>
-
-
-	<ul>
-		 {% for work in works %}
-		 	<li class="{% for c in work.categories.all %}cat-{{ c.id }} {% endfor %}"><a href="{% url andreev_ru.main.views.work work.slug %}">{{ work.title }}</a>{{ work.title2|default:111 }}</li>
-		 {% endfor %}
+	
+	<ul class="project-list">
+		<li class="the-project">
+			<figure>
+				<figcaption><a href="#detmir">Детский мир</a></figcaption>
+				<a href="#detmir"><img src="{{ STATIC_URL }}img/det-mir-small.jpg"></a>
+			</figure>
+			
+			<ul class="project-list-meta-data">
+				<li>
+					<span class="project-list-meta-title">Год постройки</span>
+					<span class="project-list-meta-desciption">2012—2014</span>
+				</li>
+				
+				<li>
+					<span class="project-list-meta-title">Площадь</span>
+					<span class="project-list-meta-desciption">442 м²</span>
+				</li>
+				
+				<li>
+					<span class="project-list-meta-title">Адрес</span>
+					<span class="project-list-meta-desciption">Москва, ул. Театральный пр., 5</span>
+				</li>
+				
+				<li>
+					<span class="project-list-meta-title">Авторы</span>
+					<span class="project-list-meta-desciption">Максим Милищенко, Ольга Дубовая, Алексей Эфимов</span>
+				</li>
+			</ul>
+		</li>
+		
+		<li class="the-project">
+			<figure>
+				<figcaption><a href="#detmir">Новый ГУМ</a></figcaption>
+				<a href="#detmir"><img src="{{ STATIC_URL }}img/gum-small.jpg"></a>
+			</figure>
+		
+			<ul class="project-list-meta-data">
+				<li>
+					<span class="project-list-meta-title">Год постройки</span>
+					<span class="project-list-meta-desciption">1998</span>
+				</li>
+				
+				<li>
+					<span class="project-list-meta-title">Площадь</span>
+					<span class="project-list-meta-desciption">600 м²</span>
+				</li>
+				
+				<li>
+					<span class="project-list-meta-title">Адрес</span>
+					<span class="project-list-meta-desciption">Москва, Красная площадь, 1</span>
+				</li>
+				
+				<li>
+					<span class="project-list-meta-title">Авторы</span>
+					<span class="project-list-meta-desciption">Евгений Фрузин, Игорь Хрусталев</span>
+				</li>
+			</ul>
+		</li>
 	</ul>
+	
+	
+	
+	<ul>
+			 {% for c in categories %}
+			 	<li>{{ c.name }}</li>
+			 {% endfor %}
+		</ul>
+	
+	
+		<ul>
+			 {% for work in works %}
+			 	<li class="{% for c in work.categories.all %}cat-{{ c.id }} {% endfor %}"><a href="{% url andreev_ru.main.views.work work.slug %}">{{ work.title }}</a>{{ work.title2|default:111 }}</li>
+			 {% endfor %}
+		</ul>
+	
 	
 	
  

@@ -18,6 +18,10 @@
 		
 		{% block css %}{% endblock css %}
 		
+		 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<link rel="stylesheet" href="{{ STATIC_URL }}fotorama/fotorama.css" />
+		<script src="{{ STATIC_URL }}fotorama/fotorama.js"></script>
+		
 	</head>
     
 	<body>
@@ -27,11 +31,14 @@
 				<h1>Pavel Andreev</h1>
 				<h2>architectual workshop</h2>
 				{% else %}
-				1
+				<a href="/">
+					<h1>Pavel Andreev</h1>
+					<h2>architectual workshop</h2>
+				</a>
 				{% endif %}
 			</header>
 		
-			<nav class="main-menu">
+			<nav class="main-menu" role="navigation">
 				<ul>
 					{% for p in pages %}
 						<li>
@@ -47,8 +54,10 @@
 			</nav>
 			
 			{% block content %}{% endblock content %}
+			
+			<div style="clear: both;"></div>
 				
-			<footer>
+			<footer class="bottom-footer">
 				<address class="address-columns">
 					<div class="address-col-1"></div>
 					<div class="address-col-2">Россия, Москва<br>
@@ -60,6 +69,7 @@
 			</footer>
 		
 		</div>
+		
 		
 	</body> 
 

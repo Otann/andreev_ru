@@ -74,6 +74,8 @@ small {
   
 /* main */
 
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
 body {
 	background: url(data:image/png;base64,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) #fff;
 	border-top: 5px solid #821A17;
@@ -90,6 +92,11 @@ body {
 	text-align: center;
 	margin-top: 40px;
 	font-family: Futura, sans-serif;
+}
+
+.logo a {
+	text-decoration: none;
+	color: #000;
 }
 
 .logo h1 {
@@ -109,6 +116,7 @@ body {
 .main-menu {
 	text-align: center;
 	margin-top: 40px;
+	margin-bottom: 50px;
 }
 
 .main-menu li {
@@ -173,9 +181,12 @@ body {
 	color: #7a7a7a;
 }
 
-.address-columns {
+.bottom-footer {
 	margin-top: 120px;
 	margin-bottom: 40px;
+}
+
+.address-columns {
 	font-size: 12px;
 	line-height: 20px;
 	font-style: normal;
@@ -220,3 +231,235 @@ body {
 	width: 250px;
 	text-align: left;
 }
+
+/* project list page */
+.project-categories {
+	list-style: none;
+}
+
+.project-categories a {
+	color: #222222;
+}
+
+.project-categories li {
+	display: inline-block;
+	margin-right: 20px;
+}
+
+.project-categories-active {
+	background-color: #7F7F7F;
+	border-radius: 10px;
+	box-shadow: inset -1px 0 7px 2px rgba(61,58,58,0.5);
+	padding: 4px 10px;
+	color: #ebebeb;
+}
+
+.project-list {
+	list-style: none;
+}
+
+.the-project {
+	margin-top: 60px;
+}
+
+.project-list figure {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.project-list figure img {
+	border-radius: 5%;
+}
+
+.project-list figcaption {
+	font-size: 20px;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.project-list figcaption a {
+	color: #000;
+}
+
+.project-list-meta-data {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 20px;
+	margin-top: 40px;
+	list-style: none;
+}
+
+.project-list-meta-data li {
+	margin-bottom: 10px;
+}
+
+.project-list-meta-title {
+	font-weight: bold;
+}
+
+.project-list-meta-title:after {
+	content: ":";
+}
+
+/* project page */
+p {
+	margin: 1.5em 0;
+	line-height: 1.45em;
+}
+
+p:first-child {
+	margin: 0 0 1.5em;
+}
+
+.project {
+	float: left;
+	font-size: 17px;
+	font-family: 'PT Serif', serif;
+}
+
+.fotorama {
+	margin-bottom: 40px !important;
+}
+
+.fotorama__thumbs {
+	margin-top: 15px !important;
+}
+
+.project header {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.project header h2 {
+	font-family: 'PT Serif';
+	font-size: 30px;
+	font-weight: normal;
+}
+
+.project-body {
+	float: left;
+	width: 78%;
+}
+
+.meta-data {
+	float: right;
+	width: 20%;
+}
+
+.meta-data ul {
+	list-style: none;
+	text-align: center;
+}
+
+.meta-data li {
+	margin-bottom: 40px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 140px;
+	padding-top: 45px;
+}
+
+.meta-data dt {
+	text-transform: uppercase;
+	font-family: Georgia;
+	font-size: 10px;
+	font-weight: normal;
+	letter-spacing: 1px;
+}
+
+.meta-data dd {
+	margin-top: 7px;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 16px;
+	line-height: 19px;
+	font-weight: bold;
+}
+
+.panorama-link {
+	margin-top: 3px;
+}
+
+.panorama-link a {
+	color: #777;
+	font-size: 11px;
+}
+
+.icon-built-in {
+	background: url('icons/built-in.png') center top no-repeat;
+}
+
+.icon-area {
+	background: url('icons/area.png') center top no-repeat;
+}
+
+.icon-address {
+	background: url('icons/address.png') center top no-repeat;
+}
+
+/* single page */
+.page {
+	font-size: 17px;
+	font-family: 'PT Serif', serif;
+}
+
+.page header {
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.page header h2 {
+	font-family: 'PT Serif', serif;
+	font-size: 30px;
+	font-weight: normal;
+}
+
+/* team members */
+.team h3 {
+	font-family: 'PT Serif', serif;
+	font-size: 25px;
+	font-weight: normal;
+}
+
+.team-members {
+	list-style: none;
+	margin-top: 60px;
+}
+
+.team-members li {
+	float: left;
+	margin-bottom: 100px;
+}
+
+.team-members-photo {
+	float: left;
+	width: 25%;
+}
+
+.team-members-photo img {
+	border-radius: 50%;
+	width: 150px;
+}
+
+.team-members-description {
+	float: left;
+	width: 75%;
+	line-height: 23px;
+	font-size: 17px;
+}
+
+.team-members-description h4 {
+	font-family: 'PT Serif', serif;
+	font-size: 28px;
+	font-weight: normal;
+	margin-bottom: 15px;
+}
+
+.team-members li:nth-of-type(odd) .team-members-photo {
+	float: right;
+}
+
+.team-members li:nth-of-type(odd) .team-members-description  {
+	float: right;
+}
+
+

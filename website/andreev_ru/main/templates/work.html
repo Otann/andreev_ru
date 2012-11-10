@@ -2,19 +2,51 @@
 
 {% block content %}
 
-    <div class="row">
-        <div class="span12">
-            <h1>Work description</h1>
-            <h3>Work {{ work.title }}</h3>
-            <p> {{ work.description }}</p>
-            {% if work.images.all %}
-                <div class="well" style="margin-bottom: 100px;">
-                    {% for image in work.images.all %}
-                        <img src="{{ image.image.url }}" class="img-rounded"/>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </div>
-    </div>
+    <article class="project">
+    	<header>
+    		<h2>Детский мир</h2>
+    	</header>
+    	
+    	<div class="fotorama" data-width="100%" data-height="500" data-shadows="false" data-nav="dots" data-background="none" data-cropToFit="true">
+    	  <img src="{{ STATIC_URL }}img/det-mir-1.jpg">
+    	  <img src="{{ STATIC_URL }}img/det-mir-2.jpg">
+    	  <img src="{{ STATIC_URL }}img/det-mir-3.jpg">
+    	  <img src="{{ STATIC_URL }}img/det-mir-4.jpg">
+    	</div>
+    	
+    	<div class="project-body">   		
+    		<p>Я уже работал над концепцией «Детского мира» с компанией АФК «Система», ее строительным подразделением, семь или восемь лет назад, в самом начале. Мы тогда сделали концепцию, в которой были некоторые интересные вещи, которые сегодня нельзя уже реализовать, например, потому что изменился охранный статус, «Детский мир» стал памятником архитектуры.</p>
+    		
+    		<p>Тогда, например, мы хотели на верхних этажах, на которых в старом универмаге были склады, сделать паркинг. Потому что в таком магазине одна из самых сложных проблем — заставить человека подняться на верхние этажи, а тут часть посетителей магазина сразу попадали бы на них из паркинга. Было бы два первых этажа — и сверху, и снизу. Сейчас мы над новой концепцией работали примерно полтора-два месяца.</p>
+    		
+    		<p>Это по-прежнему крупный детский магазин и важное общественное место — «Детский мир» приговорен быть им просто в силу своего расположения.</p>
+    	</div>
+    	
+    	<aside class="meta-data">
+    		<ul>
+    			<li class="icon-built-in">
+	    			<dl>
+	    			  <dt>Год постройки</dt>
+	    			  <dd>2014—2016</dd>
+	    			</dl>
+    			</li>
+    			
+    			<li class="icon-area">
+    				<dl>
+    				  <dt>Площадь</dt>
+    				  <dd>442 м²</dd>
+    				</dl>
+    			</li>
+    			<li class="icon-address">
+    				<dl>
+    				  <dt>Адрес</dt>
+    				  <dd>Москва, ул. Театральный пр., 5</dd>
+    				  <div class="panorama-link"><a href="http://maps.yandex.ru/-/CVuS5N9Z">Посмотреть панораму на карте</a></div>
+    				</dl>
+    			</li>
+    		</ul>
+    	</aside>
+    	
+    </article>
 
 {% endblock %}
