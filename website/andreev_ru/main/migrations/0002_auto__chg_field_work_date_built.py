@@ -9,27 +9,13 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
 
-        # Changing field 'CustomPage.slug'
-        db.alter_column('main_custompage', 'slug', self.gf('django.db.models.fields.SlugField')(unique=True, max_length=200))
-        # Adding index on 'CustomPage', fields ['slug']
-        db.create_index('main_custompage', ['slug'])
-
-        # Adding field 'Work.slug'
-        db.add_column('main_work', 'slug',
-                      self.gf('django.db.models.fields.SlugField')(default='slug', unique=True, max_length=200),
-                      keep_default=False)
-
+        # Changing field 'Work.date_built'
+        db.alter_column('main_work', 'date_built', self.gf('django.db.models.fields.DateField')())
 
     def backwards(self, orm):
-        # Removing index on 'CustomPage', fields ['slug']
-        db.delete_index('main_custompage', ['slug'])
 
-
-        # Changing field 'CustomPage.slug'
-        db.alter_column('main_custompage', 'slug', self.gf('django.db.models.fields.CharField')(max_length=200, unique=True))
-        # Deleting field 'Work.slug'
-        db.delete_column('main_work', 'slug')
-
+        # Changing field 'Work.date_built'
+        db.alter_column('main_work', 'date_built', self.gf('django.db.models.fields.DateTimeField')())
 
     models = {
         'main.category': {
@@ -53,7 +39,7 @@ class Migration(SchemaMigration):
         'main.work': {
             'Meta': {'object_name': 'Work'},
             'categories': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['main.Category']", 'symmetrical': 'False'}),
-            'date_built': ('django.db.models.fields.DateTimeField', [], {}),
+            'date_built': ('django.db.models.fields.DateField', [], {}),
             'description': ('django.db.models.fields.TextField', [], {}),
             'description_en': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'description_ru': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
@@ -67,7 +53,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'WorkImage'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
-            'work': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['main.Work']"})
+            'work': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'images'", 'to': "orm['main.Work']"})
         }
     }
 

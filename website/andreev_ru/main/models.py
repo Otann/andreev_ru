@@ -2,51 +2,39 @@
 # coding: utf-8
 
 from django.db import models
-from django.core.urlresolvers import reverse
-from django.contrib.auth.models import User
-from django.utils.safestring import mark_safe
-from django.utils.text import truncate_words
-from django.utils.html import strip_tags
-
-class CustomPage(models.Model):
-	title = models.CharField(max_length=200)
-	content = models.TextField()
-
-	slug = models.SlugField(max_length=200, unique=True)
-
-	def __unicode__(self):
-		return self.title
-
-	class Meta:
-		verbose_name = u'Страница'
-		verbose_name_plural = u'Страницы'
 
 class Category(models.Model):
-	name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
 
-	def __unicode__(self):
-		return self.name
+    def __unicode__(self):
+        return self.name
 
-	class Meta:
-		verbose_name = u'Категория'
-		verbose_name_plural = u'Категории'
+    class Meta:
+        verbose_name = u'Категория'
+        verbose_name_plural = u'Категории'
 
 class Work(models.Model):
-	title = models.CharField(max_length=200)
-	description = models.TextField()
+    title = models.CharField(max_length=200, verbose_name = u'Название')
+    description = models.TextField(verbose_name = u'Описание')
 
-	date_built = models.DateTimeField('Last updated date')
-	categories = models.ManyToManyField(Category)
+    authors      = models.CharField(max_length=1024, verbose_name = u'Авторы')
+    address      = models.CharField(max_length=1024, verbose_name = u'Адрес')
+    release_year = models.IntegerField(verbose_name = u'Год завершени постройки')
+    square       = models.IntegerField(verbose_name = u'Площадь')
+    panorama_url = models.CharField(max_length=1024, verbose_name = u'Ссылка на панораму')
 
-	slug = models.SlugField(max_length=200, unique=True)
+    date_built   = models.DateField(verbose_name = u'Когда сдано')
+    categories   = models.ManyToManyField(Category, verbose_name = u'Категории')
 
-	def __unicode__(self):
-		return self.title
+    slug = models.SlugField(u'Относительный URL', max_length=200, unique=True)
 
-	class Meta:
-		verbose_name = u'Объект'
-		verbose_name_plural = u'Объекты'
+    def __unicode__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = u'Объект'
+        verbose_name_plural = u'Объекты'
 
 class WorkImage(models.Model):
-	work = models.ForeignKey(Work, related_name='images')
-	image = models.ImageField(upload_to='work_image')
+    work = models.ForeignKey(Work, related_name='images')
+    image = models.ImageField(upload_to='work_image')

@@ -1,4 +1,4 @@
-# Django settings for andreev_ru project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -6,7 +6,7 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     ('Anton Chebotaev', 'anton.chebotaev@gmail.com'),
     ('Artur Paikin', 'arturpaikin@arturpaikin.com'),
-)
+    )
 
 MANAGERS = ADMINS
 
@@ -21,56 +21,35 @@ DATABASES = {
     }
 }
 
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# In a Windows environment this must be set to your system time zone.
 TIME_ZONE = 'Europe/Moscow'
-
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'ru-ru'
+
+SITE_ID = 1
+
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+
+PROJECT_ROOT = os.path.dirname(__file__)
+PROJECT_NAME = os.path.basename(PROJECT_ROOT)
+STORAGE_ROOT = os.path.join('/static', PROJECT_NAME)
+
+MEDIA_ROOT = os.path.join(STORAGE_ROOT, 'media')
+MEDIA_URL = '/static/media/' #todo remove static and fix issue
+
+STATIC_ROOT = os.path.join(STORAGE_ROOT, 'static')
+STATIC_URL = '/static/'
 
 # Settings for django-modeltranslation
 gettext = lambda s: s
 LANGUAGES = (
     ('ru', gettext('Russian')),
     ('en', gettext('English')),
-)
+    )
+LANGUAGE_CODE = 'ru'
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
 MODELTRANSLATION_TRANSLATION_REGISTRY = 'andreev_ru.translation'
 
-SITE_ID = 1
-
-# If you set this to False, Django will make some optimizations so as not
-# to load the internationalization machinery.
-USE_I18N = True
-
-# If you set this to False, Django will not format dates, numbers and
-# calendars according to the current locale.
-USE_L10N = True
-
-# If you set this to False, Django will not use timezone-aware datetimes.
-USE_TZ = True
-
-# Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = 'andreev_ru/static/media/'
-
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash.
-# Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = '/static/media/'
-
-# Absolute path to the directory static files should be collected to.
-# Don't put anything in this directory yourself; store your static files
-# in apps' "static/" subdirectories and in STATICFILES_DIRS.
-# Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
-
-# URL prefix for static files.
-# Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -78,15 +57,15 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     '/Users/anton/Dev/andreev/website/andreev_ru/static/',
-)
+    )
 
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
-)
+    #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    )
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'hu-5%d%9-(kc&amp;yi_fs$zv_2*!de@-youcrzkpaovx_t4exndqz'
@@ -95,18 +74,24 @@ SECRET_KEY = 'hu-5%d%9-(kc&amp;yi_fs$zv_2*!de@-youcrzkpaovx_t4exndqz'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
-)
+    #     'django.template.loaders.eggs.Loader',
+    )
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'localeurl.middleware.LocaleURLMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
+    )
+
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+    )
 
 ROOT_URLCONF = 'andreev_ru.urls'
 
@@ -114,10 +99,13 @@ ROOT_URLCONF = 'andreev_ru.urls'
 WSGI_APPLICATION = 'andreev_ru.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+# Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+# Always use forward slashes, even on Windows.
+# Don't forget to use absolute paths, not relative paths.
 )
+
+REDACTOR_OPTIONS = {'lang': 'ru'}
+REDACTOR_UPLOAD = STATIC_URL + 'uploads/'
 
 INSTALLED_APPS = (
     'andreev_ru.main',
@@ -125,18 +113,25 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+
     # Multilingual models app
     'modeltranslation',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+
+    'django.contrib.admindocs',
+
+    'django.contrib.sites',
+    'django.contrib.flatpages',
+
     # Mosels synching applications
     'south',
-)
+
+    # Redactor for WYSIWYG
+    'redactor'
+    )
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -163,6 +158,7 @@ LOGGING = {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
             'propagate': True,
-        },
-    }
+            },
+        }
 }
+

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	
+	<article class="page">
+		<header>
+			<h2>{{ flatpage.title }}</h2>
+		</header>
+		{{ flatpage.content|safe }}
+	</article>
+
+{% endblock %}

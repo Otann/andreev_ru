@@ -1,3 +1,8 @@
+{% load i18n %}
+{% load flatpages %}
+{% get_flatpages as flatpages %}
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -36,23 +41,24 @@
 					<h2>architectual workshop</h2>
 				</a>
 				{% endif %}
-			</header>
-		
+
+            </header>
+
 			<nav class="main-menu" role="navigation">
 				<ul>
-					{% for p in pages %}
+					{% for p in flatpages %}
 						<li>
-							{% if page and page.slug == p.slug %}
+							{% if request.url == p.url %}
 								{{ p.title }}
 							{% else %}
-								<a href="{% url andreev_ru.main.views.page p.slug %}">{{p.title}}</a>
+								<a href="{{ p.url }}">{{ p.title }}</a>
 							{% endif %}
 						</li>
 					{% endfor %}
 					<li><a href="{% url andreev_ru.main.views.works %}">Проекты</a></li>
 				</ul>
 			</nav>
-			
+
 			{% block content %}{% endblock content %}
 			
 			<div style="clear: both;"></div>
@@ -66,7 +72,7 @@
 					<div class="address-col-4">+7 495 567-12-33<br>
 					<a href="mailto:mail@pavel-andreev.ru">mail@pavel-andreev.ru</a></div>
 				</address>
-			</footer>
+            </footer>
 		
 		</div>
 		
