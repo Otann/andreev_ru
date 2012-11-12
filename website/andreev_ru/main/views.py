@@ -4,29 +4,36 @@ from django.shortcuts import render_to_response, get_object_or_404
 from andreev_ru.main.models import CustomPage, Work, Category
 
 def prepare_base():
-	return {
-		'pages': CustomPage.objects.all(),
-		'works': Work.objects.all(),
-	}
+    return {
+        'pages': CustomPage.objects.all(),
+        'works': Work.objects.all(),
+    }
 
 def home(request):
-	context = prepare_base()
-	context['is_main'] = True
-	return render_to_response('home.html', context, context_instance=RequestContext(request))
+    context = prepare_base()
+    context['is_main'] = True
+    return render_to_response('home.html', context, context_instance=RequestContext(request))
 
 def works(request):
-	context = prepare_base()
-	context['categories'] = Category.objects.all()
-	return render_to_response('works.html', context, context_instance=RequestContext(request))
-	
+    context = prepare_base()
+    context['categories'] = Category.objects.all()
+
+    category_id = request.GET.get('category', '1')
+    category = Category.objects.get(pk=category_id)
+
+    context['category'] = category
+    context['category_works'] = Work.objects.filter(categories__in=category_id)
+
+    return render_to_response('works.html', context, context_instance=RequestContext(request))
+    
 def work(request, slug):
-	context = prepare_base()
-	context['work'] = get_object_or_404(Work, slug=slug)
-	# context['images'] =
-	return render_to_response('work.html', context, context_instance=RequestContext(request))
+    context = prepare_base()
+    context['work'] = get_object_or_404(Work, slug=slug)
+    # context['images'] =
+    return render_to_response('work.html', context, context_instance=RequestContext(request))
 
 def page(request, slug):
-	context = prepare_base()
-	context['page'] = get_object_or_404(CustomPage, slug=slug)
-	context['title'] = context['page'].title
-	return render_to_response('page.html', context, context_instance=RequestContext(request))
+    context = prepare_base()
+    context['page'] = get_object_or_404(CustomPage, slug=slug)
+    context['title'] = context['page'].title
+    return render_to_response('page.html', context, context_instance=RequestContext(request))
