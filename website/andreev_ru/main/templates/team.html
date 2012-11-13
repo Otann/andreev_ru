@@ -1,48 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	
-	<section class="team">
-		
-		<h3>Менеджмент</h3>
-		
-		<ul class="team-members">
-			<li>
-				<div class="team-members-photo">
-					<img src="{{ STATIC_URL }}img/team-member-1.jpg">
-				</div>
-				
-				<div class="team-members-description">
-				<h4>Игорь Акифьев</h4>
-				<h5>сварщик</h5>
-				Архитектурному бюро АДМ удалось усовершенствовать проект гигантского московского дома, сделав его жилую среду более комфортной и человечной с помощью внутренних дворов, врезанных прямо в тело здания. Можно сказать, что архитекторы соединили московскую реальность больших многоквартирных домов с идеалами нового урбанизма.
-				</div>
-			</li>
-			
-			<li>
-				<div class="team-members-photo">
-					<img src="{{ STATIC_URL }}img/team-member-1.jpg">
-				</div>
-				
-				<div class="team-members-description">
-				<h4>Павел Андреев</h4>
-				<h5>архитектор</h5>
-				Архитектурному бюро АДМ удалось усовершенствовать проект гигантского московского дома, сделав его жилую среду более комфортной и человечной с помощью внутренних дворов, врезанных прямо в тело здания. Можно сказать, что архитекторы соединили московскую реальность больших многоквартирных домов с идеалами нового урбанизма.
-				</div>
-			</li>
-			
-			<li>
-				<div class="team-members-photo">
-					<img src="{{ STATIC_URL }}img/team-member-1.jpg">
-				</div>
-				
-				<div class="team-members-description">
-				<h4>Мария Мушкина</h4>
-				<h5>пилот</h5>
-				Архитектурному бюро АДМ удалось усовершенствовать проект гигантского московского дома, сделав его жилую среду более комфортной и человечной с помощью внутренних дворов, врезанных прямо в тело здания. Можно сказать, что архитекторы соединили московскую реальность больших многоквартирных домов с идеалами нового урбанизма.
-				</div>
-			</li>
-		</ul>
-	</section>
+
+    <section class="team">
+
+        {% for department, persons in team %}
+
+            <h3>{{ department.name }}</h3>
+            <ul class="team-members">
+                {% for person in persons %}
+                    <li>
+                        <div class="team-members-photo">
+                            <img src="{{ STATIC_URL }}img/team-member-1.jpg">
+                        </div>
+
+                        <div class="team-members-description">
+                            <h4>{{ person.name }}</h4>
+                            <h5>{{ person.occupation }}</h5>
+                            {{ person.bio|safe }}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+
+        {% endfor %}
+
+        </ul>
+    </section>
 
 {% endblock %}

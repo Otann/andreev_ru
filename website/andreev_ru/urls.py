@@ -11,16 +11,13 @@ urlpatterns = patterns('',
     url(r'^works/$',                 'andreev_ru.main.views.works',             name='works'),
     url(r'^work/(?P<slug>[-\w]+)/$', 'andreev_ru.main.views.work',              name='work'),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^team/$',                  'andreev_ru.main.views.team',              name='team'),
 
-    # Uncomment the next line to enable the admin:
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
     # Redactor JS
     url(r'^redactor/', include('redactor.urls')),
-
-#    url('^pages/', include('django.contrib.flatpages.urls')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 )
 

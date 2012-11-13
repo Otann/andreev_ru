@@ -39,21 +39,23 @@ class WorkImage(models.Model):
     work  = models.ForeignKey(Work, related_name = 'images', verbose_name = u'Фотографии')
     image = models.ImageField(upload_to = 'work_image')
 
-class Position(models.Model):
+class Department(models.Model):
     name = models.CharField(max_length=200)
 
     def __unicode__(self):
         return self.name
 
     class Meta:
-        verbose_name = u'Должность'
-        verbose_name_plural = u'Должности'
+        verbose_name = u'Отдел'
+        verbose_name_plural = u'Отделы'
 
 class Person(models.Model):
-    name = models.CharField(max_length = 1024, verbose_name = u'ФИО')
-    bio  = models.TextField(verbose_name = u'История')
+    name       = models.CharField(max_length = 1024, verbose_name = u'ФИО')
+    occupation = models.CharField(max_length = 1024, verbose_name = u'Род деятельности')
+    bio        = models.TextField(verbose_name = u'История')
+    image      = models.ImageField(upload_to = 'work_image', verbose_name = u'Фотография')
 
-    position = models.ForeignKey(Position)
+    position = models.ForeignKey(Department, verbose_name = u'Отдел')
 
     class Meta:
         verbose_name = u'Сотрудник'

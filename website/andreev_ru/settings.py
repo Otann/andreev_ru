@@ -34,10 +34,10 @@ PROJECT_ROOT = os.path.dirname(__file__)
 PROJECT_NAME = os.path.basename(PROJECT_ROOT)
 STORAGE_ROOT = os.path.join('/static', PROJECT_NAME)
 
-MEDIA_ROOT = os.path.join(STORAGE_ROOT, 'media')
-MEDIA_URL = '/static/media/' #todo remove static and fix issue
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media') #todo(Anton) replace with STORAGE_ROOT
+MEDIA_URL = '/static/media/'
 
-STATIC_ROOT = os.path.join(STORAGE_ROOT, 'static')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static') #todo(Anton) replace with STORAGE_ROOT
 STATIC_URL = '/static/'
 
 # Settings for django-modeltranslation
@@ -56,7 +56,6 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/Users/anton/Dev/andreev/website/andreev_ru/static/',
     )
 
 # List of finder classes that know how to find static files in

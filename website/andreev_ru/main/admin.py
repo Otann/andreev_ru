@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 from modeltranslation.admin import TranslationAdmin
-from andreev_ru.main.models import Work, WorkImage, Category, Person, Position
+from andreev_ru.main.models import Work, WorkImage, Category, Person, Department
 
 from django.contrib.flatpages.models import FlatPage
 from django.contrib.flatpages.admin import FlatPageAdmin as FlatPageAdminOld
@@ -48,12 +48,12 @@ class PersonForm(forms.ModelForm):
         model = Work
         widgets = {
             'bio_ru': RedactorEditor(),
-            'boi_en': RedactorEditor(),
+            'bio_en': RedactorEditor(),
             }
 
 class PersonAdmin(TranslationAdmin):
     form = PersonForm
-    list_display = ('name', 'bio')
+    list_display = ('name', 'bio', 'occupation')
 
 class PositionAdmin(TranslationAdmin):
     list_display = ('name',)
@@ -66,4 +66,4 @@ admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, CustomFlatPageAdmin)
 
 admin.site.register(Person, PersonAdmin)
-admin.site.register(Position, PositionAdmin)
+admin.site.register(Department, PositionAdmin)
