@@ -1,9 +1,9 @@
 from modeltranslation.translator import translator, TranslationOptions
-from andreev_ru.main.models import Work, Category
+from andreev_ru.main.models import Work, Category, Person, Position
 from django.contrib.flatpages.models import FlatPage
 
-class CustomPageTranslationOptions(TranslationOptions):
-    fields = ('title', 'content', )
+class FlatPageTranslationOptions(TranslationOptions):
+    fields = ('title', 'content',)
 
 class WorkTranslationOptions(TranslationOptions):
     fields = ('title', 'description', 'authors', 'address',)
@@ -11,9 +11,16 @@ class WorkTranslationOptions(TranslationOptions):
 class CategoryTranslationOptions(TranslationOptions):
     fields = ('name', )
 
-class FlatPageTranslationOptions(TranslationOptions):
-    fields = ('title', 'content',)
+class PositionTranslationOptions(TranslationOptions):
+    fields = ('name', )
 
-translator.register(Work, WorkTranslationOptions)
-translator.register(Category, CategoryTranslationOptions)
+class PersonTranslationOptions(TranslationOptions):
+    fields = ('name', 'bio',)
+
 translator.register(FlatPage, FlatPageTranslationOptions)
+
+translator.register(Category, CategoryTranslationOptions)
+translator.register(Work, WorkTranslationOptions)
+
+translator.register(Position, PositionTranslationOptions)
+translator.register(Person, PersonTranslationOptions)

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 from modeltranslation.admin import TranslationAdmin
-from andreev_ru.main.models import Work, WorkImage, Category
+from andreev_ru.main.models import Work, WorkImage, Category, Person, Position
 
 from django.contrib.flatpages.models import FlatPage
 from django.contrib.flatpages.admin import FlatPageAdmin as FlatPageAdminOld
@@ -43,8 +43,27 @@ class CustomFlatPageAdmin(TranslationAdmin):
     list_display = ('title', 'url', )
     form = FlatpageForm
 
+class PersonForm(forms.ModelForm):
+    class Meta:
+        model = Work
+        widgets = {
+            'bio_ru': RedactorEditor(),
+            'boi_en': RedactorEditor(),
+            }
+
+class PersonAdmin(TranslationAdmin):
+    form = PersonForm
+    list_display = ('name', 'bio')
+
+class PositionAdmin(TranslationAdmin):
+    list_display = ('name',)
+
+
 admin.site.register(Work, WorkAdmin)
 admin.site.register(Category, CategotyAdmin)
 
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, CustomFlatPageAdmin)
+
+admin.site.register(Person, PersonAdmin)
+admin.site.register(Position, PositionAdmin)
