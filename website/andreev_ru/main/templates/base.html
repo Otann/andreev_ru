@@ -1,4 +1,6 @@
 {% load i18n %}
+{% get_available_languages as languages %}
+
 {% load flatpages %}
 {% get_flatpages as flatpages %}
 
@@ -34,15 +36,22 @@
 			<header class="logo">
 				{% if is_main %}
 				<h1>Pavel Andreev</h1>
-				<h2>architectual workshop {{ debug }}</h2>
+				<h2>architectual workshop</h2>
 				{% else %}
 				<a href="/">
 					<h1>Pavel Andreev</h1>
 					<h2>architectual workshop</h2>
 				</a>
 				{% endif %}
-
             </header>
+
+            <div>
+                {% for lang_code, lang_name in languages %}
+                    {% language lang_code %}
+                        <a href="/{{ lang_code }}/{{ request.get_full_path|slice:"4:" }}">{{ lang_name }}</a>
+                    {% endlanguage %}
+                {% endfor %}
+            </div>
 
 			<nav class="main-menu" role="navigation">
 				<ul>
@@ -51,7 +60,7 @@
 							{% if request.url == p.url %}
 								{{ p.title }}
 							{% else %}
-								<a href="{{ p.url }}">{{ p.title }}</a>
+								<a href="/{{ LANGUAGE_CODE }}{{ p.url }}">{{ p.title }}</a>
 							{% endif %}
 						</li>
 					{% endfor %}

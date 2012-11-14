@@ -1,11 +1,12 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
+from django.conf.urls.i18n import i18n_patterns
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
 
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = i18n_patterns('',
 
     url(r'^$',                       'andreev_ru.main.views.home',              name='home'),
 
@@ -17,8 +18,11 @@ urlpatterns = patterns('',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/',     include(admin.site.urls)),
 
-    url(r'^redactor/',  include('redactor.urls')),
-    url(r'^i18n/',      include('django.conf.urls.i18n')),
+    url('', include('django.contrib.flatpages.urls'))
+)
+
+urlpatterns += patterns('',
+    url(r'^redactor/', include('redactor.urls')),
 )
 
 if settings.DEBUG:
