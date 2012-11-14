@@ -2,3 +2,4 @@ PIL==1.1.7
 South==0.7.6
 django-modeltranslation==0.4.0-beta2
 django-redactorjs==0.2.2
+django-grappelli==2.4.3
