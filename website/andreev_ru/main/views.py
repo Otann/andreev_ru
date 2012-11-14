@@ -31,6 +31,7 @@ def works(request):
     category = Category.objects.get(pk=category_id)
 
     context = {
+        'page': 'works',
         'categories': Category.objects.all(),
         'category': category,
         'category_works': Work.objects.filter(categories__in=category_id)
@@ -50,6 +51,7 @@ def team(request):
 
     team = map(lambda position: (position, filter(lambda person: person.position == position, all_persons)), all_positions)
     context = {
+        'page': 'team',
         'team': team
     }
     return render_to_response('team.html', context, context_instance=RequestContext(request))

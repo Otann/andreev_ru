@@ -17,20 +17,20 @@
 		<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 		        <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 		<title>{{ title|default:'Pavel Andreev' }}</title>
-		
+
 		<!-- livereload stuff, remove on production -->
 		<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
-		
+
 		{% block js %}{% endblock js %}
-		
+
 		{% block css %}{% endblock css %}
-		
+
 		 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<link rel="stylesheet" href="{{ STATIC_URL }}fotorama/fotorama.css" />
 		<script src="{{ STATIC_URL }}fotorama/fotorama.js"></script>
-		
+
 	</head>
-    
+
 	<body>
 		<div class="wrapper">
 			<header class="logo">
@@ -43,6 +43,7 @@
 					<h2>architectual workshop</h2>
 				</a>
 				{% endif %}
+{#            {{ request }}#}
             </header>
 
             <div>
@@ -57,22 +58,34 @@
 				<ul>
 					{% for p in flatpages %}
 						<li>
-							{% if request.url == p.url %}
+							{% if request.get_full_path == '/'|add:LANGUAGE_CODE|add:p.url %}
 								{{ p.title }}
 							{% else %}
 								<a href="/{{ LANGUAGE_CODE }}{{ p.url }}">{{ p.title }}</a>
 							{% endif %}
 						</li>
 					{% endfor %}
-					<li><a href="{% url andreev_ru.main.views.works %}">Проекты</a></li>
-                    <li><a href="{% url andreev_ru.main.views.team %}">Команда</a></li>
+                    <li>
+                        <a {% if page != 'works' %}
+                            href="{% url andreev_ru.main.views.works %}"
+                        {% else %}
+                            class="active"
+                        {% endif %}>Проекты</a>
+                    </li>
+                    <li>
+                        <a {% if page != 'team' %}
+                            href="{% url andreev_ru.main.views.team %}"
+                        {% else %}
+                            class="active"
+                        {% endif %}>Команда</a>
+                    </li>
 				</ul>
 			</nav>
 
 			{% block content %}{% endblock content %}
-			
+
 			<div style="clear: both;"></div>
-				
+
 			<footer class="bottom-footer">
 				<address class="address-columns">
 					<div class="address-col-1"></div>
@@ -83,10 +96,10 @@
 					<a href="mailto:mail@pavel-andreev.ru">mail@pavel-andreev.ru</a></div>
 				</address>
             </footer>
-		
+
 		</div>
-		
-		
-	</body> 
+
+
+	</body>
 
 </html>
