@@ -7,11 +7,10 @@ Install missing ones with `sudo pip install <package_name>`
 Here is required list:
 
 ```
-ipython
-django-modeltranslation
-markdown2
-pytils
-django-imaging
+PIL==1.1.7
+South==0.7.6
+django-modeltranslation==0.4.0-beta2
+django-redactorjs==0.2.2
 ```
 
 ## To run project localy cd to andreev_ru and run
