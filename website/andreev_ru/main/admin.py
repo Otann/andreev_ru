@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django import forms
 from modeltranslation.admin import TranslationAdmin
 from andreev_ru.main.forms import WorkForm, FlatpageForm, PersonForm, WorkImageForm
 from andreev_ru.main.models import Work, WorkImage, Category, Person, Department
@@ -7,18 +6,18 @@ from andreev_ru.main.models import Work, WorkImage, Category, Person, Department
 from django.contrib.flatpages.models import FlatPage
 
 class WorkImageAdmin(admin.TabularInline):
-    form = WorkImageForm
-    template = 'admin/inlineimage.html'
     fields = ('image', 'position',)
-    sortable_field_name = "position"
-    model = WorkImage
-    extra = 3
+    sortable_field_name = "position"           # Required for grapelli's sortable
+    form = WorkImageForm                       # Hides position field
+    template = 'admin/inlineimage.html'        # Adds image preview
+    model = WorkImage                          # Related model
+    extra = 3                                  # Amount of additional tabular items
 
 class WorkAdmin(TranslationAdmin):
-    form = WorkForm
+    form = WorkForm                            # Add RedactorJS fields
     list_display = ('title','description')
-    prepopulated_fields = {"slug": ("title",)}
-    inlines = [ WorkImageAdmin, ]
+    prepopulated_fields = {"slug": ("title",)} # Auto-populate based on russian title
+    inlines = [ WorkImageAdmin, ]              # Inline add/remove for these
 
     class Media:
         css = {'all': ['redactor_fix.css']}
@@ -28,11 +27,17 @@ class CategotyAdmin(TranslationAdmin):
 
 class CustomFlatPageAdmin(TranslationAdmin):
     list_display = ('title', 'url', )
-    form = FlatpageForm
+    form = FlatpageForm                         # Add RedactorJS fields
+
+    class Media:
+        css = {'all': ['redactor_fix.css']}     # Fix Redactor z-index overlapping
 
 class PersonAdmin(TranslationAdmin):
-    form = PersonForm
     list_display = ('name', 'bio', 'occupation')
+    form = PersonForm                           # Add RedactorJS fields
+
+    class Media:
+        css = {'all': ['redactor_fix.css']}     # Fix Redactor z-index overlapping
 
 class PositionAdmin(TranslationAdmin):
     list_display = ('name',)

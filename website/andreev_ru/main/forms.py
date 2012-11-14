@@ -25,7 +25,6 @@ class WorkForm(forms.ModelForm):
 class FlatpageForm(FlatpageFormOld):
     class Meta:
         model = FlatPage
-        css = {'all': ['redactor_fix.css']}
         widgets = {
             'content_ru': RedactorEditor(),
             'content_en': RedactorEditor(),

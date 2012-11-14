@@ -26,7 +26,7 @@ class Work(models.Model):
     date_built   = models.DateField(verbose_name = u'Когда сдано')
     categories   = models.ManyToManyField(Category, verbose_name = u'Категории')
 
-    slug = models.SlugField(u'Относительный URL', max_length = 200, unique=True)
+    slug = models.SlugField(max_length = 200, unique=True, verbose_name = u'Относительный URL')
 
     def __unicode__(self):
         return self.title

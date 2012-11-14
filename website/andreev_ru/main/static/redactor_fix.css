@@ -6,12 +6,6 @@
     width: 400px;
     height: 200px;
 }
-/*.grp-tools.grp-tools-thumb li a {*/
-    /*display: inline-block;*/
-    /*width: 400px;*/
-    /*height: 200px;*/
-    /*margin-left: 30px;*/
-/*}*/
 
 .inline-preview {
     float: left;
@@ -19,9 +13,3 @@
     max-width: 400px;
     margin-left: 30px
 }
-
-/*.grp-drag-handler {*/
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*left: 0;*/
-/*}*/
