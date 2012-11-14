@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 
@@ -21,22 +22,22 @@
     		<ul>
     			<li class="icon-built-in">
 	    			<dl>
-	    			  <dt>Год постройки</dt>
+	    			  <dt>{% trans "Год постройки" %}</dt>
 	    			  <dd>{{ work.date_built|date:"Y" }}</dd>
 	    			</dl>
     			</li>
     			
     			<li class="icon-area">
     				<dl>
-    				  <dt>Площадь</dt>
+    				  <dt>{% trans "Площадь" %}</dt>
     				  <dd>{{ work.square }} м²</dd>
     				</dl>
     			</li>
     			<li class="icon-address">
     				<dl>
-    				  <dt>Адрес</dt>
+    				  <dt>{% trans "Адрес" %}</dt>
     				  <dd>{{ work.address }}</dd>
-    				  <div class="panorama-link"><a href="{{ work.panorama_url }}">Посмотреть панораму на карте</a></div>
+    				  <div class="panorama-link"><a href="{{ work.panorama_url }}">{% trans "Посмотреть панораму на карте" %}</a></div>
     				</dl>
     			</li>
     		</ul>

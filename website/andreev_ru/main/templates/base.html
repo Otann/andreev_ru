@@ -35,11 +35,11 @@
 		<div class="wrapper">
 			<header class="logo">
 				{% if is_main %}
-				<h1>Pavel Andreev</h1>
+				<h1>{% trans "Pavel Andreev" %}</h1>
 				<h2>architectual workshop</h2>
 				{% else %}
 				<a href="/">
-					<h1>Pavel Andreev</h1>
+					<h1>{% trans "Pavel Andreev" %}</h1>
 					<h2>architectual workshop</h2>
 				</a>
 				{% endif %}
@@ -70,14 +70,14 @@
                             href="{% url andreev_ru.main.views.works %}"
                         {% else %}
                             class="active"
-                        {% endif %}>Проекты</a>
+                        {% endif %}>{% trans "Projects" %}</a>
                     </li>
                     <li>
                         <a {% if page != 'team' %}
                             href="{% url andreev_ru.main.views.team %}"
                         {% else %}
                             class="active"
-                        {% endif %}>Команда</a>
+                        {% endif %}>{% trans "Team" %}</a>
                     </li>
 				</ul>
 			</nav>
@@ -89,9 +89,8 @@
 			<footer class="bottom-footer">
 				<address class="address-columns">
 					<div class="address-col-1"></div>
-					<div class="address-col-2">Россия, Москва<br>
-					ул. 1-Бресткая 17, офис 214</div>
-					<div class="address-col-3">Павел Андреев<br> Архитектурная мастерская</div>
+					<div class="address-col-2">{% blocktrans %}Россия, Москва<br>ул. 1-Бресткая 17, офис 214{% endblocktrans %}</div>
+					<div class="address-col-3">{% blocktrans %}Павел Андреев<br> Архитектурная мастерская{% endblocktrans %}</div>
 					<div class="address-col-4">+7 495 567-12-33<br>
 					<a href="mailto:mail@pavel-andreev.ru">mail@pavel-andreev.ru</a></div>
 				</address>
