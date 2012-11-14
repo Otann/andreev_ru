@@ -2,20 +2,14 @@
 
 ## Environment
 
-Check all installed packages with `sudo pip freeze`
-Install missing ones with `sudo pip install <package_name>`
-Here is required list:
+Install required python packages with
 
-```
-PIL==1.1.7
-South==0.7.6
-django-modeltranslation==0.4.0-beta2
-django-redactorjs==0.2.2
-```
+`sudo pip install -r pip-requirments.txt`
 
 ## To run project localy cd to andreev_ru and run
 
 ```
+cd website
 pyhton manage.py runserver
 ```
 
@@ -26,6 +20,33 @@ You can go to http://localhost:8000/admin and check out administration interface
 For now we will use local database to sync all changes via git
 Credentials are:
 ```
-username: root
+username: admin
 password: password
+```
+
+## Update and Modify Locale Strings
+
+To update all translatable strings, perform this:
+
+```bash
+cd /your_project_path/website/andreev_ru/main
+django-admin.py makemessages --all
+```
+
+This will updates `django.po` for each locale in main project's locale folder
+
+To compile all messages, run
+
+```bash
+cd /your_project_path/website/andreev_ru/main
+django-admin.py compilemessages
+```
+
+### Mac OS X hint
+
+Mac OS binaries are missing gettesx, so install and link it to make commands above work
+
+```bash
+brew install gettext
+brew link gettext
 ```
