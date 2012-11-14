@@ -37,7 +37,7 @@ class Work(models.Model):
 
 class WorkImage(models.Model):
     work  = models.ForeignKey(Work, related_name = 'images', verbose_name = u'Фотографии')
-    image = models.ImageField(upload_to = 'work_image')
+    image = models.ImageField(upload_to = 'works')
 
 class Department(models.Model):
     name = models.CharField(max_length=200)
@@ -53,7 +53,7 @@ class Person(models.Model):
     name       = models.CharField(max_length = 1024, verbose_name = u'ФИО')
     occupation = models.CharField(max_length = 1024, verbose_name = u'Род деятельности')
     bio        = models.TextField(verbose_name = u'История')
-    image      = models.ImageField(upload_to = 'work_image', verbose_name = u'Фотография')
+    image      = models.ImageField(upload_to = 'team', verbose_name = u'Фотография')
 
     position = models.ForeignKey(Department, verbose_name = u'Отдел')
 

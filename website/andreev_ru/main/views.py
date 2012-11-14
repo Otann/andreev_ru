@@ -1,9 +1,17 @@
+import json
+
 from django import http
+from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.utils.translation import check_for_language
-from andreev_ru import settings
+from django.core.urlresolvers import reverse
 
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
+
+from andreev_ru import settings
 from andreev_ru.main.models import Work, Category, Person, Department
 
 def prepare_base():
@@ -13,7 +21,7 @@ def home(request):
     context = {
         'works': Work.objects.all(),
         'is_main': True,
-        'debug': settings.PROJECT_ROOT
+        'debug': reverse('redactor_upload_image', kwargs={'upload_to': ''})
     }
     return render_to_response('home.html', context, context_instance=RequestContext(request))
 
@@ -29,7 +37,7 @@ def works(request):
     }
 
     return render_to_response('works.html', context, context_instance=RequestContext(request))
-    
+
 def work(request, slug):
     context = {
         'work': get_object_or_404(Work, slug=slug)
@@ -46,6 +54,7 @@ def team(request):
     }
     return render_to_response('team.html', context, context_instance=RequestContext(request))
 
+#todo(Anton): make this work: switch lang and redirect back to referrer or home
 def set_lang(request):
     next = request.REQUEST.get('next', None)
     if not next:
