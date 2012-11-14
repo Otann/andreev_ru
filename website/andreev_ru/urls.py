@@ -23,6 +23,7 @@ urlpatterns = i18n_patterns('',
 
 urlpatterns += patterns('',
     url(r'^redactor/', include('redactor.urls')),
+    url(r'^grappelli/', include('grappelli.urls')),
 )
 
 if settings.DEBUG:

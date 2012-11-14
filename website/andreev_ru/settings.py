@@ -50,7 +50,7 @@ LANGUAGE_CODE = 'ru'
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
 MODELTRANSLATION_TRANSLATION_REGISTRY = 'andreev_ru.translation'
 
-REDACTOR_OPTIONS = { 'lang': 'ru', }
+REDACTOR_OPTIONS = { 'lang': 'ru', 'air': True, 'airButtons': ['formatting', '|', 'bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|', 'fontcolor', 'backcolor']}
 REDACTOR_UPLOAD = 'content_uploads'
 
 
@@ -87,16 +87,22 @@ WSGI_APPLICATION = 'andreev_ru.wsgi.application'
 
 TEMPLATE_DIRS = ( )
 
+#GRAPPELLI_INDEX_DASHBOARD = 'andreev_ru.dashboard.CustomIndexDashboard'
+
 INSTALLED_APPS = (
     'andreev_ru.main',
+
+#    'grappelli.dashboard',
+    'grappelli',
+    'django.contrib.admin',
+    'django.contrib.admindocs',
+
 
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.admin',
-    'django.contrib.admindocs',
     'django.contrib.sites',
     'django.contrib.flatpages',
 
@@ -107,7 +113,7 @@ INSTALLED_APPS = (
     'modeltranslation',
 
     # Redactor for WYSIWYG
-    'redactor'
+    'redactor',
     )
 
 # A sample logging configuration. The only tangible logging

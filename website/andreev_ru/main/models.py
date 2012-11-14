@@ -36,8 +36,17 @@ class Work(models.Model):
         verbose_name_plural = u'Объекты'
 
 class WorkImage(models.Model):
-    work  = models.ForeignKey(Work, related_name = 'images', verbose_name = u'Фотографии')
-    image = models.ImageField(upload_to = 'works')
+    work     = models.ForeignKey(Work, related_name = 'images', verbose_name = u'Фотографии')
+    image    = models.ImageField(upload_to = 'works', verbose_name = u'Файл')
+    position = models.PositiveSmallIntegerField(verbose_name = u'Позиция в слайдре')
+
+    def __unicode__(self):
+        return str(self.position)
+
+    class Meta:
+        ordering = ['position']
+        verbose_name = u'Фотография объекта'
+        verbose_name_plural = u'Фотографии объекта'
 
 class Department(models.Model):
     name = models.CharField(max_length=200)
