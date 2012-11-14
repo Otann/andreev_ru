@@ -6,14 +6,15 @@ Install required python packages with
 
 `sudo pip install -r pip-requirments.txt`
 
-## To run project localy cd to andreev_ru and run
+## To run project localy perform:
 
-```
-cd website
+```bash
+cd /your_project_path/website/
 pyhton manage.py runserver
 ```
 
-You can go to http://localhost:8000/admin and check out administration interface
+You can go to http://localhost:8000/ and check out current version  
+Administration url is http://localhost:8000/damin/
 
 ## Database
 
@@ -44,7 +45,7 @@ django-admin.py compilemessages
 
 ### Mac OS X hint
 
-Mac OS binaries are missing gettesx, so install and link it to make commands above work
+Mac OS binaries are missing gettext, so install and link it to make commands above work
 
 ```bash
 brew install gettext
