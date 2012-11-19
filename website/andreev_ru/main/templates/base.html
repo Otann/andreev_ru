@@ -46,7 +46,7 @@
 {#            {{ request }}#}
             </header>
 
-            <div>
+            <div class="lang-switcher">
                 {% for lang_code, lang_name in languages %}
                     {% language lang_code %}
                         <a href="/{{ lang_code }}/{{ request.get_full_path|slice:"4:" }}">{{ lang_name }}</a>

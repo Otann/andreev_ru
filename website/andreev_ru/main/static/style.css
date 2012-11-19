@@ -88,6 +88,19 @@ body {
 	/*border: 1px solid #333;*/
 }
 
+.lang-switcher {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	color: #333;
+	font-size: 12px;
+}
+
+.lang-switcher a {
+	color: #333;
+	padding-right: 20px;
+}
+
 .logo {
 	text-align: center;
 	margin-top: 40px;
@@ -269,6 +282,8 @@ body {
 
 .project-list figure img {
 	border-radius: 5%;
+	width: 200px;
+	height: 200px;
 }
 
 .project-list figcaption {
