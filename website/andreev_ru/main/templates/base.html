@@ -34,6 +34,8 @@
 	<body>
 		<div class="wrapper">
 			<header class="logo">
+				<div class="small-gray-text-top">{% trans "National thing this is yeah" %}</div>
+				
 				{% if is_main %}
 				<h1>{% trans "Pavel Andreev" %}</h1>
 				<h2>architectual workshop</h2>
@@ -56,15 +58,6 @@
 
 			<nav class="main-menu" role="navigation">
 				<ul>
-					{% for p in flatpages %}
-						<li>
-							{% if request.get_full_path == '/'|add:LANGUAGE_CODE|add:p.url %}
-								{{ p.title }}
-							{% else %}
-								<a href="/{{ LANGUAGE_CODE }}{{ p.url }}">{{ p.title }}</a>
-							{% endif %}
-						</li>
-					{% endfor %}
                     <li>
                         <a {% if page != 'works' %}
                             href="{% url andreev_ru.main.views.works %}"
@@ -79,6 +72,17 @@
                             class="active"
                         {% endif %}>{% trans "Team" %}</a>
                     </li>
+                    
+                    {% for p in flatpages %}
+                    	<li>
+                    		{% if request.get_full_path == '/'|add:LANGUAGE_CODE|add:p.url %}
+                    			{{ p.title }}
+                    		{% else %}
+                    			<a href="/{{ LANGUAGE_CODE }}{{ p.url }}">{{ p.title }}</a>
+                    		{% endif %}
+                    	</li>
+                    {% endfor %}
+                    
 				</ul>
 			</nav>
 

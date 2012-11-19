@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-14 16:11+0400\n"
+"POT-Creation-Date: 2012-11-20 03:13+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,23 +17,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/base.html:38 templates/base.html.py:42
+#: templates/base.html:37
+msgid "National thing this is yeah"
+msgstr ""
+
+#: templates/base.html:40 templates/base.html.py:44
 msgid "Pavel Andreev"
 msgstr "Pavel Andreev"
 
-#: templates/base.html:73
+#: templates/base.html:66
 msgid "Projects"
 msgstr "Projects"
 
-#: templates/base.html:80
+#: templates/base.html:73
 msgid "Team"
 msgstr "Team"
 
-#: templates/base.html:92
+#: templates/base.html:96
 msgid "Россия, Москва<br>ул. 1-Бресткая 17, офис 214"
 msgstr "Russia, Moscow<br>1st Brestskaya st. 17, office 214"
 
-#: templates/base.html:93
+#: templates/base.html:97
 msgid "Павел Андреев<br> Архитектурная мастерская"
 msgstr "Pavel Andreev<br> architectual workshop"
 
@@ -68,3 +72,28 @@ msgstr "View panorama on maps"
 #: templates/works.html:41
 msgid "Авторы"
 msgstr "Authors"
+
+#: templates/admin/inlineimage.html:9
+msgid "Add Another"
+msgstr ""
+
+#: templates/admin/inlineimage.html:66
+msgid "Move Item"
+msgstr ""
+
+#: templates/admin/inlineimage.html:74
+msgid "View on Site"
+msgstr ""
+
+#: templates/admin/inlineimage.html:77 templates/admin/inlineimage.html:82
+msgid "Delete Item"
+msgstr ""
+
+#: templates/admin/inlineimage.html:96
+#, python-format
+msgid "Add another %(verbose_name)s"
+msgstr ""
+
+#: templates/admin/inlineimage.html:98
+msgid "Add Item"
+msgstr ""

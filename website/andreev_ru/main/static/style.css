@@ -103,7 +103,6 @@ body {
 
 .logo {
 	text-align: center;
-	margin-top: 40px;
 	font-family: Futura, sans-serif;
 }
 
@@ -126,6 +125,13 @@ body {
 	margin-top: 12px;
 }
 
+.logo .small-gray-text-top {
+	font-size: 12px;
+	color: #666;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
 .main-menu {
 	text-align: center;
 	margin-top: 40px;
@@ -143,6 +149,10 @@ body {
 .main-menu a {
 	color: #821A17;
 	text-decoration: none;
+}
+
+.main-menu a.active {
+	border-bottom: 1px solid #821A17;
 }
 
 .main-menu a:hover {
@@ -282,8 +292,8 @@ body {
 
 .project-list figure img {
 	border-radius: 5%;
-	width: 200px;
-	height: 200px;
+	width: 220px;
+	height: 220px;
 }
 
 .project-list figcaption {
@@ -433,6 +443,7 @@ p:first-child {
 	font-family: 'PT Serif', serif;
 	font-size: 25px;
 	font-weight: normal;
+	text-align: center;
 }
 
 .team-members {
@@ -453,6 +464,7 @@ p:first-child {
 .team-members-photo img {
 	border-radius: 50%;
 	width: 150px;
+	height: 150px;
 }
 
 .team-members-description {
@@ -462,10 +474,22 @@ p:first-child {
 	font-size: 17px;
 }
 
+.team-members-description p {
+	margin: 0;
+}
+
 .team-members-description h4 {
 	font-family: 'PT Serif', serif;
 	font-size: 28px;
 	font-weight: normal;
+	margin-bottom: 5px;
+}
+ 
+.team-members-description h5 {
+	font-family: 'PT Serif', serif;
+	font-size: 15px;
+	font-weight: normal;
+	font-style: italic;
 	margin-bottom: 15px;
 }
 
@@ -475,4 +499,5 @@ p:first-child {
 
 .team-members li:nth-of-type(odd) .team-members-description  {
 	float: right;
+	padding-right: 30px;
 }

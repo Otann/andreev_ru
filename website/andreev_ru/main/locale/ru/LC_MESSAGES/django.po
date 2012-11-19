@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-14 16:11+0400\n"
+"POT-Creation-Date: 2012-11-20 03:13+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,23 +19,28 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: templates/base.html:38 templates/base.html.py:42
+#: templates/base.html:37
+msgid "National thing this is yeah"
+msgstr ""
+"Национальная Всероссийская Палата Архитекторов и Союз Добра во всем мире"
+
+#: templates/base.html:40 templates/base.html.py:44
 msgid "Pavel Andreev"
 msgstr "Pavel Andreev"
 
-#: templates/base.html:73
+#: templates/base.html:66
 msgid "Projects"
 msgstr "Проекты"
 
-#: templates/base.html:80
+#: templates/base.html:73
 msgid "Team"
 msgstr "Команда"
 
-#: templates/base.html:92
+#: templates/base.html:96
 msgid "Россия, Москва<br>ул. 1-Бресткая 17, офис 214"
 msgstr ""
 
-#: templates/base.html:93
+#: templates/base.html:97
 msgid "Павел Андреев<br> Архитектурная мастерская"
 msgstr ""
 
@@ -70,3 +75,32 @@ msgstr ""
 #: templates/works.html:41
 msgid "Авторы"
 msgstr ""
+
+#: templates/admin/inlineimage.html:9
+msgid "Add Another"
+msgstr ""
+
+#: templates/admin/inlineimage.html:66
+msgid "Move Item"
+msgstr ""
+
+#: templates/admin/inlineimage.html:74
+msgid "View on Site"
+msgstr ""
+
+#: templates/admin/inlineimage.html:77 templates/admin/inlineimage.html:82
+msgid "Delete Item"
+msgstr ""
+
+#: templates/admin/inlineimage.html:96
+#, python-format
+msgid "Add another %(verbose_name)s"
+msgstr ""
+
+#: templates/admin/inlineimage.html:98
+msgid "Add Item"
+msgstr ""
+
+#~ msgid "National thing it is"
+#~ msgstr ""
+#~ "Нациоальная Всероссийская Палата Архитекторов и Союз Добра во всем мире"
