@@ -1,3 +1,4 @@
+# coding=utf-8
 import os
 
 DEBUG = True
@@ -43,8 +44,8 @@ STATIC_URL = '/static/'
 # Settings for django-modeltranslation
 gettext = lambda s: s
 LANGUAGES = (
-    ('ru', gettext('Russian')),
-    ('en', gettext('English')),
+    ('ru', u'Русский'),
+    ('en', u'English'),
     )
 LANGUAGE_CODE = 'ru'
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'

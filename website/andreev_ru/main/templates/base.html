@@ -49,9 +49,11 @@
             </header>
 
             <div class="lang-switcher">
-                {% for lang_code, lang_name in languages %}
+                {% for lang_code, lang_name in LANGUAGES %}
                     {% language lang_code %}
-                        <a href="/{{ lang_code }}/{{ request.get_full_path|slice:"4:" }}">{{ lang_name }}</a>
+                        <a href="/{{ lang_code }}/{{ request.get_full_path|slice:"4:" }}"
+                        {% if lang_code == LANGUAGE_CODE %}class="active-lang"{% endif %}
+                        >{% trans lang_name %}</a>
                     {% endlanguage %}
                 {% endfor %}
             </div>
@@ -59,27 +61,25 @@
 			<nav class="main-menu" role="navigation">
 				<ul>
                     <li>
-                        <a {% if page != 'works' %}
-                            href="{% url andreev_ru.main.views.works %}"
-                        {% else %}
-                            class="active"
-                        {% endif %}>{% trans "Projects" %}</a>
+                        <a 
+                        	href="{% url andreev_ru.main.views.works %}"
+                        	{% if page == 'works' %}class="active"{% endif %}
+                        	>{% trans "Projects" %}</a>
                     </li>
                     <li>
-                        <a {% if page != 'team' %}
-                            href="{% url andreev_ru.main.views.team %}"
-                        {% else %}
-                            class="active"
-                        {% endif %}>{% trans "Team" %}</a>
+						<a href="{% url andreev_ru.main.views.team %}"
+						{% if page == 'team' %}class="active"{% endif %}
+						>{% trans "Team" %}</a>
                     </li>
                     
                     {% for p in flatpages %}
                     	<li>
-                    		{% if request.get_full_path == '/'|add:LANGUAGE_CODE|add:p.url %}
-                    			{{ p.title }}
-                    		{% else %}
-                    			<a href="/{{ LANGUAGE_CODE }}{{ p.url }}">{{ p.title }}</a>
-                    		{% endif %}
+                    	    <a 
+                    	    	href="/{{ LANGUAGE_CODE }}{{ p.url }}"
+                    	    	{% if request.get_full_path == '/'|add:LANGUAGE_CODE|add:p.url %}
+                    	    		class="active"
+                    	    	{% endif %}
+                    	    	>{{ p.title }}</a>
                     	</li>
                     {% endfor %}
                     

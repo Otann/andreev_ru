@@ -41,6 +41,7 @@ def works(request):
 
 def work(request, slug):
     context = {
+        'page': 'works',
         'work': get_object_or_404(Work, slug=slug)
     }
     return render_to_response('work.html', context, context_instance=RequestContext(request))
