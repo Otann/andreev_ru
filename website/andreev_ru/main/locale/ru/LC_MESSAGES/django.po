@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-20 03:13+0400\n"
+"POT-Creation-Date: 2012-11-25 15:15+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,18 +21,17 @@ msgstr ""
 
 #: templates/base.html:37
 msgid "National thing this is yeah"
-msgstr ""
-"Национальная Всероссийская Палата Архитекторов и Союз Добра во всем мире"
+msgstr "Национальная палата архитекторов"
 
 #: templates/base.html:40 templates/base.html.py:44
 msgid "Pavel Andreev"
-msgstr "Pavel Andreev"
+msgstr "Павел Андреев"
 
-#: templates/base.html:66
+#: templates/base.html:67
 msgid "Projects"
 msgstr "Проекты"
 
-#: templates/base.html:73
+#: templates/base.html:72
 msgid "Team"
 msgstr "Команда"
 
@@ -56,15 +55,15 @@ msgstr ""
 msgid "Консалтинг, комлпексное сопровождение проектов"
 msgstr ""
 
-#: templates/work.html:25 templates/works.html:26
+#: templates/work.html:25 templates/works.html:27
 msgid "Год постройки"
 msgstr ""
 
-#: templates/work.html:32 templates/works.html:31
+#: templates/work.html:32 templates/works.html:32
 msgid "Площадь"
 msgstr ""
 
-#: templates/work.html:38 templates/works.html:36
+#: templates/work.html:38 templates/works.html:37
 msgid "Адрес"
 msgstr ""
 
@@ -72,7 +71,7 @@ msgstr ""
 msgid "Посмотреть панораму на карте"
 msgstr ""
 
-#: templates/works.html:41
+#: templates/works.html:42
 msgid "Авторы"
 msgstr ""
 
