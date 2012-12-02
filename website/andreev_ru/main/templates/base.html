@@ -1,9 +1,7 @@
 {% load i18n %}
 {% get_available_languages as languages %}
 
-{% load flatpages %}
-{% get_flatpages as flatpages %}
-
+{% load custom_strings %}
 
 <!DOCTYPE html>
 <html>
@@ -71,12 +69,12 @@
 						{% if page == 'team' %}class="active"{% endif %}
 						>{% trans "Team" %}</a>
                     </li>
-                    
-                    {% for p in flatpages %}
+
+                    {% for p in all_pages %}
                     	<li>
-                    	    <a 
-                    	    	href="/{{ LANGUAGE_CODE }}{{ p.url }}"
-                    	    	{% if request.get_full_path == '/'|add:LANGUAGE_CODE|add:p.url %}
+                    	    <a
+                    	    	href="/{{ LANGUAGE_CODE }}/{{ p.slug }}"
+                    	    	{% if request.get_full_path == '/'|add:LANGUAGE_CODE|add:'/'|add:p.slug %}
                     	    		class="active"
                     	    	{% endif %}
                     	    	>{{ p.title }}</a>
@@ -95,7 +93,7 @@
 					<div class="address-col-1"></div>
 					<div class="address-col-2">{% blocktrans %}Россия, Москва<br>ул. 1-Бресткая 17, офис 214{% endblocktrans %}</div>
 					<div class="address-col-3">{% blocktrans %}Павел Андреев<br> Архитектурная мастерская{% endblocktrans %}</div>
-					<div class="address-col-4">+7 495 567-12-33<br>
+					<div class="address-col-4">{% custom_string "address_city" %} +7 495 567-12-33<br>
 					<a href="mailto:mail@pavel-andreev.ru">mail@pavel-andreev.ru</a></div>
 				</address>
             </footer>

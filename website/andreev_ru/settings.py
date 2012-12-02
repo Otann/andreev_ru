@@ -90,7 +90,10 @@ MIDDLEWARE_CLASSES = (
     )
 
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
-TEMPLATE_CONTEXT_PROCESSORS = TCP + ( 'django.core.context_processors.request', )
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+    'andreev_ru.main.context_processors.pages_processor'
+    )
 
 ROOT_URLCONF = 'andreev_ru.urls'
 
@@ -99,13 +102,14 @@ WSGI_APPLICATION = 'andreev_ru.wsgi.application'
 
 TEMPLATE_DIRS = ( )
 
-#GRAPPELLI_INDEX_DASHBOARD = 'andreev_ru.dashboard.CustomIndexDashboard'
+GRAPPELLI_INDEX_DASHBOARD = 'andreev_ru.dashboard.CustomIndexDashboard'
 
 INSTALLED_APPS = (
+
+    'grappelli.dashboard',
+    'grappelli',
     'andreev_ru.main',
 
-#    'grappelli.dashboard',
-    'grappelli',
     'django.contrib.admin',
     'django.contrib.admindocs',
 
@@ -115,8 +119,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
-    'django.contrib.flatpages',
+#    'django.contrib.sites',
+#    'django.contrib.flatpages',
 
     # Mosels synching applications
     'south',

@@ -4,11 +4,11 @@
 {% block content %}
 	
 	<ul class="project-categories">
-        {% for c in categories %}
+        {% for c, count in categories %}
             {% if category.id == c.id %}
-                <li class="project-categories-active">{{ c.name }}</li>
+                <li class="project-categories-active">{{ c.name }} // {{ count }}</li>
             {% else %}
-                <li><a href="{% url andreev_ru.main.views.works %}?category={{ c.id }}">{{ c.name }}</a></li>
+                <li><a href="{% url andreev_ru.main.views.works %}?category={{ c.id }}">{{ c.name }} // {{ count }}</a></li>
             {% endif %}
         {% endfor %}
         <!--<li><a href="#shopping">Торговые центры</a><sup>6</sup></li>-->
@@ -25,7 +25,7 @@
                 <ul class="project-list-meta-data">
                     <li>
                         <span class="project-list-meta-title">{% trans "Год постройки" %}</span>
-                        <span class="project-list-meta-desciption">{{ work.date_built|date:"Y" }}</span>
+                        <span class="project-list-meta-desciption">{{ work.release_year }}</span>
                     </li>
 
                     <li>

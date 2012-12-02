@@ -1,18 +1,14 @@
 import json
 
 from django import http
-from django.http import HttpResponse
+from django.core.exceptions import ObjectDoesNotExist
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.utils.translation import check_for_language
 from django.core.urlresolvers import reverse
 
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_POST
-from django.contrib.auth.decorators import login_required
-
 from andreev_ru import settings
-from andreev_ru.main.models import Work, Category, Person, Department
+from andreev_ru.main.models import Work, Category, Person, Department, CustomPage
 
 def prepare_base():
     return {}
@@ -27,24 +23,49 @@ def home(request):
 
 def works(request):
 
-    category_id = request.GET.get('category', '1')
-    category = Category.objects.get(pk=category_id)
+    categories = []
+    for cat in Category.objects.all():
+        categories.append((cat, Work.objects.filter(categories__in=str(cat.id)).count()))
+
+    try:
+        category_id = request.GET.get('category', '1')
+        category = Category.objects.get(pk=category_id)
+        works = Work.objects.filter(categories__in=category_id)
+    except ObjectDoesNotExist:
+        category = None
+        works = Work.objects.all()
 
     context = {
         'page': 'works',
-        'categories': Category.objects.all(),
+        'categories': categories,
         'category': category,
-        'category_works': Work.objects.filter(categories__in=category_id)
+        'category_works': works
     }
 
     return render_to_response('works.html', context, context_instance=RequestContext(request))
 
 def work(request, slug):
+    work = get_object_or_404(Work, slug=slug)
+    more_amount = 5
+    more_works = {}
+    for item in Work.objects.order_by('?').filter(categories__in=work.categories.all())[:more_amount]:
+        more_works[item.id] = item
+    if len(more_works) < 5:
+        for item in Work.objects.order_by('?')[:more_amount-len(more_works)]:
+            more_works[item.id] = item
+
     context = {
         'page': 'works',
-        'work': get_object_or_404(Work, slug=slug)
+        'work': work,
+        'more_works': more_works.values()
     }
     return render_to_response('work.html', context, context_instance=RequestContext(request))
+
+def page(request, slug):
+    context = {
+        'page': get_object_or_404(CustomPage, slug=slug)
+    }
+    return render_to_response('page.html', context, context_instance=RequestContext(request))
 
 def team(request):
     all_persons = Person.objects.all()

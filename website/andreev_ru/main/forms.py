@@ -1,11 +1,7 @@
 from django.contrib import admin
 from django import forms
 from modeltranslation.admin import TranslationAdmin
-from andreev_ru.main.models import Work, WorkImage, Category, Person, Department
-
-from django.contrib.flatpages.models import FlatPage
-from django.contrib.flatpages.admin import FlatPageAdmin as FlatPageAdminOld
-from django.contrib.flatpages.admin import FlatpageForm as FlatpageFormOld
+from andreev_ru.main.models import Work, CustomPage
 
 from redactor.widgets import RedactorEditor
 
@@ -22,9 +18,9 @@ class WorkForm(forms.ModelForm):
             'description_en': RedactorEditor(),
             }
 
-class FlatpageForm(FlatpageFormOld):
+class CustomPageForm(forms.ModelForm):
     class Meta:
-        model = FlatPage
+        model = CustomPage
         widgets = {
             'content_ru': RedactorEditor(),
             'content_en': RedactorEditor(),

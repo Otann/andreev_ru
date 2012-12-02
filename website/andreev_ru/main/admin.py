@@ -1,7 +1,7 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
-from andreev_ru.main.forms import WorkForm, FlatpageForm, PersonForm, WorkImageForm
-from andreev_ru.main.models import Work, WorkImage, Category, Person, Department
+from andreev_ru.main.forms import *
+from andreev_ru.main.models import *
 
 from django.contrib.flatpages.models import FlatPage
 
@@ -22,15 +22,25 @@ class WorkAdmin(TranslationAdmin):
     class Media:
         css = {'all': ['redactor_fix.css']}
 
-class CategotyAdmin(TranslationAdmin):
+class CategoryAdmin(TranslationAdmin):
     list_display = ('name',)
 
-class CustomFlatPageAdmin(TranslationAdmin):
-    list_display = ('title', 'url', )
-    form = FlatpageForm                         # Add RedactorJS fields
+class CustomPageAdmin(TranslationAdmin):
+    list_display = ('title', 'position', 'slug',)
+    list_editable = ('position', 'slug',)
+    form = CustomPageForm                       # Add RedactorJS fields
+    prepopulated_fields = {"slug": ("title",)}  # Auto-populate based on russian title
 
     class Media:
         css = {'all': ['redactor_fix.css']}     # Fix Redactor z-index overlapping
+#        js  = [
+#            'grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
+#            'grappelli/tinymce_setup/tinymce_setup.js',
+#            ]
+
+class CustomStringAdmin(TranslationAdmin):
+    list_display = ('key', 'value_ru', 'value_en',)
+    list_editable = ('value_ru', 'value_en',)
 
 class PersonAdmin(TranslationAdmin):
     list_display = ('name', 'bio', 'occupation')
@@ -39,15 +49,15 @@ class PersonAdmin(TranslationAdmin):
     class Media:
         css = {'all': ['redactor_fix.css']}     # Fix Redactor z-index overlapping
 
-class PositionAdmin(TranslationAdmin):
+class DepartmentAdmin(TranslationAdmin):
     list_display = ('name',)
 
 
 admin.site.register(Work, WorkAdmin)
-admin.site.register(Category, CategotyAdmin)
+admin.site.register(Category, CategoryAdmin)
 
-admin.site.unregister(FlatPage)
-admin.site.register(FlatPage, CustomFlatPageAdmin)
+admin.site.register(CustomPage, CustomPageAdmin)
+admin.site.register(CustomString, CustomStringAdmin)
 
 admin.site.register(Person, PersonAdmin)
-admin.site.register(Department, PositionAdmin)
+admin.site.register(Department, DepartmentAdmin)

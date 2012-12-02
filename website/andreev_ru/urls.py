@@ -18,7 +18,7 @@ urlpatterns = i18n_patterns('',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/',     include(admin.site.urls)),
 
-    url('', include('django.contrib.flatpages.urls'))
+    url(r'^(?P<slug>[-\w]+)$',       'andreev_ru.main.views.page',              name='page'),
 )
 
 urlpatterns += patterns('',

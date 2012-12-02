@@ -23,7 +23,7 @@
     			<li class="icon-built-in">
 	    			<dl>
 	    			  <dt>{% trans "Год постройки" %}</dt>
-	    			  <dd>{{ work.date_built|date:"Y" }}</dd>
+	    			  <dd>{{ work.release_year }}</dd>
 	    			</dl>
     			</li>
     			
@@ -42,7 +42,15 @@
     			</li>
     		</ul>
     	</aside>
-    	
+
     </article>
+
+    <div>
+        <h4>More works {{ more_works|length }}</h4>
+        {% for w in more_works %}
+            <b>{{ w.title }}</b>
+            <p>{{ w.release_year }} // {{ w.address }}</p>
+        {% endfor %}
+    </div>
 
 {% endblock %}
