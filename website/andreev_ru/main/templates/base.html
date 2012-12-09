@@ -43,7 +43,7 @@
 					<h2>architectual workshop</h2>
 				</a>
 				{% endif %}
-{#            {{ request }}#}
+				{#{{ request }}#}
             </header>
 
             <div class="lang-switcher">
@@ -80,6 +80,70 @@
                     	    	>{{ p.title }}</a>
                     	</li>
                     {% endfor %}
+
+                    <form style="position: relative; display: inline;">
+                    	<input id="pa-search" class="search-box" type="search" placeholder="Поиск" />
+                    	<div class="search-popover">
+                    		<h4 class="search-popover-title">Быстрый поиск</h4>
+                    		<ul class="search-popover-results">
+                    			<li>
+                    				<a class="search-popover-link" href="#"></a>
+	                    			<div class="search-popover-image">
+	                    				<img src="http://127.0.0.1:8000/media/team/57836_1.jpeg">
+	                    			</div>
+	                    			<div class="search-popover-description">
+	                    				<h5>Павел Андреев</h5>
+	                    				Архитектурному бюро АДМ удалось усовершенствовать проект гигантского московского дома, сделав...
+	                    			</div>
+                    			</li>
+
+                    			 <li>
+                    			 	<a class="search-popover-link" href="#"></a>
+                    				<div class="search-popover-image">
+                    					<img src="http://127.0.0.1:8000/media/works/0008_%D1%88%D0%B0%D1%80%D1%8B.jpg">
+                    				</div>
+                    				<div class="search-popover-description">
+                    					<h5>Детский мир</h5>
+                    					Новый проект для «Детского мира» компания «Галс-Девеломпент» представила общественности...
+                    				</div>
+                    			</li>
+
+                    			<li>
+                    				<a class="search-popover-link" href="#"></a>
+                    				<div class="search-popover-image">
+                    				</div>
+                    				<div class="search-popover-description">
+                    					<h5>Бизнесмэн</h5>
+                    					Бизнесмен с Рублевки решил построить в Серебряном Бору-3 замок в виде головы Путина...
+                    				</div>
+                    			</li>
+
+                    			<li>
+                    				<a class="search-popover-link" href="#"></a>
+                    				<div class="search-popover-image">
+                    					<img src="http://127.0.0.1:8000/media/works/3.jpg">
+                    				</div>
+                    				<div class="search-popover-description">
+                    					<h5>Шоссе Энтузиастов</h5>
+                    					Шоссе́ Энтузиа́стов (Влади́мирское шоссе, Влади́мирский тракт) — шоссе в Москве...
+                    				</div>
+                    			</li>
+                    		</ul>
+
+                    		<a class="search-popover-all-results" href="#">Все результаты →</a>
+
+						</div>
+					</form>
+
+                    <script>
+                    	$('.search-box').focus(function() {
+							$('.search-popover').addClass('search-popover-focused');
+						});
+
+						$('.search-box').focusout(function() {
+							$('.search-popover').removeClass('search-popover-focused');
+						});
+                    </script>
                     
 				</ul>
 			</nav>

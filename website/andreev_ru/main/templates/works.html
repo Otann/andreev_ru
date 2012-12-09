@@ -6,12 +6,11 @@
 	<ul class="project-categories">
         {% for c, count in categories %}
             {% if category.id == c.id %}
-                <li class="project-categories-active">{{ c.name }} // {{ count }}</li>
+                <li class="project-categories-active">{{ c.name }}<sup>{{ count }}</sup></li>
             {% else %}
-                <li><a href="{% url andreev_ru.main.views.works %}?category={{ c.id }}">{{ c.name }} // {{ count }}</a></li>
+                <li><a href="{% url andreev_ru.main.views.works %}?category={{ c.id }}">{{ c.name }}</a><sup>{{ count }}</sup></li>
             {% endif %}
         {% endfor %}
-        <!--<li><a href="#shopping">Торговые центры</a><sup>6</sup></li>-->
 	</ul>
 	
 	<ul class="project-list">
