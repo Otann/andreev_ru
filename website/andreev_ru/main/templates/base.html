@@ -13,19 +13,28 @@
 		<![endif]-->
 		<link rel="stylesheet" href="{{ STATIC_URL }}style.css" />
 		<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-		        <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 		<title>{{ title|default:'Pavel Andreev' }}</title>
 
 		<!-- livereload stuff, remove on production -->
-		<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+		<!--<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>-->
 
 		{% block js %}{% endblock js %}
 
 		{% block css %}{% endblock css %}
 
-		 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<link rel="stylesheet" href="{{ STATIC_URL }}fotorama/fotorama.css" />
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="{{ STATIC_URL }}/js/underscore-min.js"></script>
+        <script type="text/javascript">
+            window.Config = {
+                lang: '{{ LANGUAGE_CODE }}'
+            }
+        </script>
+        <script src="{{ STATIC_URL }}/js/search.js"></script>
+
+        <link rel="stylesheet" href="{{ STATIC_URL }}fotorama/fotorama.css" />
 		<script src="{{ STATIC_URL }}fotorama/fotorama.js"></script>
+
 
 	</head>
 
@@ -33,7 +42,7 @@
 		<div class="wrapper">
 			<header class="logo">
 				<div class="small-gray-text-top">{% trans "National thing this is yeah" %}</div>
-				
+
 				{% if is_main %}
 				<h1>{% trans "Pavel Andreev" %}</h1>
 				<h2>architectual workshop</h2>
@@ -59,7 +68,7 @@
 			<nav class="main-menu" role="navigation">
 				<ul>
                     <li>
-                        <a 
+                        <a
                         	href="{% url andreev_ru.main.views.works %}"
                         	{% if page == 'works' %}class="active"{% endif %}
                         	>{% trans "Projects" %}</a>
@@ -108,15 +117,6 @@
                     				</div>
                     			</li>
 
-                    			<li>
-                    				<a class="search-popover-link" href="#"></a>
-                    				<div class="search-popover-image">
-                    				</div>
-                    				<div class="search-popover-description">
-                    					<h5>Бизнесмэн</h5>
-                    					Бизнесмен с Рублевки решил построить в Серебряном Бору-3 замок в виде головы Путина...
-                    				</div>
-                    			</li>
 
                     			<li>
                     				<a class="search-popover-link" href="#"></a>
@@ -135,16 +135,6 @@
 						</div>
 					</form>
 
-                    <script>
-                    	$('.search-box').focus(function() {
-							$('.search-popover').addClass('search-popover-focused');
-						});
-
-						$('.search-box').focusout(function() {
-							$('.search-popover').removeClass('search-popover-focused');
-						});
-                    </script>
-                    
 				</ul>
 			</nav>
 
