@@ -5,156 +5,123 @@
 
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/png" href="favicon.png">
-		<!--[if IE]>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="favicon.png">
+    <!--[if IE]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<link rel="stylesheet" href="{{ STATIC_URL }}style.css" />
-		<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-		<title>{{ title|default:'Pavel Andreev' }}</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}style.css" />
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <title>{{ title|default:'Pavel Andreev' }}</title>
 
-		<!-- livereload stuff, remove on production -->
-		<!--<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>-->
+    <!-- livereload stuff, remove on production -->
+    <!--<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>-->
 
-		{% block js %}{% endblock js %}
+    {% block js %}{% endblock js %}
 
-		{% block css %}{% endblock css %}
+    {% block css %}{% endblock css %}
 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <script src="{{ STATIC_URL }}/js/underscore-min.js"></script>
-        <script type="text/javascript">
-            window.Config = {
-                lang: '{{ LANGUAGE_CODE }}'
-            }
-        </script>
-        <script src="{{ STATIC_URL }}/js/search.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}js/underscore-min.js"></script>
+    <script type="text/javascript">
+        window.Config = {
+            lang: '{{ LANGUAGE_CODE }}',
+            all_results: '{% trans "All results" %}',
+            no_results: '{% trans "No results" %}'
 
-        <link rel="stylesheet" href="{{ STATIC_URL }}fotorama/fotorama.css" />
-		<script src="{{ STATIC_URL }}fotorama/fotorama.js"></script>
+        }
+    </script>
+    <script src="{{ STATIC_URL }}js/search.js"></script>
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}fotorama/fotorama.css" />
+    <script src="{{ STATIC_URL }}fotorama/fotorama.js"></script>
 
 
-	</head>
+</head>
 
-	<body>
-		<div class="wrapper">
-			<header class="logo">
-				<div class="small-gray-text-top">{% trans "National thing this is yeah" %}</div>
+<body>
+<div class="wrapper">
+    <header class="logo">
+        <div class="small-gray-text-top">{% trans "National thing this is yeah" %}</div>
 
-				{% if is_main %}
-				<h1>{% trans "Pavel Andreev" %}</h1>
-				<h2>architectual workshop</h2>
-				{% else %}
-				<a href="/">
-					<h1>{% trans "Pavel Andreev" %}</h1>
-					<h2>architectual workshop</h2>
-				</a>
-				{% endif %}
-				{#{{ request }}#}
-            </header>
+        {% if is_main %}
+            <h1>{% trans "Pavel Andreev" %}</h1>
+            <h2>architectual workshop</h2>
+        {% else %}
+            <a href="/">
+                <h1>{% trans "Pavel Andreev" %}</h1>
+                <h2>architectual workshop</h2>
+            </a>
+        {% endif %}
+        {#{{ request }}#}
+    </header>
 
-            <div class="lang-switcher">
-                {% for lang_code, lang_name in LANGUAGES %}
-                    {% language lang_code %}
-                        <a href="/{{ lang_code }}/{{ request.get_full_path|slice:"4:" }}"
-                        {% if lang_code == LANGUAGE_CODE %}class="active-lang"{% endif %}
+    <div class="lang-switcher">
+        {% for lang_code, lang_name in LANGUAGES %}
+            {% language lang_code %}
+                <a href="/{{ lang_code }}/{{ request.get_full_path|slice:"4:" }}"
+                   {% if lang_code == LANGUAGE_CODE %}class="active-lang"{% endif %}
                         >{% trans lang_name %}</a>
-                    {% endlanguage %}
-                {% endfor %}
-            </div>
+            {% endlanguage %}
+        {% endfor %}
+    </div>
 
-			<nav class="main-menu" role="navigation">
-				<ul>
-                    <li>
-                        <a
-                        	href="{% url andreev_ru.main.views.works %}"
-                        	{% if page == 'works' %}class="active"{% endif %}
-                        	>{% trans "Projects" %}</a>
-                    </li>
-                    <li>
-						<a href="{% url andreev_ru.main.views.team %}"
-						{% if page == 'team' %}class="active"{% endif %}
-						>{% trans "Team" %}</a>
-                    </li>
+    <nav class="main-menu" role="navigation">
+        <ul>
+            <li>
+                <a
+                        href="{% url andreev_ru.main.views.works %}"
+                        {% if page == 'works' %}class="active"{% endif %}
+                        >{% trans "Projects" %}</a>
+            </li>
+            <li>
+                <a href="{% url andreev_ru.main.views.team %}"
+                   {% if page == 'team' %}class="active"{% endif %}
+                        >{% trans "Team" %}</a>
+            </li>
 
-                    {% for p in all_pages %}
-                    	<li>
-                    	    <a
-                    	    	href="/{{ LANGUAGE_CODE }}/{{ p.slug }}"
-                    	    	{% if request.get_full_path == '/'|add:LANGUAGE_CODE|add:'/'|add:p.slug %}
-                    	    		class="active"
-                    	    	{% endif %}
-                    	    	>{{ p.title }}</a>
-                    	</li>
-                    {% endfor %}
+            {% for p in all_pages %}
+                <li>
+                    <a
+                            href="/{{ LANGUAGE_CODE }}/{{ p.slug }}"
+                            {% if request.get_full_path == '/'|add:LANGUAGE_CODE|add:'/'|add:p.slug %}
+                            class="active"
+                            {% endif %}
+                            >{{ p.title }}</a>
+                </li>
+            {% endfor %}
 
-                    <form style="position: relative; display: inline;">
-                    	<input id="pa-search" class="search-box" type="search" placeholder="Поиск" />
-                    	<div class="search-popover">
-                    		<h4 class="search-popover-title">Быстрый поиск</h4>
-                    		<ul class="search-popover-results">
-                    			<li>
-                    				<a class="search-popover-link" href="#"></a>
-	                    			<div class="search-popover-image">
-	                    				<img src="http://127.0.0.1:8000/media/team/57836_1.jpeg">
-	                    			</div>
-	                    			<div class="search-popover-description">
-	                    				<h5>Павел Андреев</h5>
-	                    				Архитектурному бюро АДМ удалось усовершенствовать проект гигантского московского дома, сделав...
-	                    			</div>
-                    			</li>
+            <form style="position: relative; display: inline;">
+                <input id="pa-search" class="search-box" type="search" placeholder="Поиск" />
+                <div class="search-popover">
+                    <h4 class="search-popover-title">Быстрый поиск</h4>
+                    <ul class="search-popover-results"> </ul>
+                    <span class="search-popover-all-results">###</span>
+                </div>
+            </form>
 
-                    			 <li>
-                    			 	<a class="search-popover-link" href="#"></a>
-                    				<div class="search-popover-image">
-                    					<img src="http://127.0.0.1:8000/media/works/0008_%D1%88%D0%B0%D1%80%D1%8B.jpg">
-                    				</div>
-                    				<div class="search-popover-description">
-                    					<h5>Детский мир</h5>
-                    					Новый проект для «Детского мира» компания «Галс-Девеломпент» представила общественности...
-                    				</div>
-                    			</li>
+        </ul>
+    </nav>
 
+    {% block content %}{% endblock content %}
 
-                    			<li>
-                    				<a class="search-popover-link" href="#"></a>
-                    				<div class="search-popover-image">
-                    					<img src="http://127.0.0.1:8000/media/works/3.jpg">
-                    				</div>
-                    				<div class="search-popover-description">
-                    					<h5>Шоссе Энтузиастов</h5>
-                    					Шоссе́ Энтузиа́стов (Влади́мирское шоссе, Влади́мирский тракт) — шоссе в Москве...
-                    				</div>
-                    			</li>
-                    		</ul>
+    <div style="clear: both;"></div>
 
-                    		<a class="search-popover-all-results" href="#">Все результаты →</a>
+    <footer class="bottom-footer">
+        <address class="address-columns">
+            <div class="address-col-1"></div>
+            <div class="address-col-2">{% blocktrans %}Россия, Москва<br>ул. 1-Бресткая 17, офис 214{% endblocktrans %}</div>
+            <div class="address-col-3">{% blocktrans %}Павел Андреев<br> Архитектурная мастерская{% endblocktrans %}</div>
+            <div class="address-col-4">{% custom_string "address_city" %} +7 495 567-12-33<br>
+                <a href="mailto:mail@pavel-andreev.ru">mail@pavel-andreev.ru</a></div>
+        </address>
+    </footer>
 
-						</div>
-					</form>
-
-				</ul>
-			</nav>
-
-			{% block content %}{% endblock content %}
-
-			<div style="clear: both;"></div>
-
-			<footer class="bottom-footer">
-				<address class="address-columns">
-					<div class="address-col-1"></div>
-					<div class="address-col-2">{% blocktrans %}Россия, Москва<br>ул. 1-Бресткая 17, офис 214{% endblocktrans %}</div>
-					<div class="address-col-3">{% blocktrans %}Павел Андреев<br> Архитектурная мастерская{% endblocktrans %}</div>
-					<div class="address-col-4">{% custom_string "address_city" %} +7 495 567-12-33<br>
-					<a href="mailto:mail@pavel-andreev.ru">mail@pavel-andreev.ru</a></div>
-				</address>
-            </footer>
-
-		</div>
+</div>
 
 
-	</body>
+</body>
 
 </html>

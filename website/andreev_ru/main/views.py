@@ -90,18 +90,13 @@ def search(request):
 def search_json(request):
     query = request.REQUEST.get('query', None)
     lang  = request.LANGUAGE_CODE
-    result = [{
-        'href':    '#',
-        'image':   'http://localhost:8000/media/works/3.jpg',
-        'heading': request.LANGUAGE_CODE,
-        'content': str(datetime.now())
-    }]
+    result = []
     if query:
         works = {}
         #TODO: more elegance with lang
-        for work in Work.objects.filter(**{'title_' + lang + '__contains': query}):
+        for work in Work.objects.filter(**{'title_' + lang + '__icontains': query}):
             works[work.id] = work
-        for work in Work.objects.filter(**{'description_' + lang + '__contains': query}):
+        for work in Work.objects.filter(**{'description_' + lang + '__icontains': query}):
             works[work.id] = work
 
         for work in works.values():
@@ -112,13 +107,13 @@ def search_json(request):
                 'content': ' '.join(work.description.split(' ')[:15]) + '...'
             })
 
-        for person in Person.objects.filter(**{'name_' + lang + '__contains': query}):
+        print('person_query = ' + 'name_' + lang + '__icontains:' + query)
+        for person in Person.objects.filter(**{'name_' + lang + '__icontains': query}):
             result.append({
                 'href':    'persons/#%d' % person.id,
                 'image':   person.image.url,
                 'heading': person.name,
                 'content': ' '.join(person.bio.split(' ')[:15]) + '...'
             })
-
 
     return HttpResponse(json.dumps(result), mimetype="application/json")
