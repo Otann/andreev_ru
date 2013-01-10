@@ -17,8 +17,8 @@
         {% for work in category_works %}
             <li class="the-project">
                 <figure>
-                    <figcaption><a href="{% url andreev_ru.main.views.work work.slug %}">{{ work.title }}</a></figcaption>
-                    <a href="{% url andreev_ru.main.views.work work.slug %}"><img src="{{ MEDIA_URL }}{{ work.images.all.0.image }}"></a>
+                    <figcaption><a href="{% url andreev_ru.main.views.work work.slug %}#project">{{ work.title }}</a></figcaption>
+                    <a href="{% url andreev_ru.main.views.work work.slug %}#project"><img src="{{ MEDIA_URL }}{{ work.images.all.0.image }}"></a>
                 </figure>
 
                 <ul class="project-list-meta-data">

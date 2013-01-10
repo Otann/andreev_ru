@@ -3,54 +3,70 @@
 
 {% block content %}
 
-    <article class="project">
+    <article class="project" id="project">
     	<header>
     		<h2>{{ work.title }}</h2>
     	</header>
-    	
-    	<div class="fotorama" data-width="100%" data-height="500" data-shadows="false" data-nav="dots" data-background="none" data-cropToFit="true">
+
+        <div id="fotorama" class="fotorama" data-width="100%" data-height="500" data-shadows="false" data-nav="dots" data-cropToFit="true" data-click="true" data-fullscreenIcon="true" data-background="#000000" data-hideNavIfFullscreen="true">
+
             {% for i in work.images.all %}
-    	        <img src="{{ MEDIA_URL }}{{ i.image }}">
+
+             <img src="{{ MEDIA_URL }}{{ i.image }}">
+
             {% endfor %}
-    	</div>
+
+        </div>
     	
     	<div class="project-body">   		
     		{{ work.description|safe }}
     	</div>
-    	
-    	<aside class="meta-data">
-    		<ul>
-    			<li class="icon-built-in">
-	    			<dl>
-	    			  <dt>{% trans "Год постройки" %}</dt>
-	    			  <dd>{{ work.release_year }}</dd>
-	    			</dl>
-    			</li>
-    			
-    			<li class="icon-area">
-    				<dl>
-    				  <dt>{% trans "Площадь" %}</dt>
-    				  <dd>{{ work.square }} м²</dd>
-    				</dl>
-    			</li>
-    			<li class="icon-address">
-    				<dl>
-    				  <dt>{% trans "Адрес" %}</dt>
-    				  <dd>{{ work.address }}</dd>
-    				  <div class="panorama-link"><a href="{{ work.panorama_url }}">{% trans "Посмотреть панораму на карте" %}</a></div>
-    				</dl>
-    			</li>
-    		</ul>
-    	</aside>
+
+        <aside class="meta-data">
+            <ul>
+                <li class="icon-built-in">
+                    <dl>
+                      <dt>{% trans "Год постройки" %}</dt>
+                      <dd>{{ work.release_year }}</dd>
+                    </dl>
+                </li>
+                
+                <li class="icon-area">
+                    <dl>
+                      <dt>{% trans "Площадь" %}</dt>
+                      <dd>{{ work.square }} м²</dd>
+                    </dl>
+                </li>
+
+                <li class="icon-client">
+                    <dl>
+                      <dt>{% trans "Заказчик" %}</dt>
+                      <dd>ООО «Большая нефтяная компания»</dd>
+                    </dl>
+                </li>
+
+                <li class="icon-address">
+                    <dl>
+                      <dt>{% trans "Адрес" %}</dt>
+                      <dd>{{ work.address }}</dd>
+                      <div class="panorama-link"><a href="{{ work.panorama_url }}">{% trans "Посмотреть панораму" %}</a></div>
+                    </dl>
+                </li>
+            </ul>
+        </aside>
 
     </article>
 
-    <div>
-        <h4>More works {{ more_works|length }}</h4>
-        {% for w in more_works %}
-            <b>{{ w.title }}</b>
-            <p>{{ w.release_year }} // {{ w.address }}</p>
-        {% endfor %}
+    <div class="more-works">
+        <h4 class="more-works-big-title">{% trans "Другие проекты" %}</h4>
+        <ul>
+            {% for w in more_works %}
+                <li class="more-works-block">
+                    <a href="#project"><img src="{{ MEDIA_URL }}{{ w.images.all.0.image }}"></a>
+                    <h5 class="more-works-title"><a href="#project">{{ w.title }}</a></h5>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 
 {% endblock %}

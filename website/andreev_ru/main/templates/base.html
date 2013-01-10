@@ -6,18 +6,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="favicon.png">
-    <!--[if IE]>
+    <!--[if lt IE 9]>]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
+	<![endif]-->
     <link rel="stylesheet" href="{{ STATIC_URL }}style.css" />
-    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <title>{{ title|default:'Pavel Andreev' }}</title>
-
-    <!-- livereload stuff, remove on production -->
-    <!--<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>-->
 
     {% block js %}{% endblock js %}
 
@@ -35,9 +30,12 @@
     </script>
     <script src="{{ STATIC_URL }}js/search.js"></script>
 
-    <link rel="stylesheet" href="{{ STATIC_URL }}fotorama/fotorama.css" />
-    <script src="{{ STATIC_URL }}fotorama/fotorama.js"></script>
+    <link rel="stylesheet" href="{{ STATIC_URL }}royalslider/royalslider.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}royalslider/default/rs-default.css"> 
+    <script src="{{ STATIC_URL }}royalslider/jquery.royalslider.min.js"></script>
 
+    <link rel="stylesheet" href="{{ STATIC_URL }}fotorama/fotorama.css">
+    <script src="{{ STATIC_URL }}fotorama/fotorama.js"></script>
 
 </head>
 
@@ -112,15 +110,15 @@
     <footer class="bottom-footer">
         <address class="address-columns">
             <div class="address-col-1"></div>
-            <div class="address-col-2">{% blocktrans %}Россия, Москва<br>ул. 1-Бресткая 17, офис 214{% endblocktrans %}</div>
+            <div class="address-col-2">{% custom_string "address_city" %}<br>{% custom_string "address_street" %}</div>
             <div class="address-col-3">{% blocktrans %}Павел Андреев<br> Архитектурная мастерская{% endblocktrans %}</div>
-            <div class="address-col-4">{% custom_string "address_city" %} +7 495 567-12-33<br>
-                <a href="mailto:mail@pavel-andreev.ru">mail@pavel-andreev.ru</a></div>
+            <div class="address-col-4">{% custom_string "address_phone" %}<br>
+                <a href="mailto:{% custom_string "address_email" %}">{% custom_string "address_email" %}</a></div>
+            <div class="address-col-5">Дизайн и разработка:<br><a href="http://unebaguette.com">Une Baguette</a></div>
         </address>
     </footer>
 
 </div>
-
 
 </body>
 
