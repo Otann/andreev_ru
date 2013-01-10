@@ -60,10 +60,10 @@
     <div class="more-works">
         <h4 class="more-works-big-title">{% trans "Другие проекты" %}</h4>
         <ul>
-            {% for w in more_works %}
+            {% for another_work in more_works %}
                 <li class="more-works-block">
-                    <a href="#project"><img src="{{ MEDIA_URL }}{{ w.images.all.0.image }}"></a>
-                    <h5 class="more-works-title"><a href="#project">{{ w.title }}</a></h5>
+                    <a href="{% url andreev_ru.main.views.work another_work.slug %}#project"><img src="{{ MEDIA_URL }}{{ another_work.images.all.0.image }}"></a>
+                    <h5 class="more-works-title"><a href="{% url andreev_ru.main.views.work another_work.slug %}#project">{{ another_work.title }}</a></h5>
                 </li>
             {% endfor %}
         </ul>
