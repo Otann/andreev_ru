@@ -1,7 +1,7 @@
 {% load i18n %}
 {% get_available_languages as languages %}
 
-{% load custom_strings %}
+{% load custom_tags %}
 
 <!DOCTYPE html>
 <html>
@@ -65,9 +65,9 @@
         <ul>
             <li>
                 <a
-                        href="{% url andreev_ru.main.views.works %}"
-                        {% if page == 'works' %}class="active"{% endif %}
-                        >{% trans "Projects" %}</a>
+                href="{% url andreev_ru.main.views.works %}"
+                {% if page == 'works' %}class="active"{% endif %}
+                >{% trans "Projects" %}</a>
             </li>
             <li>
                 <a href="{% url andreev_ru.main.views.team %}"

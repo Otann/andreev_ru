@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load custom_tags %}
+
 {% block content %}
 
     <section class="team row-1">
@@ -9,7 +11,7 @@
             <h3>{{ department.name }}</h3>
             <ul class="team-members">
                 {% for person in persons %}
-                    <li>
+                    <li id="{{ person.name|transliterate }}">
                         <div class="team-members-photo">
                             <img src="{{ MEDIA_URL }}{{ person.image }}">
                         </div>
