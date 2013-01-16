@@ -51,10 +51,12 @@ def work(request, slug):
     work = get_object_or_404(Work, slug=slug)
     more_amount = 5
     more_works = {}
-    for item in Work.objects.order_by('?').filter(categories__in=work.categories.all())[:more_amount]:
+    for item in Work.objects.order_by('?').exclude(id=work.id).filter(categories__in=work.categories.all())[:more_amount]:
         more_works[item.id] = item
-    if len(more_works) < 5:
-        for item in Work.objects.order_by('?')[:more_amount-len(more_works)]:
+
+    # if works in same categories is not enough
+    if len(more_works) < more_amount:
+        for item in Work.objects.exclude(id=work.id).order_by('?')[:more_amount-len(more_works)]:
             more_works[item.id] = item
 
     context = {
