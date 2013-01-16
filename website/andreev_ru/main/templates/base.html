@@ -1,7 +1,7 @@
 {% load i18n %}
 {% get_available_languages as languages %}
 
-{% load custom_strings %}
+{% load custom_tags %}
 
 <!DOCTYPE html>
 <html>
@@ -31,7 +31,7 @@
     <script src="{{ STATIC_URL }}js/search.js"></script>
 
     <link rel="stylesheet" href="{{ STATIC_URL }}royalslider/royalslider.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}royalslider/default/rs-default.css"> 
+    <link rel="stylesheet" href="{{ STATIC_URL }}royalslider/default/rs-default.css">
     <script src="{{ STATIC_URL }}royalslider/jquery.royalslider.min.js"></script>
 
     <link rel="stylesheet" href="{{ STATIC_URL }}fotorama/fotorama.css">
@@ -70,9 +70,9 @@
         <ul>
             <li>
                 <a
-                        href="{% url andreev_ru.main.views.works %}"
-                        {% if page == 'works' %}class="active"{% endif %}
-                        >{% trans "Projects" %}</a>
+                href="{% url andreev_ru.main.views.works %}"
+                {% if page == 'works' %}class="active"{% endif %}
+                >{% trans "Projects" %}</a>
             </li>
             <li>
                 <a href="{% url andreev_ru.main.views.team %}"
