@@ -2,13 +2,13 @@
 {% load i18n %}
 
 {% block content %}
-
+<div class="row-1">
     <article class="project" id="project">
     	<header>
     		<h2>{{ work.title }}</h2>
     	</header>
 
-        <div id="fotorama" class="fotorama" data-width="100%" data-height="500" data-shadows="false" data-nav="dots" data-cropToFit="true" data-click="true" data-fullscreenIcon="true" data-background="#000000" data-hideNavIfFullscreen="true">
+        <div id="fotorama" class="fotorama" data-width="100%" data-height="500" data-shadows="false" data-cropToFit="false" data-nav="dots" data-click="true" data-fullscreenIcon="true" data-background="#000000" data-hideNavIfFullscreen="true" data-loop="true">
 
             {% for i in work.images.all %}
 
@@ -68,5 +68,7 @@
             {% endfor %}
         </ul>
     </div>
+
+</div>
 
 {% endblock %}

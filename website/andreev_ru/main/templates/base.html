@@ -30,25 +30,20 @@
     </script>
     <script src="{{ STATIC_URL }}js/search.js"></script>
 
-    <link rel="stylesheet" href="{{ STATIC_URL }}royalslider/royalslider.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}royalslider/default/rs-default.css"> 
-    <script src="{{ STATIC_URL }}royalslider/jquery.royalslider.min.js"></script>
-
     <link rel="stylesheet" href="{{ STATIC_URL }}fotorama/fotorama.css">
     <script src="{{ STATIC_URL }}fotorama/fotorama.js"></script>
 
 </head>
 
 <body>
-<div class="wrapper">
-    <header class="logo">
-        <div class="small-gray-text-top">{% trans "National thing this is yeah" %}</div>
+    <header class="logo row-1">
+        <div class="small-gray-text-top">{% trans "National Chamber of Architects" %}</div>
 
         {% if is_main %}
-            <h1>{% trans "Pavel Andreev" %}</h1>
+            <h1>Pavel Andreev</h1>
             <h2>architectual workshop</h2>
         {% else %}
-            <a href="/">
+            <a href="{% url andreev_ru.main.views.home %}">
                 <h1>{% trans "Pavel Andreev" %}</h1>
                 <h2>architectual workshop</h2>
             </a>
@@ -66,7 +61,7 @@
         {% endfor %}
     </div>
 
-    <nav class="main-menu" role="navigation">
+    <nav class="main-menu row-1" role="navigation">
         <ul>
             <li>
                 <a
@@ -91,14 +86,14 @@
                 </li>
             {% endfor %}
 
-            <form style="position: relative; display: inline;">
+           <!--  <form style="position: relative; display: inline;">
                 <input id="pa-search" class="search-box" type="search" placeholder="Поиск" />
                 <div class="search-popover">
                     <h4 class="search-popover-title">Быстрый поиск</h4>
                     <ul class="search-popover-results"> </ul>
                     <span class="search-popover-all-results">###</span>
                 </div>
-            </form>
+            </form> -->
 
         </ul>
     </nav>
@@ -107,18 +102,16 @@
 
     <div style="clear: both;"></div>
 
-    <footer class="bottom-footer">
+    <footer class="bottom-footer row-1">
         <address class="address-columns">
             <div class="address-col-1"></div>
-            <div class="address-col-2">{% custom_string "address_city" %}<br>{% custom_string "address_street" %}</div>
+            <div class="address-col-2"><a href="/{{ LANGUAGE_CODE }}/contacts">{% custom_string "address_city" %}<br>{% custom_string "address_street" %}</a></div>
             <div class="address-col-3">{% blocktrans %}Павел Андреев<br> Архитектурная мастерская{% endblocktrans %}</div>
             <div class="address-col-4">{% custom_string "address_phone" %}<br>
                 <a href="mailto:{% custom_string "address_email" %}">{% custom_string "address_email" %}</a></div>
             <div class="address-col-5">Дизайн и разработка:<br><a href="http://unebaguette.com">Une Baguette</a></div>
         </address>
     </footer>
-
-</div>
 
 </body>
 
