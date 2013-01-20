@@ -46,7 +46,6 @@ body {
 	color: #333;
 	font-family: 'PT Sans', sans-serif;
 	font-size: .73em;
-	background-color: rgba(255, 255, 255, 0.880) ;
 }
 
 	.lang-switcher a {
@@ -91,7 +90,7 @@ body {
 		color: #666;
 		text-align: center;
 		margin-bottom: 2em;
-		border-bottom: 4px solid #383838;
+		border-bottom: 2px solid #383838;
 		padding-bottom: .3em;
 	}
 
@@ -412,20 +411,20 @@ body {
 
 		.address-columns div {
 			display: inline-block;
-			vertical-align: top;
+			vertical-align: middle;
 		}
 
 		.address-col-1 {
-			width: 50px;
-			height: 50px;
-			/*background: url('map.png') no-repeat;*/
-			background-size: 70px 70px;
+			width: 60px;
+			height: 60px;
+			/*background: url('map.png') no-repeat;
+			background-size: 60px 60px;
 			border-radius: 50%;
 			text-align: left;
 			
-			-webkit-box-shadow: inset 0 2px 7px 1px rgba(128,128,128,0.4);
-			-moz-box-shadow: inset 0 2px 7px 1px rgba(128,128,128,0.4);
-			box-shadow: inset 0 2px 7px 1px rgba(128,128,128,0.4);
+			-webkit-box-shadow: inset 0 2px 5px 1px rgba(128,128,128,0.4);
+			-moz-box-shadow: inset 0 2px 5px 1px rgba(128,128,128,0.4);
+			box-shadow: inset 0 2px 5px 1px rgba(128,128,128,0.4);*/
 		}
 
 		.address-col-2 {
@@ -457,94 +456,113 @@ body {
 		}
 
 /* project list */
-.project-categories {
-	list-style: none;
-	font-family: 'PT Sans';
-	text-align: center; 
+.project-list {
+	width: 75%;
+	display: inline-block;
+	vertical-align: top;
 }
 
-	.project-categories sup {
-		position: relative;
-		top: -.7em;
-		font-size: 60%; 
-		padding-left: .3em;
-		color: #4a4949;
-		}
-
-	.project-categories a {
-		color: #777777;
-		font-weight: bold;
+	.project-list-wrapper {
+		margin-top: 4em;
 	}
 
-	.project-categories li {
-		display: inline-block;
-		margin-right: 20px;
-	}
-
-	.project-categories-active {
-		background-color: #dcdcdc;
-		border-radius: 10px;
-		box-shadow: inset 0 1px 2px 1px rgba(61,58,58,0.3);
-		text-shadow: 0px 1px 1px #fff;
-		padding: 5px 10px;
-		color: #4a4949;
-		font-weight: bold;
-	}
-
-.the-project {
-	margin-top: 60px;
-}
-
-	.project-list {
+	.project-list-item {
 		list-style: none;
+		margin-bottom: 2em;
+		border-bottom: 1px solid #E2E2E2;
+		padding-bottom: 2em;
+		/*background-color: #E2E2E2;*/
 	}
 
-	.project-list figure {
+	.project-list-image {
 		display: inline-block;
-		vertical-align: top;
-		width: 180px;
+		vertical-align: middle;
+		width: 150px;
+		height: 150px;
 	}
 
-	.project-list figure img {
-		border-radius: 5%;
-		width: 180px;
-		height: 180px;
+	.project-list-image img {
+		width: 150px;
+		height: 150px;
+		border-radius: 10px;
 	}
 
-	.project-list figcaption {
-		font-size: 1.15em;
-		line-height: 1.3em;
-		text-align: center;
-		margin-bottom: .5em;
+	.project-list-work-title {
+		font-size: 1.4em;
+		font-family: 'PT Sans', sans-serif;
+		font-weight: bold;
 	}
 
-	.project-list figcaption a {
+	.project-list-work-title a {
 		color: #000;
 		text-decoration: none;
 	}
 
-	.project-list figcaption a:hover {
-		text-decoration: underline;
-	}
-
 	.project-list-meta-data {
 		display: inline-block;
-		vertical-align: top;
-		margin-left: 20px;
-		margin-top: 40px;
-		list-style: none;
+		vertical-align: middle;
+		width: 540px;
+		margin-left: 1em;
 	}
 
-	.project-list-meta-data li {
-		margin-bottom: 10px;
+	.project-list-meta-items {
+		margin-top: 1.5em;
+	}
+
+	.project-list-meta-items li {
+		display: inline-block;
+		vertical-align: middle;
+		width: 140px;
+		height: 60px;
+		list-style: none;
+		text-align: center;
+		border-right: 1px solid #C6C6C6;
+		padding-left: .5em;
+		padding-right: .5em;
 	}
 
 	.project-list-meta-title {
+		text-transform: uppercase;
+		font-family: Georgia, serif;
+		font-size: .7em;
+		line-height: 1.3em;
+		font-weight: normal;
+		letter-spacing: 1px;
+	}
+
+	.project-list-meta-description {
+		margin-top: .7em;
+		font-family: 'PT Sans', sans-serif;
+		font-size: .8em;
+		line-height: 1.4em;
 		font-weight: bold;
 	}
 
-	.project-list-meta-title:after {
-		content: ":";
+	.no-border {
+		border: none !important;
+	}
+
+.project-categories {
+	width: 20%;
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 4%;
+}
+
+	.project-categories li {
+		list-style: none;
+		font-family: 'PT Sans', sans-serif;
+		font-size: .95em;
+		line-height: 1.3em;
+		margin-bottom: 1em;
+	}
+
+	.project-categories li a {
+		color: #666;
+	}
+
+	.project-categories-active {
+		font-weight: bold;
 	}
 
 /* project page */
@@ -665,9 +683,9 @@ p {
 	 	margin-top: 15px !important;
 	}
 
-	.fotorama__wrap {
+	/*.fotorama__wrap {
 		box-shadow: 1px 3px 4px #a9a9a9;
-	}
+	}*/
 
 .more-works {
 	width: 80%;
