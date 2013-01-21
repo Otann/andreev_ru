@@ -1,6 +1,6 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
-from andreev_ru.main.models import Work, WorkImage, Category, CustomPage, Department, Person, CustomString, WorkAuthors
+from andreev_ru.main.models import *
 from andreev_ru.main.forms import WorkImageForm
 
 class WorkImageAdmin(admin.TabularInline):
@@ -42,10 +42,15 @@ class PersonAdmin(TranslationAdmin):
 class DepartmentAdmin(TranslationAdmin):
     list_display = ('name',)
 
+class NewsAdmin(TranslationAdmin):
+    list_display = ('title', 'content', 'pub_date')
+    prepopulated_fields = {"slug": ("title",)}  # Auto-populate based on russian title
+
 
 admin.site.register(Work, WorkAdmin)
 admin.site.register(Category, CategoryAdmin)
 
+admin.site.register(News, NewsAdmin)
 admin.site.register(CustomPage, CustomPageAdmin)
 admin.site.register(CustomString, CustomStringAdmin)
 

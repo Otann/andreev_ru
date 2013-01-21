@@ -2,6 +2,7 @@
 # coding: utf-8
 
 from django.db import models
+from datetime import datetime
 from ckeditor.fields import RichTextField
 
 class Category(models.Model):
@@ -85,7 +86,8 @@ class Person(models.Model):
 class News(models.Model):
     title    = models.CharField(verbose_name = u'Заголовок', max_length = 1024)
     content  = RichTextField(verbose_name = u'Содержание')
-
+    slug     = models.SlugField(verbose_name = u'Относительный URL', max_length = 200, unique=True)
+    pub_date = models.DateTimeField(verbose_name = u'Дата публикации', default = datetime.now)
     is_featured = models.BooleanField(verbose_name = u'Показывать на главной?')
 
     class Meta:
