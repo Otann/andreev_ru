@@ -25,7 +25,8 @@ class WorkAdmin(TranslationAdmin):
         css = {'all': ['redactor_fix.css']}
 
 class CategoryAdmin(TranslationAdmin):
-    list_display = ('name',)
+    list_display = ('id', 'name_ru', 'name_en',)
+    list_editable = ('name_ru', 'name_en',)
 
 class CustomPageAdmin(TranslationAdmin):
     list_display = ('title', 'position', 'slug',)
@@ -40,7 +41,8 @@ class PersonAdmin(TranslationAdmin):
     list_display = ('name', 'bio', 'occupation')
 
 class DepartmentAdmin(TranslationAdmin):
-    list_display = ('name',)
+    list_display = ('id', 'name_ru', 'name_en',)
+    list_editable = ('name_ru', 'name_en',)
 
 class NewsAdmin(TranslationAdmin):
     list_display = ('title', 'content', 'pub_date')
