@@ -59,6 +59,7 @@
 
     </article>
 
+    {% if more_works %}
     <div class="more-works">
         <h4 class="more-works-big-title">{% trans "Другие проекты" %}</h4>
         <ul>
@@ -70,6 +71,7 @@
             {% endfor %}
         </ul>
     </div>
+    {% endif %}
 
 </div>
 
