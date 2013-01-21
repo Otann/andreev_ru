@@ -105,8 +105,8 @@
 
     <footer class="bottom-footer row-1">
         <address class="address-columns">
-            <div class="address-col-1"><img src="{{ STATIC_URL }}/map.png" width="60"></div>
-            <div class="address-col-2"><a href="/{{ LANGUAGE_CODE }}/contacts">{% custom_string "address_city" %}<br>{% custom_string "address_street" %}</a></div>
+            <div class="address-col-1"><a href="/{{ LANGUAGE_CODE }}/contact"><img src="{{ STATIC_URL }}/map.png" width="60"></a></div>
+            <div class="address-col-2"><a href="/{{ LANGUAGE_CODE }}/contact">{% custom_string "address_city" %}<br>{% custom_string "address_street" %}</a></div>
             <div class="address-col-3">{% blocktrans %}Павел Андреев<br> Архитектурная мастерская{% endblocktrans %}</div>
             <div class="address-col-4">{% custom_string "address_phone" %}<br>
                 <a href="mailto:{% custom_string "address_email" %}">{% custom_string "address_email" %}</a></div>
