@@ -66,14 +66,14 @@
         <ul>
             <li>
                 <a
-                href="{% url andreev_ru.main.views.works %}"
+                href="{% url andreev_ru.main.views.works %}?category=1"
                 {% if page == 'works' %}class="active"{% endif %}
                 >{% trans "Projects" %}</a>
             </li>
             <li>
                 <a href="{% url andreev_ru.main.views.team %}"
-                   {% if page == 'team' %}class="active"{% endif %}
-                        >{% trans "Team" %}</a>
+                {% if page == 'team' %}class="active"{% endif %}
+                >{% trans "Team" %}</a>
             </li>
 
             {% for p in all_pages %}

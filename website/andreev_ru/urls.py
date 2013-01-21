@@ -25,7 +25,7 @@ urlpatterns = i18n_patterns('',
 )
 
 urlpatterns += patterns('',
-    url(r'^redactor/', include('redactor.urls')),
+    url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^grappelli/', include('grappelli.urls')),
 )
 

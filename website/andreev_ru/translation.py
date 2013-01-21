@@ -3,27 +3,32 @@ from andreev_ru.main.models import *
 
 class CustomPageTranslationOptions(TranslationOptions):
     fields = ('title', 'content',)
+translator.register(CustomPage, CustomPageTranslationOptions)
+
+class NewsTranslationOptions(TranslationOptions):
+    fields = ('title', 'content')
+translator.register(News, NewsTranslationOptions)
 
 class CustomStringTranslationOptions(TranslationOptions):
     fields = ('value',)
+translator.register(CustomString, CustomStringTranslationOptions)
 
 class WorkTranslationOptions(TranslationOptions):
-    fields = ('title', 'description', 'authors', 'address',)
+    fields = ('title', 'description', 'address', 'client')
+translator.register(Work, WorkTranslationOptions)
 
 class CategoryTranslationOptions(TranslationOptions):
     fields = ('name', )
+translator.register(Category, CategoryTranslationOptions)
 
-class PositionTranslationOptions(TranslationOptions):
+class DepartmentTranslationOptions(TranslationOptions):
     fields = ('name', )
+translator.register(Department, DepartmentTranslationOptions)
 
 class PersonTranslationOptions(TranslationOptions):
     fields = ('name', 'bio', 'occupation')
-
-translator.register(CustomPage, CustomPageTranslationOptions)
-translator.register(CustomString, CustomStringTranslationOptions)
-
-translator.register(Category, CategoryTranslationOptions)
-translator.register(Work, WorkTranslationOptions)
-
-translator.register(Department, PositionTranslationOptions)
 translator.register(Person, PersonTranslationOptions)
+
+class AuthorsTranslationOptions(TranslationOptions):
+    fields = ('title', 'names')
+translator.register(WorkAuthors, AuthorsTranslationOptions)

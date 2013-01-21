@@ -20,7 +20,6 @@ def home(request):
     context = {
         'works': Work.objects.all(),
         'is_main': True,
-        'debug': reverse('redactor_upload_image', kwargs={'upload_to': ''})
     }
     return render_to_response('home.html', context, context_instance=RequestContext(request))
 
@@ -31,15 +30,16 @@ def works(request):
         categories.append((cat, Work.objects.filter(categories__in=str(cat.id)).count()))
 
     try:
-        category_id = request.GET.get('category', '1')
+        category_id = request.GET.get('category', '0')
         category = Category.objects.get(pk=category_id)
         works = Work.objects.filter(categories__in=category_id)
     except ObjectDoesNotExist:
-        category = None
+        category = { 'id': 0 }
         works = Work.objects.all()
 
     context = {
         'page': 'works',
+        'total': Category.objects.count(),
         'categories': categories,
         'category': category,
         'category_works': works

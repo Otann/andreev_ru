@@ -2,6 +2,8 @@
 # coding: utf-8
 
 from django.db import models
+from datetime import datetime
+from ckeditor.fields import RichTextField
 
 class Category(models.Model):
     name = models.CharField(max_length = 200)
@@ -15,16 +17,17 @@ class Category(models.Model):
 
 class Work(models.Model):
     title = models.CharField(verbose_name = u'Название', max_length = 200)
-    description = models.TextField(verbose_name = u'Описание')
+    description = RichTextField(verbose_name = u'Описание', blank=True)
 
-    authors      = models.CharField(verbose_name = u'Авторы', max_length = 1024)
-    address      = models.CharField(verbose_name = u'Адрес', max_length = 1024)
-    release_year = models.IntegerField(verbose_name = u'Год(ы) завершени постройки')
-    square       = models.IntegerField(verbose_name = u'Площадь')
-    panorama_url = models.CharField(verbose_name = u'Ссылка на панораму', max_length = 1024)
+    # authors      = models.CharField(verbose_name = u'Авторы', max_length = 1024, blank=True)
+    client       = models.CharField(verbose_name = u'Заказчик', max_length = 1024, blank=True)
+    address      = models.CharField(verbose_name = u'Адрес', max_length = 1024, blank=True)
+    release_year = models.CharField(verbose_name = u'Год(ы) завершени постройки', max_length = 1024, blank=True)
+    panorama_url = models.URLField(verbose_name = u'Ссылка на панораму', max_length = 1024, blank=True)
 
-#    date_built   = models.DateField(verbose_name = u'Когда сдано')
-    categories   = models.ManyToManyField(Category, verbose_name = u'Категории')
+    square       = models.IntegerField(verbose_name = u'Площадь', blank=True)
+
+    categories   = models.ManyToManyField(Category, verbose_name = u'Категории', blank=True)
 
     slug = models.SlugField(verbose_name = u'Относительный URL', max_length = 200, unique=True)
 
@@ -48,6 +51,16 @@ class WorkImage(models.Model):
         verbose_name = u'Фотография объекта'
         verbose_name_plural = u'Фотографии объекта'
 
+class WorkAuthors(models.Model):
+    work  = models.ForeignKey(Work, verbose_name = u'Группы авторов', related_name = 'authors')
+    title = models.CharField(max_length=200, verbose_name = u'Название группы')
+    names = models.CharField(max_length=200, verbose_name = u'Фамилии и имена')
+
+    class Meta:
+        verbose_name = u'Группа авторов проекта'
+        verbose_name_plural = u'Группы авторов проекта'
+
+
 class Department(models.Model):
     name = models.CharField(max_length=200)
 
@@ -60,8 +73,8 @@ class Department(models.Model):
 
 class Person(models.Model):
     name       = models.CharField(verbose_name = u'ФИО', max_length = 1024)
-    occupation = models.CharField(verbose_name = u'Род деятельности', max_length = 1024)
-    bio        = models.TextField(verbose_name = u'История')
+    occupation = models.CharField(verbose_name = u'Род деятельности', max_length = 1024, blank=True)
+    bio        = RichTextField(verbose_name = u'История', blank=True)
     image      = models.ImageField(verbose_name = u'Фотография', upload_to = 'team')
 
     position = models.ForeignKey(Department, verbose_name = u'Отдел')
@@ -70,9 +83,20 @@ class Person(models.Model):
         verbose_name = u'Сотрудник'
         verbose_name_plural = u'Сотрудники'
 
+class News(models.Model):
+    title    = models.CharField(verbose_name = u'Заголовок', max_length = 1024)
+    content  = RichTextField(verbose_name = u'Содержание')
+    slug     = models.SlugField(verbose_name = u'Относительный URL', max_length = 200, unique=True)
+    pub_date = models.DateTimeField(verbose_name = u'Дата публикации', default = datetime.now)
+    is_featured = models.BooleanField(verbose_name = u'Показывать на главной?')
+
+    class Meta:
+        verbose_name = u'Новость'
+        verbose_name_plural = u'Новости'
+
 class CustomPage(models.Model):
     title    = models.CharField(verbose_name = u'Заголовок', max_length = 1024)
-    content  = models.TextField(verbose_name = u'Содержание')
+    content  = RichTextField(verbose_name = u'Содержание')
     slug     = models.SlugField(verbose_name = u'Относительный URL', max_length = 200, unique=True)
     position = models.PositiveSmallIntegerField(verbose_name = u'Позиция в меню')
 

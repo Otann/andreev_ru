@@ -62,9 +62,9 @@
                         {% endfor %}
                         <div class="grp-td grp-tools-container">
                             {% if inline_admin_form.first_field.value %}
-                                <ul class="grp-tools grp-tools-thumb"><li>
+                                <ul class="grp-tools grp-tools-thumb" style="float: left; width: 400px; height: 200px;"><li>
                                     <a href="javascript://" class="grp-icon grp-drag-handler" title="{% trans 'Move Item' %}">
-                                        <img class="inline-preview" src="{{ MEDIA_URL }}{{ inline_admin_form.first_field.value }}"/>
+                                        <img class="inline-preview" src="{{ MEDIA_URL }}{{ inline_admin_form.first_field.value }}" style="float: left; max-width: 400px; margin-left: 30px;" />
                                     </a>
                                 </li></ul>
 

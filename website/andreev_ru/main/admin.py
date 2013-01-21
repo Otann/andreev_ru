@@ -1,9 +1,7 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
-from andreev_ru.main.forms import *
 from andreev_ru.main.models import *
-
-from django.contrib.flatpages.models import FlatPage
+from andreev_ru.main.forms import WorkImageForm
 
 class WorkImageAdmin(admin.TabularInline):
     fields = ('image', 'position',)
@@ -13,30 +11,27 @@ class WorkImageAdmin(admin.TabularInline):
     model = WorkImage                          # Related model
     extra = 3                                  # Amount of additional tabular items
 
+class WorkAuthorsAdmin(admin.TabularInline):
+    fields = ('title_ru', 'title_en', 'names_ru', 'names_en',)
+    model = WorkAuthors                        # Related model
+    extra = 3                                  # Amount of additional tabular items
+
 class WorkAdmin(TranslationAdmin):
-    form = WorkForm                            # Add RedactorJS fields
     list_display = ('title','description')
-    prepopulated_fields = {"slug": ("title",)} # Auto-populate based on russian title
-    inlines = [ WorkImageAdmin, ]              # Inline add/remove for these
+    inlines = [ WorkAuthorsAdmin, WorkImageAdmin, ] # Inline add/remove for these
+    prepopulated_fields = {"slug": ("title",)}    # Auto-populate based on russian title
 
     class Media:
         css = {'all': ['redactor_fix.css']}
 
 class CategoryAdmin(TranslationAdmin):
-    list_display = ('name',)
+    list_display = ('id', 'name_ru', 'name_en',)
+    list_editable = ('name_ru', 'name_en',)
 
 class CustomPageAdmin(TranslationAdmin):
     list_display = ('title', 'position', 'slug',)
     list_editable = ('position', 'slug',)
-    form = CustomPageForm                       # Add RedactorJS fields
     prepopulated_fields = {"slug": ("title",)}  # Auto-populate based on russian title
-
-    class Media:
-        css = {'all': ['redactor_fix.css']}     # Fix Redactor z-index overlapping
-#        js  = [
-#            'grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
-#            'grappelli/tinymce_setup/tinymce_setup.js',
-#            ]
 
 class CustomStringAdmin(TranslationAdmin):
     list_display = ('key', 'value_ru', 'value_en',)
@@ -44,18 +39,20 @@ class CustomStringAdmin(TranslationAdmin):
 
 class PersonAdmin(TranslationAdmin):
     list_display = ('name', 'bio', 'occupation')
-    form = PersonForm                           # Add RedactorJS fields
-
-    class Media:
-        css = {'all': ['redactor_fix.css']}     # Fix Redactor z-index overlapping
 
 class DepartmentAdmin(TranslationAdmin):
-    list_display = ('name',)
+    list_display = ('id', 'name_ru', 'name_en',)
+    list_editable = ('name_ru', 'name_en',)
+
+class NewsAdmin(TranslationAdmin):
+    list_display = ('title', 'content', 'pub_date')
+    prepopulated_fields = {"slug": ("title",)}  # Auto-populate based on russian title
 
 
 admin.site.register(Work, WorkAdmin)
 admin.site.register(Category, CategoryAdmin)
 
+admin.site.register(News, NewsAdmin)
 admin.site.register(CustomPage, CustomPageAdmin)
 admin.site.register(CustomString, CustomStringAdmin)
 
