@@ -62,8 +62,7 @@ LANGUAGE_CODE = 'ru'
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
 MODELTRANSLATION_TRANSLATION_REGISTRY = 'andreev_ru.translation'
 
-REDACTOR_OPTIONS = { 'lang': 'ru', 'air': True, 'airButtons': ['formatting', '|', 'bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|', 'fontcolor', 'backcolor']}
-REDACTOR_UPLOAD = 'content_uploads'
+CKEDITOR_UPLOAD_PATH = os.path.join(MEDIA_ROOT, 'ckeditor')
 
 
 STATICFILES_DIRS = ( )
@@ -104,6 +103,12 @@ TEMPLATE_DIRS = ( )
 
 GRAPPELLI_INDEX_DASHBOARD = 'andreev_ru.dashboard.CustomIndexDashboard'
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Basic',
+    },
+}
+
 INSTALLED_APPS = (
 
     'grappelli.dashboard',
@@ -128,8 +133,8 @@ INSTALLED_APPS = (
     # Multilingual models app
     'modeltranslation',
 
-    # Redactor for WYSIWYG
-    'redactor',
+    # CKEditor for WYSIWYG
+    'ckeditor',
     )
 
 # A sample logging configuration. The only tangible logging

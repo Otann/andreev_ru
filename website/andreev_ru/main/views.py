@@ -20,7 +20,6 @@ def home(request):
     context = {
         'works': Work.objects.all(),
         'is_main': True,
-        'debug': reverse('redactor_upload_image', kwargs={'upload_to': ''})
     }
     return render_to_response('home.html', context, context_instance=RequestContext(request))
 
