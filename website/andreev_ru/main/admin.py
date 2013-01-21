@@ -1,6 +1,6 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
-from andreev_ru.main.models import Work, WorkImage, Category, CustomPage, Department, Person, CustomString
+from andreev_ru.main.models import Work, WorkImage, Category, CustomPage, Department, Person, CustomString, WorkAuthors
 from andreev_ru.main.forms import WorkImageForm
 
 class WorkImageAdmin(admin.TabularInline):
@@ -11,10 +11,15 @@ class WorkImageAdmin(admin.TabularInline):
     model = WorkImage                          # Related model
     extra = 3                                  # Amount of additional tabular items
 
+class WorkAuthorsAdmin(admin.TabularInline):
+    fields = ('title_ru', 'title_en', 'names_ru', 'names_en',)
+    model = WorkAuthors                        # Related model
+    extra = 3                                  # Amount of additional tabular items
+
 class WorkAdmin(TranslationAdmin):
     list_display = ('title','description')
-    prepopulated_fields = {"slug": ("title",)} # Auto-populate based on russian title
-    inlines = [ WorkImageAdmin, ]              # Inline add/remove for these
+    inlines = [ WorkAuthorsAdmin, WorkImageAdmin, ] # Inline add/remove for these
+    prepopulated_fields = {"slug": ("title",)}    # Auto-populate based on russian title
 
     class Media:
         css = {'all': ['redactor_fix.css']}

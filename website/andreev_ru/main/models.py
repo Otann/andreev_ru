@@ -18,7 +18,7 @@ class Work(models.Model):
     title = models.CharField(verbose_name = u'Название', max_length = 200)
     description = RichTextField(verbose_name = u'Описание', blank=True)
 
-    authors      = models.CharField(verbose_name = u'Авторы', max_length = 1024, blank=True)
+    # authors      = models.CharField(verbose_name = u'Авторы', max_length = 1024, blank=True)
     client       = models.CharField(verbose_name = u'Заказчик', max_length = 1024, blank=True)
     address      = models.CharField(verbose_name = u'Адрес', max_length = 1024, blank=True)
     release_year = models.CharField(verbose_name = u'Год(ы) завершени постройки', max_length = 1024, blank=True)
@@ -50,6 +50,16 @@ class WorkImage(models.Model):
         verbose_name = u'Фотография объекта'
         verbose_name_plural = u'Фотографии объекта'
 
+class WorkAuthors(models.Model):
+    work  = models.ForeignKey(Work, verbose_name = u'Группы авторов', related_name = 'authors')
+    title = models.CharField(max_length=200, verbose_name = u'Название группы')
+    names = models.CharField(max_length=200, verbose_name = u'Фамилии и имена')
+
+    class Meta:
+        verbose_name = u'Группа авторов проекта'
+        verbose_name_plural = u'Группы авторов проекта'
+
+
 class Department(models.Model):
     name = models.CharField(max_length=200)
 
@@ -62,8 +72,8 @@ class Department(models.Model):
 
 class Person(models.Model):
     name       = models.CharField(verbose_name = u'ФИО', max_length = 1024)
-    occupation = models.CharField(verbose_name = u'Род деятельности', max_length = 1024)
-    bio        = RichTextField(verbose_name = u'История')
+    occupation = models.CharField(verbose_name = u'Род деятельности', max_length = 1024, blank=True)
+    bio        = RichTextField(verbose_name = u'История', blank=True)
     image      = models.ImageField(verbose_name = u'Фотография', upload_to = 'team')
 
     position = models.ForeignKey(Department, verbose_name = u'Отдел')
@@ -71,6 +81,16 @@ class Person(models.Model):
     class Meta:
         verbose_name = u'Сотрудник'
         verbose_name_plural = u'Сотрудники'
+
+class News(models.Model):
+    title    = models.CharField(verbose_name = u'Заголовок', max_length = 1024)
+    content  = RichTextField(verbose_name = u'Содержание')
+
+    is_featured = models.BooleanField(verbose_name = u'Показывать на главной?')
+
+    class Meta:
+        verbose_name = u'Новость'
+        verbose_name_plural = u'Новости'
 
 class CustomPage(models.Model):
     title    = models.CharField(verbose_name = u'Заголовок', max_length = 1024)
