@@ -1,6 +1,6 @@
 PIL==1.1.7
 South==0.7.6
 django-modeltranslation==0.4.0-beta2
-django-ckeditor==0.2.2
+django-ckeditor==3.6.2.1
 django-grappelli==2.4.3
 trans==1.5.1
