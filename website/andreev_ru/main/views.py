@@ -90,7 +90,7 @@ def search(request):
     return render_to_response('search.html', context, context_instance=RequestContext(request))
 
 def search_json(request):
-    query = request.REQUEST.get('query', None)
+    query = request.REQUEST.get('query', None).lower()
     lang  = request.LANGUAGE_CODE
     result = []
     if query:
