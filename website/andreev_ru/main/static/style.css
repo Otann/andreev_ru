@@ -417,12 +417,11 @@ body {
 		.address-col-1 {
 			width: 60px;
 			height: 60px;
-			/*background: url('map.png') no-repeat;
-			background-size: 60px 60px;
 			border-radius: 50%;
-			text-align: left;
+
+			border: 2px solid #c4c4c4;
 			
-			-webkit-box-shadow: inset 0 2px 5px 1px rgba(128,128,128,0.4);
+			/*-webkit-box-shadow: inset 0 2px 5px 1px rgba(128,128,128,0.4);
 			-moz-box-shadow: inset 0 2px 5px 1px rgba(128,128,128,0.4);
 			box-shadow: inset 0 2px 5px 1px rgba(128,128,128,0.4);*/
 		}
@@ -469,9 +468,13 @@ body {
 	.project-list-item {
 		list-style: none;
 		margin-bottom: 2em;
-		border-bottom: 1px solid #E2E2E2;
-		padding-bottom: 2em;
+		/*border-bottom: 1px solid #E2E2E2;*/
 		/*background-color: #E2E2E2;*/
+	}
+
+	.project-list-item:nth-child(even) {
+		/*background-color: #fff;*/
+		/*background-color: #ececec;*/
 	}
 
 	.project-list-image {
@@ -489,8 +492,9 @@ body {
 
 	.project-list-work-title {
 		font-size: 1.4em;
-		font-family: 'PT Sans', sans-serif;
+		font-family: 'PT Serif', Georgia, 'Times New Roman', serif;
 		font-weight: bold;
+		/*text-transform: uppercase;*/
 	}
 
 	.project-list-work-title a {
@@ -551,7 +555,7 @@ body {
 
 	.project-categories li {
 		list-style: none;
-		font-family: 'PT Sans', sans-serif;
+		font-family: 'PT Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 		font-size: .95em;
 		line-height: 1.3em;
 		margin-bottom: 1em;
@@ -577,7 +581,7 @@ p {
 
 .project {
 	font-size: 1em;
-	font-family: 'PT Serif', serif;
+	font-family: 'PT Serif', Georgia, 'Times New Roman', serif;
 }
 
 	.project header {
