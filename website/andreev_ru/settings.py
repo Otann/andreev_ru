@@ -106,6 +106,7 @@ GRAPPELLI_INDEX_DASHBOARD = 'andreev_ru.dashboard.CustomIndexDashboard'
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Basic',
+        'forcePasteAsPlainText': True,
     },
 }
 
