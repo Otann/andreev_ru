@@ -22,8 +22,10 @@ class Work(models.Model):
     # authors      = models.CharField(verbose_name = u'Авторы', max_length = 1024, blank=True)
     client       = models.CharField(verbose_name = u'Заказчик', max_length = 1024, blank=True)
     address      = models.CharField(verbose_name = u'Адрес', max_length = 1024, blank=True)
-    release_year = models.CharField(verbose_name = u'Год(ы) завершени постройки', max_length = 1024, blank=True)
     panorama_url = models.URLField(verbose_name = u'Ссылка на панораму', max_length = 1024, blank=True)
+
+    build_start  = models.DateField(verbose_name = u'Начало строительства', blank=True)
+    build_finish = models.DateField(verbose_name = u'Окончание строительства', blank=True)
 
     square       = models.IntegerField(verbose_name = u'Площадь', blank=True)
 
