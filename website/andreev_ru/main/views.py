@@ -13,6 +13,7 @@ from andreev_ru import settings
 from andreev_ru.main.models import Work, Category, Person, Department, CustomPage
 from andreev_ru.settings import MEDIA_URL
 
+
 def prepare_base():
     return {}
 
@@ -96,9 +97,9 @@ def search_json(request):
     if query:
         works = {}
         #TODO: more elegance with lang
-        for work in Work.objects.filter(**{'title_' + lang + '__icontains': query}):
+        for work in Work.objects.filter(**{'title_' + lang + '__search': query}):
             works[work.id] = work
-        for work in Work.objects.filter(**{'description_' + lang + '__icontains': query}):
+        for work in Work.objects.filter(**{'description_' + lang + '__search': query}):
             works[work.id] = work
 
         for work in works.values():
