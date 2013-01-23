@@ -4,4 +4,4 @@ django-modeltranslation==0.4.0-beta2
 django-ckeditor==3.6.2.1
 django-grappelli==2.4.3
 trans==1.5.1
-django-image-cropping=1.1
+django-image-cropping==1.1
