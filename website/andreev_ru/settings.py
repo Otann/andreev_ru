@@ -14,12 +14,15 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'andreev_ru',                               # Or path to database file if using sqlite3.
-        'USER': 'postgres',                                 # Not used with sqlite3.
-        'PASSWORD': 'password',                             # Not used with sqlite3.
-        'HOST': 'localhost',                                # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                                         # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'andreev_ru',                 # Or path to database file if using sqlite3.
+        'USER': 'root',                       # Not used with sqlite3.
+        'PASSWORD': 'password',               # Not used with sqlite3.
+        'HOST': 'localhost',                  # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                           # Set to empty string for default. Not used with sqlite3.
+        'OPTIONS': {
+           "init_command": "SET storage_engine=MyISAM", # for fulltext search
+        }
     }
 }
 
@@ -106,8 +109,15 @@ GRAPPELLI_INDEX_DASHBOARD = 'andreev_ru.dashboard.CustomIndexDashboard'
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Basic',
+        'forcePasteAsPlainText': True,
     },
 }
+
+from easy_thumbnails.conf import Settings as thumbnail_settings
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS
+IMAGE_CROPPING_THUMB_SIZE = (300, 300)
 
 INSTALLED_APPS = (
 
@@ -135,6 +145,10 @@ INSTALLED_APPS = (
 
     # CKEditor for WYSIWYG
     'ckeditor',
+
+    # thumbnails
+    'easy_thumbnails',
+    'image_cropping',
     )
 
 # A sample logging configuration. The only tangible logging

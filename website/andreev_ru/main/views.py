@@ -13,6 +13,7 @@ from andreev_ru import settings
 from andreev_ru.main.models import Work, Category, Person, Department, CustomPage
 from andreev_ru.settings import MEDIA_URL
 
+
 def prepare_base():
     return {}
 
@@ -90,7 +91,7 @@ def search(request):
     return render_to_response('search.html', context, context_instance=RequestContext(request))
 
 def search_json(request):
-    query = request.REQUEST.get('query', None)
+    query = request.REQUEST.get('query', None).lower()
     lang  = request.LANGUAGE_CODE
     result = []
     if query:
@@ -104,12 +105,11 @@ def search_json(request):
         for work in works.values():
             result.append({
                 'href':    'works/' + work.slug, #TODO: reverse('andreev_ru.main.views.works', args=(work.slug,)),
-                'image':   work.images.all()[0].image.url,
+                'image':   work.images.all()[0].image.url if work.images.count() > 0 else '',
                 'heading': work.title,
                 'content': ' '.join(work.description.split(' ')[:15]) + '...'
             })
 
-        print('person_query = ' + 'name_' + lang + '__icontains:' + query)
         for person in Person.objects.filter(**{'name_' + lang + '__icontains': query}):
             result.append({
                 'href':    'persons/#%d' % person.id,
