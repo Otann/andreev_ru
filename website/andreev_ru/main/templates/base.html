@@ -23,6 +23,7 @@
     <script src="{{ STATIC_URL }}js/underscore-min.js"></script>
     <script type="text/javascript">
         window.Config = {
+            search_url: '{% url andreev_ru.main.views.search %}',
             lang: '{{ LANGUAGE_CODE }}',
             all_results: '{% trans "All results" %}',
             no_results: '{% trans "No results" %}'
@@ -79,17 +80,16 @@
 
             {% for p in all_pages %}
                 <li>
-                    <a
-                            href="/{{ LANGUAGE_CODE }}/{{ p.slug }}"
-                            {% if request.get_full_path == '/'|add:LANGUAGE_CODE|add:'/'|add:p.slug %}
-                            class="active"
-                            {% endif %}
-                            >{{ p.title }}</a>
+                    <a href="/{{ LANGUAGE_CODE }}/{{ p.slug }}"
+                       {% if request.get_full_path == '/'|add:LANGUAGE_CODE|add:'/'|add:p.slug %}
+                       class="active"
+                       {% endif %}
+                    >{{ p.title }}</a>
                 </li>
             {% endfor %}
 
-            <form style="position: relative; display: inline;">
-                <input id="pa-search" class="search-box" type="search" placeholder="Поиск" />
+            <form style="position: relative; display: inline;" action="{% url andreev_ru.main.views.search %}" method="GET">
+                <input id="pa-search" class="search-box" type="search" name="query" placeholder="Поиск" />
                 <div class="search-popover">
                     <h4 class="search-popover-title">Быстрый поиск</h4>
                     <ul class="search-popover-results">
@@ -109,7 +109,7 @@
                             <div class="search-popover-description"><h5>@heading</h5> @content</div>
                         </li>
                     </ul>
-                    <span class="search-popover-all-results"></span>
+                    <a class="search-popover-all-results" href="#"></a>
                 </div>
             </form>
 

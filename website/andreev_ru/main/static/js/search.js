@@ -1,4 +1,4 @@
-App = window.App || {
+App = {
     search: {
         selector: '.search-box',
         defaultTimeout: 200,
@@ -76,5 +76,10 @@ $(function(){
         App.search.timeout = setTimeout(App.search.search, App.search.defaultTimeout)
     });
 
+
+    $('.search-popover-all-results').click(function(){
+        var query = $(App.search.selector).val();
+        window.location = window.Config.search_url + '?query=' + query
+    });
 
 });
