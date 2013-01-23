@@ -105,7 +105,7 @@ def search_json(request):
         for work in works.values():
             result.append({
                 'href':    'works/' + work.slug, #TODO: reverse('andreev_ru.main.views.works', args=(work.slug,)),
-                'image':   work.images.all()[0].image.url,
+                'image':   work.images.all()[0].image.url if work.images.count() > 0 else '',
                 'heading': work.title,
                 'content': ' '.join(work.description.split(' ')[:15]) + '...'
             })
