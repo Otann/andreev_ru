@@ -110,7 +110,6 @@ def search_json(request):
                 'content': ' '.join(work.description.split(' ')[:15]) + '...'
             })
 
-        print('person_query = ' + 'name_' + lang + '__icontains:' + query)
         for person in Person.objects.filter(**{'name_' + lang + '__icontains': query}):
             result.append({
                 'href':    'persons/#%d' % person.id,
