@@ -10,7 +10,9 @@
             <li class="project-list-item">
                 <div class="project-list-image">
                     <a href="{% url andreev_ru.main.views.work work.slug %}#project">
-                        <img src="{% cropped_thumbnail work "thumb" %}">
+                        {% if work.thumb %}
+                            <img src="{% cropped_thumbnail work "thumb" %}">
+                        {% endif %}
                     </a>
                 </div>
 
