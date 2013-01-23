@@ -97,9 +97,9 @@ def search_json(request):
     if query:
         works = {}
         #TODO: more elegance with lang
-        for work in Work.objects.filter(**{'title_' + lang + '__search': query}):
+        for work in Work.objects.filter(**{'title_' + lang + '__icontains': query}):
             works[work.id] = work
-        for work in Work.objects.filter(**{'description_' + lang + '__search': query}):
+        for work in Work.objects.filter(**{'description_' + lang + '__icontains': query}):
             works[work.id] = work
 
         for work in works.values():
