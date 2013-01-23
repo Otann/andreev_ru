@@ -113,6 +113,12 @@ CKEDITOR_CONFIGS = {
     },
 }
 
+from easy_thumbnails.conf import Settings as thumbnail_settings
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS
+IMAGE_CROPPING_THUMB_SIZE = (300, 300)
+
 INSTALLED_APPS = (
 
     'grappelli.dashboard',
@@ -139,6 +145,10 @@ INSTALLED_APPS = (
 
     # CKEditor for WYSIWYG
     'ckeditor',
+
+    # thumbnails
+    'easy_thumbnails',
+    'image_cropping',
     )
 
 # A sample logging configuration. The only tangible logging

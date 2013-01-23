@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load cropping %}
 
 {% block content %}
 
@@ -7,7 +8,11 @@
         <ul class="project-list">
             {% for work in category_works %}
             <li class="project-list-item">
-                <div class="project-list-image"><a href="{% url andreev_ru.main.views.work work.slug %}#project"><img src="{{ MEDIA_URL }}{{ work.images.all.0.image }}"></a></div>
+                <div class="project-list-image">
+                    <a href="{% url andreev_ru.main.views.work work.slug %}#project">
+                        <img src="{% cropped_thumbnail work "thumb" %}">
+                    </a>
+                </div>
 
                 <div class="project-list-meta-data">
                     <h4 class="project-list-work-title"><a href="{% url andreev_ru.main.views.work work.slug %}#project">{{ work.title }}</a></h4>

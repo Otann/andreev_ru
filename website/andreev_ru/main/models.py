@@ -4,6 +4,7 @@
 from django.db import models
 from datetime import datetime
 from ckeditor.fields import RichTextField
+from image_cropping import ImageRatioField
 
 class Category(models.Model):
     name = models.CharField(max_length = 200)
@@ -31,6 +32,9 @@ class Work(models.Model):
     categories   = models.ManyToManyField(Category, verbose_name = u'Категории', blank=True)
 
     slug = models.SlugField(verbose_name = u'Относительный URL', max_length = 200, unique=True)
+
+    image = models.ImageField(verbose_name = u'Миниатюра объекта', blank=True, null=True, upload_to='uploaded_images')
+    thumb = ImageRatioField('image', '300x300')
 
     def __unicode__(self):
         return self.title

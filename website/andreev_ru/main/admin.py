@@ -2,6 +2,7 @@ from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
 from andreev_ru.main.models import *
 from andreev_ru.main.forms import WorkImageForm
+from image_cropping import ImageCroppingMixin
 
 class WorkImageAdmin(admin.TabularInline):
     fields = ('image', 'position',)
@@ -16,7 +17,7 @@ class WorkAuthorsAdmin(admin.TabularInline):
     model = WorkAuthors                        # Related model
     extra = 3                                  # Amount of additional tabular items
 
-class WorkAdmin(TranslationAdmin):
+class WorkAdmin(ImageCroppingMixin, TranslationAdmin):
     list_display = ('title','description')
     inlines = [ WorkAuthorsAdmin, WorkImageAdmin, ] # Inline add/remove for these
     prepopulated_fields = {"slug": ("title",)}    # Auto-populate based on russian title
