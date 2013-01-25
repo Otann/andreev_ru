@@ -103,7 +103,7 @@ class CustomPage(models.Model):
     title    = models.CharField(verbose_name = u'Заголовок', max_length = 1024)
     content  = RichTextField(verbose_name = u'Содержание')
     slug     = models.SlugField(verbose_name = u'Относительный URL', max_length = 200, unique=True)
-    position = models.PositiveSmallIntegerField(verbose_name = u'Позиция в меню')
+    position = models.PositiveSmallIntegerField(verbose_name = u'Позиция в меню', default = 0)
 
     class Meta:
         verbose_name = u'Страница Сайта'
