@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load cropping %}
 
 {% block content %}
 <div class="row-1">
@@ -65,7 +66,11 @@
         <ul>
             {% for another_work in more_works %}
                 <li class="more-works-block">
-                    <a href="{% url andreev_ru.main.views.work another_work.slug %}#project"><img src="{{ MEDIA_URL }}{{ another_work.images.all.0.image }}"></a>
+                    <a href="{% url andreev_ru.main.views.work another_work.slug %}#project">
+                        {% if another_work.thumb %}
+                            <img src="{% cropped_thumbnail another_work "thumb" %}">
+                        {% endif %}
+                    </a>
                     <h5 class="more-works-title"><a href="{% url andreev_ru.main.views.work another_work.slug %}#project">{{ another_work.title }}</a></h5>
                 </li>
             {% endfor %}
