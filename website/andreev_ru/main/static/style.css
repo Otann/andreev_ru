@@ -130,8 +130,8 @@ body {
 	display: block;
 	position: absolute;
 	top: 10px;
-	right: 50px;
-	width: 200px;
+	right: 150px;
+	width: 100px;
 }
 
 	.search-box {
@@ -144,7 +144,6 @@ body {
 		left: -110px;
 		top: 30px;
 		width: 350px;
-		height: 400px;
 		z-index: 100;
 		font-family: 'PT Sans', sans-serif;
 		background-color: #fff;
@@ -262,6 +261,7 @@ body {
 		border: none;
 		text-decoration: underline; 
 		margin-top: 1.2em;
+		margin-bottom: 1em;
 		text-align: center;
 	}
 
@@ -719,15 +719,15 @@ p {
 	.more-works-block {
 		display: inline-block;
 		vertical-align: top;
-		width: 120px;
+		width: 150px;
 		list-style: none;
-		text-align: center;
-		margin-right: 3em;
+		margin-right: 1em;
 		margin-top: .4em;
 	}
 	
 	.more-works-title {
 		font-size: .8em;
+		line-height: 1.5em;
 		font-weight: normal;
 		margin-top: .5em;
 	}
@@ -768,7 +768,7 @@ p {
 
 	.page header h2 {
 		font-family: 'PT Serif', serif;
-		font-size: 30px;
+		font-size: 1.8em;
 		font-weight: normal;
 	}
 
@@ -805,15 +805,15 @@ p {
 
 	.team h3 {
 		font-family: 'PT Serif', serif;
-		font-size: 25px;
+		font-size: 1.6em;
 		font-weight: normal;
 		text-align: center;
 	}
 
 	.team-members li {
 		float: left;
-		margin-bottom: 100px;
 		clear: both;
+		margin-bottom: 2.6em;
 	}
 
 	.team-members-photo {
@@ -849,12 +849,3 @@ p {
 		font-style: italic;
 		margin-bottom: .5em;
 	}
-
-/*.team-members li:nth-of-type(odd) .team-members-photo {
-	float: right;
-}
-
-.team-members li:nth-of-type(odd) .team-members-description  {
-	float: right;
-	padding-right: 30px;
-}*/

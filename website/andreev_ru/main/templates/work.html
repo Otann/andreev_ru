@@ -46,20 +46,27 @@
 
                 <li class="icon-area">
                     <dl>
-                      <dt>{% trans "Square" %}</dt>
-                      <dd>
+                        <dt>{% trans "Square" %}</dt>
+                        <dd>
                         {% if work.square %}
                             {{ work.square }} m²
                         {% else %}
                             —
-                        {% endif %}</dd>
+                        {% endif %}
+                        </dd>
                     </dl>
                 </li>
 
                 <li class="icon-client">
                     <dl>
                       <dt>{% trans "Client" %}</dt>
-                      <dd>{{ work.client }}</dd>
+                      <dd>
+                        {% if work.client %}
+                            {{ work.client }}
+                        {% else %}
+                            —
+                        {% endif %}
+                      </dd>
                     </dl>
                 </li>
 
