@@ -62,10 +62,12 @@
                 <li><a href="{% url andreev_ru.main.views.works %}?category=0">{% trans "All projects" %}</a><!-- <sup>{{ total }}</sup> --></li>
             {% endif %}
             {% for c, count in categories %}
-                {% if category.id == c.id %}
-                    <li class="project-categories-active">{{ c.name }}<!-- <sup>{{ count }}</sup> --></li>
-                {% else %}
-                    <li><a href="{% url andreev_ru.main.views.works %}?category={{ c.id }}">{{ c.name }}</a><!-- <sup>{{ count }}</sup> --></li>
+                {% if count > 0 %}
+                    {% if category.id == c.id %}
+                        <li class="project-categories-active">{{ c.name }}<!-- <sup>{{ count }}</sup> --></li>
+                    {% else %}
+                        <li><a href="{% url andreev_ru.main.views.works %}?category={{ c.id }}">{{ c.name }}</a><!-- <sup>{{ count }}</sup> --></li>
+                    {% endif %}
                 {% endif %}
             {% endfor %}
         </nav>
