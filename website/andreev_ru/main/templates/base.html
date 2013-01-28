@@ -55,14 +55,33 @@
             {#{{ request }}#}
         </header>
 
-        <div class="lang-switcher">
-            {% for lang_code, lang_name in LANGUAGES %}
-                {% language lang_code %}
-                    <a href="/{{ lang_code }}/{{ request.get_full_path|slice:"4:" }}"
-                       {% if lang_code == LANGUAGE_CODE %}class="active-lang"{% endif %}
-                            >{% trans lang_name %}</a>
-                {% endlanguage %}
-            {% endfor %}
+ 
+    <div class="lang-switcher">
+        {% for lang_code, lang_name in LANGUAGES %}
+            {% language lang_code %}
+                <a href="/{{ lang_code }}/{{ request.get_full_path|slice:"4:" }}"
+                   {% if lang_code == LANGUAGE_CODE %}class="active-lang"{% endif %}
+                        >{% trans lang_name %}</a>
+            {% endlanguage %}
+        {% endfor %}
+    </div>
+
+    <form class="search-container" action="{% url andreev_ru.main.views.search %}" method="GET">
+        <input id="pa-search" class="search-box" type="search" name="query" placeholder="{% trans "Search" %}" autocomplete="off">
+        <div class="search-popover">
+        <h4 class="search-popover-title">{% trans "Quick Search" %}</h4>
+            <ul class="search-popover-results">
+                 <li>
+                    <a class="search-popover-link" href="@href">
+                        <span class="search-popover-image"><img src="holder.js/80x80"></span>
+                        <span class="search-popover-description">
+                            <h5>@heading</h5>
+                            @content
+                        </span>
+                    </a>
+                </li>
+           </ul>
+        <a class="search-popover-all-results" href="{% url andreev_ru.main.views.search %}"></a>
         </div>
 
         <form class="search-container" action="{% url andreev_ru.main.views.search %}" method="GET">
