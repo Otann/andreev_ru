@@ -30,9 +30,10 @@ App = {
         render: function(item){
             var template =
                 '<li>' +
-                '    <a class="search-popover-link" href="@href"></a>' +
+                '    <a class="search-popover-link" href="@href">' +
                 '    <div class="search-popover-image"><img src="holder.js/100x100"></div>' +
-                '    <div class="search-popover-description"><h5>@heading</h5> @content</div>' +
+                '    <div class="search-popover-description"><h5>@heading</h5>@content</div>' +
+                '    </a>' +
                 '</li>';
             return template
                 .replace('@href',    item.href)

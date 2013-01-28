@@ -21,18 +21,33 @@
 
                     <ul class="project-list-meta-items">
                         <li>
-                            <h5 class="project-list-meta-title">{% trans "Год постройки" %}</h5>
-                            <div class="project-list-meta-description">{{ work.release_year }}</div>
+                            <h5 class="project-list-meta-title">{% trans "Construction Date" %}</h5>
+                            <div class="project-list-meta-description">
+                                {% if work.build_start %}
+                                    {{ work.build_start|default_if_none:""|date:"Y" }}{% if work.build_finish %}—{{ work.build_finish|date:"Y" }}
+                                    {% else %}—{% trans "настоящее время" %}
+                                    {% endif %}
+                                {% else %}
+                                    —
+                                {% endif %}
+                            </div>
                         </li>
 
                         <li>
-                            <h5 class="project-list-meta-title">{% trans "Площадь" %}</h5>
-                            <div class="project-list-meta-description">{{ work.square }} м²</div>
+                            <h5 class="project-list-meta-title">{% trans "Square" %}</h5>
+                            <div class="project-list-meta-description">
+                                {% if work.square %}
+                                    {{ work.square }} m²
+                                {% else %}
+                                    —
+                                {% endif %}
+
+                            </div>
                         </li>
 
                         <li class="no-border">
-                            <h5 class="project-list-meta-title">{% trans "Адрес" %}</h5>
-                            <div class="project-list-meta-description">{{ work.address }}</div>
+                            <h5 class="project-list-meta-title">{% trans "Addres" %}</h5>
+                            <div class="project-list-meta-description">{{ work.address|default_if_none:"—" }}</div>
                         </li>
                     </ul>
                 </div>
@@ -42,9 +57,9 @@
 
         <nav class="project-categories">
             {% if category.id == 0 %}
-                <li class="project-categories-active">{% trans "Все проекты" %}<!-- <sup>{{ total }}</sup> --></li>
+                <li class="project-categories-active">{% trans "All projects" %}<!-- <sup>{{ total }}</sup> --></li>
             {% else %}
-                <li><a href="{% url andreev_ru.main.views.works %}?category=0">{% trans "Все проекты" %}</a><!-- <sup>{{ total }}</sup> --></li>
+                <li><a href="{% url andreev_ru.main.views.works %}?category=0">{% trans "All projects" %}</a><!-- <sup>{{ total }}</sup> --></li>
             {% endif %}
             {% for c, count in categories %}
                 {% if category.id == c.id %}
