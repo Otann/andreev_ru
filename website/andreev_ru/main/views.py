@@ -4,8 +4,10 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
+from easy_thumbnails.files import get_thumbnailer
 
 from andreev_ru.main.models import Work, Category, Person, Department, CustomPage, News
+from andreev_ru.settings import IMAGE_CROPPING_THUMB_SIZE
 
 
 def prepare_base():
@@ -91,9 +93,16 @@ def search_json(request):
             works[work.id] = work
 
         for work in works.values():
+            thumb_options = {
+                'size': IMAGE_CROPPING_THUMB_SIZE,
+                'box': work.thumb,
+                'crop': True,
+                'detail': True,
+            }
+
             result.append({
                 'href':    'works/' + work.slug, #TODO: reverse('andreev_ru.main.views.works', args=(work.slug,)),
-                'image':   work.thumb if work.thumb else '',
+                'image':   get_thumbnailer(work.image).get_thumbnail(thumb_options).url,
                 'heading': work.title,
                 'content': ' '.join(work.description.split(' ')[:15]) + '...'
             })

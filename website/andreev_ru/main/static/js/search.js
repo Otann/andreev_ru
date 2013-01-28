@@ -58,9 +58,9 @@ $(function(){
         }
     });
 
-    $('.search-box').focusout(function() {
-        $('.search-popover').removeClass('search-popover-focused');
-    });
+    // $('.search-box').focusout(function() {
+    //     $('.search-popover').removeClass('search-popover-focused');
+    // });
     $('.search-box').focus(function() {
         var query = $(App.search.selector).val();
         if (query.length >= 3) {
