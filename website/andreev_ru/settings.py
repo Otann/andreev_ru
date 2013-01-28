@@ -108,8 +108,21 @@ GRAPPELLI_INDEX_DASHBOARD = 'andreev_ru.dashboard.CustomIndexDashboard'
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'Basic',
         'forcePasteAsPlainText': True,
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            {
+                'name': 'main',
+                'items': [
+                    'Bold','Italic','Underline','Strike','Subscript','Superscript',
+                    'Link', 'Unlink','RemoveFormat','-',
+                    'NumberedList', 'BulletedList','Blockquote','-',
+                    'Maximize',
+                    # 'ImageButton'
+                    # 'Find','Replace'
+                ]
+            }
+        ],
     },
 }
 
