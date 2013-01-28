@@ -20,12 +20,14 @@
             <div style="display: none;"><a href="#" id="arrow-prev">&lt;=</a>
             <a href="#" id="arrow-next">&gt;=</a></div>
 
-            <h4 class="project-section-title">{% trans "Authors" %}</h4>
-            <ul class="project-authors">
-            {% for author_group in work.authors.all %}
-                <li>{{ author_group.title }}: {{ author_group.names }}</li>
-            {% endfor %}
-            </ul>
+            {% if work.authors.all %}
+                <ul class="project-authors">
+                    <h4 class="project-section-title">{% trans "Authors" %}</h4>
+                    {% for author_group in work.authors.all %}
+                        <li>{{ author_group.title }}: {{ author_group.names }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
     	</div>
 
         <aside class="meta-data">
@@ -49,7 +51,7 @@
                         <dt>{% trans "Square" %}</dt>
                         <dd>
                         {% if work.square %}
-                            {{ work.square }} m²
+                            {{ work.square }} {% trans "m²" %}
                         {% else %}
                             —
                         {% endif %}

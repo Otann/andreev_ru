@@ -32,6 +32,45 @@ body {
 	border-top: 6px solid #821A17;
 }
 
+p {
+	margin: 1.5em 0;
+	line-height: 1.45em;
+}
+
+	p:first-child {
+		margin: 0 0 1.5em;
+	}
+
+a {
+	color: #000;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+blockquote {
+	margin-left: 4em;
+	/*border-left: 4px solid #e0e0e0;
+	padding-left: 1em;*/
+	position: relative;
+}
+
+blockquote:before {
+	content: "“";
+	position: absolute;
+	left: -.72em;
+	top: .0;
+	font-size: 4em;
+	font-family: Georgia;
+	font-weight: bold;
+	color: #828282;
+}
+
+.wrapper {
+	min-width: 960px;
+}
+
 .row-1 {
 	width: 960px;
 	margin: 0 auto;
@@ -435,7 +474,7 @@ body {
 
 		.address-col-2 {
 			margin-left: 12px;
-			width: 160px;
+			width: 120px;
 			text-align: left;
 		}
 
@@ -500,7 +539,7 @@ body {
 
 	.project-list-work-title {
 		font-size: 1.4em;
-		line-height: 1.46em;
+		line-height: 1.4em;
 		font-family: 'PT Serif', Georgia, 'Times New Roman', serif;
 		font-weight: bold;
 	}
@@ -578,35 +617,30 @@ body {
 	}
 
 /* project page */
-p {
-	margin: 1.5em 0;
-	line-height: 1.45em;
-}
-
-	p:first-child {
-		margin: 0 0 1.5em;
-	}
-
 .project {
 	font-size: 1em;
 	font-family: 'PT Serif', Georgia, 'Times New Roman', serif;
 }
 
-	.project header {
-		text-align: center;
-		margin-bottom: 1.2em;
-	}
-
 	.project header h2 {
-		font-family: 'PT Serif';
+		width: 80%;
+		margin: auto;
+		font-family: 'PT Serif', serif;
 		font-size: 1.6em;
+		line-height: 1.5em;
 		font-weight: normal;
+		text-align: center;
+		margin-bottom: .85em;
 	}
 
 	.project-body {
 		display: inline-block;
 		vertical-align: top;
 		width: 80%;
+	}
+
+	.project-authors {
+		margin-top: 3em;
 	}
 
 	.project-authors li {
@@ -721,7 +755,7 @@ p {
 		vertical-align: top;
 		width: 150px;
 		list-style: none;
-		margin-right: 1em;
+		margin-right: 2.3em;
 		margin-top: .4em;
 	}
 	
@@ -730,6 +764,7 @@ p {
 		line-height: 1.5em;
 		font-weight: normal;
 		margin-top: .5em;
+		overflow: hidden;
 	}
 
 	.more-works-title a {
@@ -743,14 +778,14 @@ p {
 
 	.more-works-block img {
 		border-radius: 8%;
-		width: 120px;
-		height: 120px;
+		width: 150px;
+		height: 150px;
 	}
 
 	.more-works-image-placeholder {
 		display: block;
-		width: 120px;
-		height: 120px;
+		width: 150px;
+		height: 150px;
 		background-color: #ececec;
 		border-radius: 8%;
 	}
@@ -761,15 +796,12 @@ p {
 	font-family: 'PT Serif', serif;
 }
 
-	.page header {
-		text-align: center;
-		margin-bottom: 40px;
-	}
-
 	.page header h2 {
 		font-family: 'PT Serif', serif;
 		font-size: 1.8em;
 		font-weight: normal;
+		text-align: center;
+		margin-bottom: 2em;
 	}
 
 	.page ul {
