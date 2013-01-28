@@ -24,3 +24,4 @@ pip-log.txt
 *.ipr
 *.iws
 .idea/
+.DS_Store
