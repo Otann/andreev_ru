@@ -1,17 +1,24 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+{% load custom_tags %}
+{% get_available_languages as languages %}
+
 {% block content %}
-	
+
 	<article class="page row-1">
 		<header>
 			<h2>{% trans "Contacts" %}</h2>
 		</header>
+
 		<!-- Этот блок кода нужно вставить в ту часть страницы, где вы хотите разместить карту (начало) -->
-<div id="ymaps-map-id_1359362743703862886" style="width:100%; height: 350px;"></div>
-<script type="text/javascript">function fid_1359362743703862886(ymaps) {var map = new ymaps.Map("ymaps-map-id_1359362743703862886", {center: [37.59375537039184, 55.769864129204784], zoom: 16, type: "yandex#map"});map.controls.add("zoomControl").add("mapTools").add(new ymaps.control.TypeSelector(["yandex#map", "yandex#satellite", "yandex#hybrid", "yandex#publicMap"]));map.geoObjects.add(new ymaps.Placemark([37.590901, 55.770092], {balloonContent: ""}, {preset: "twirl#redDotIcon"}));};</script>
-<script type="text/javascript" src="http://api-maps.yandex.ru/2.0-stable/?lang=ru-RU&coordorder=longlat&load=package.full&wizard=constructor&onload=fid_1359362743703862886"></script>
-<!-- Этот блок кода нужно вставить в ту часть страницы, где вы хотите разместить карту (конец) -->
-		<p>Ул. Брестская 2-я, 5, стр. 1-1А, Россия, Москва</p>
+        <div id="ymaps-map-id_1359362743703862886" style="width:100%; height: 350px;"></div>
+        <script type="text/javascript">function fid_1359362743703862886(ymaps) {var map = new ymaps.Map("ymaps-map-id_1359362743703862886", {center: [37.59375537039184, 55.769864129204784], zoom: 16, type: "yandex#map"});map.controls.add("zoomControl").add("mapTools").add(new ymaps.control.TypeSelector(["yandex#map", "yandex#satellite", "yandex#hybrid", "yandex#publicMap"]));map.geoObjects.add(new ymaps.Placemark([37.590901, 55.770092], {balloonContent: ""}, {preset: "twirl#redDotIcon"}));};</script>
+        <script type="text/javascript" src="http://api-maps.yandex.ru/2.0-stable/?lang=ru-RU&coordorder=longlat&load=package.full&wizard=constructor&onload=fid_1359362743703862886"></script>
+        <!-- Этот блок кода нужно вставить в ту часть страницы, где вы хотите разместить карту (конец) -->
+
+		<p>{% custom_string "address_street" %}, {% custom_string "address_city" %}</p>
+
 	</article>
 
 {% endblock %}

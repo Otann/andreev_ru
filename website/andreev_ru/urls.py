@@ -13,13 +13,16 @@ urlpatterns = i18n_patterns('',
     url(r'^works/$',                 'andreev_ru.main.views.works',             name='works'),
     url(r'^work/(?P<slug>[-\w]+)/$', 'andreev_ru.main.views.work',              name='work'),
 
-    url(r'^team/$',                  'andreev_ru.main.views.team',              name='team'),
-
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/',     include(admin.site.urls)),
 
     url(r'^search/$',                'andreev_ru.main.views.search',            name='search'),
     url(r'^search_json/$',           'andreev_ru.main.views.search_json',       name='search_json'),
+
+    url(r'^news/$',                  'andreev_ru.main.views.news',              name='news'),
+    url(r'^about/$',                 'andreev_ru.main.views.about',             name='about'),
+    url(r'^contacts/$',              'andreev_ru.main.views.contacts',           name='contacts'),
+    url(r'^team/$',                  'andreev_ru.main.views.team',              name='team'),
 
     url(r'^(?P<slug>[-\w]+)$',       'andreev_ru.main.views.page',              name='page'),
 )

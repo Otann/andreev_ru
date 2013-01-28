@@ -1,17 +1,11 @@
-from datetime import datetime
 import json
 
-from django import http
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
-from django.utils.translation import check_for_language
-from django.core.urlresolvers import reverse
 
-from andreev_ru import settings
-from andreev_ru.main.models import Work, Category, Person, Department, CustomPage
-from andreev_ru.settings import MEDIA_URL
+from andreev_ru.main.models import Work, Category, Person, Department, CustomPage, News
 
 
 def prepare_base():
@@ -84,12 +78,6 @@ def team(request):
     }
     return render_to_response('team.html', context, context_instance=RequestContext(request))
 
-def search(request):
-    context = {
-        'page': 'team',
-    }
-    return render_to_response('search.html', context, context_instance=RequestContext(request))
-
 def search_json(request):
     query = request.REQUEST.get('query', None).lower()
     lang  = request.LANGUAGE_CODE
@@ -119,3 +107,22 @@ def search_json(request):
             })
 
     return HttpResponse(json.dumps(result), mimetype="application/json")
+
+def search(request):
+    context = { 'page': 'search', }
+    return render_to_response('search.html', context, context_instance=RequestContext(request))
+
+def about(request):
+    context = { 'page': 'about', }
+    return render_to_response('about.html', context, context_instance=RequestContext(request))
+
+def contacts(request):
+    context = { 'page': 'contacts', }
+    return render_to_response('contacts.html', context, context_instance=RequestContext(request))
+
+def news(request):
+    context = {
+        'page': 'news',
+        'news': News.objects.all()[:10]
+    }
+    return render_to_response('news.html', context, context_instance=RequestContext(request))

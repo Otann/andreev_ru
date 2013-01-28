@@ -1,11 +1,21 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+{% load custom_tags %}
+{% get_available_languages as languages %}
+
 {% block content %}
-	
+
 	<article class="page row-1">
 		<header>
 			<h2>Новости</h2>
 		</header>
+
+        {% for news_item in news %}
+            {{ news_item.title }}
+            {{ news_item.content|safe }}
+        {% endfor%}
+
 		новость
 	</article>
 

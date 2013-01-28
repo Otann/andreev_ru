@@ -1,7 +1,6 @@
 {% load i18n %}
-{% get_available_languages as languages %}
-
 {% load custom_tags %}
+{% get_available_languages as languages %}
 
 <!DOCTYPE html>
 <html>
@@ -96,6 +95,21 @@
                 <a href="{% url andreev_ru.main.views.team %}"
                 {% if page == 'team' %}class="active"{% endif %}
                 >{% trans "Team" %}</a>
+            </li>
+            <li>
+                <a href="{% url andreev_ru.main.views.news %}"
+                {% if page == 'news' %}class="active"{% endif %}
+                >{% trans "News" %}</a>
+            </li>
+            <li>
+                <a href="{% url andreev_ru.main.views.about %}"
+                {% if page == 'about' %}class="active"{% endif %}
+                >{% trans "About" %}</a>
+            </li>
+            <li>
+                <a href="{% url andreev_ru.main.views.contacts %}"
+                {% if page == 'contacts' %}class="active"{% endif %}
+                >{% trans "Contacts" %}</a>
             </li>
 
             {% for p in all_pages %}
