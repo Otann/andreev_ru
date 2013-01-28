@@ -21,8 +21,8 @@ urlpatterns = i18n_patterns('',
 
     url(r'^news/$',                  'andreev_ru.main.views.news',              name='news'),
     url(r'^about/$',                 'andreev_ru.main.views.about',             name='about'),
-    url(r'^contacts/$',              'andreev_ru.main.views.contacts',           name='contacts'),
-    url(r'^team/$',                  'andreev_ru.main.views.team',              name='team'),
+    url(r'^contacts/$',              'andreev_ru.main.views.contacts',          name='contacts'),
+    url(r'^team/',                   'andreev_ru.main.views.team',              name='team'),
 
     url(r'^(?P<slug>[-\w]+)$',       'andreev_ru.main.views.page',              name='page'),
 )

@@ -4,7 +4,9 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
+from django.core.urlresolvers import reverse
 from easy_thumbnails.files import get_thumbnailer
+from andreev_ru.main.templatetags.custom_tags import transliterate
 
 from andreev_ru.main.models import Work, Category, Person, Department, CustomPage, News
 from andreev_ru.settings import IMAGE_CROPPING_THUMB_SIZE
@@ -86,7 +88,7 @@ def search_json(request):
     result = []
     if query:
         works = {}
-        #TODO: more elegance with lang
+
         for work in Work.objects.filter(**{'title_' + lang + '__icontains': query}):
             works[work.id] = work
         for work in Work.objects.filter(**{'description_' + lang + '__icontains': query}):
@@ -101,15 +103,19 @@ def search_json(request):
             }
 
             result.append({
-                'href':    'works/' + work.slug, #TODO: reverse('andreev_ru.main.views.works', args=(work.slug,)),
-                'image':   get_thumbnailer(work.image).get_thumbnail(thumb_options).url,
+                'href':    reverse('work', args={'slug': work.slug}),
+                'image':   get_thumbnailer(work.image).get_thumbnail(thumb_options).url if work.image else '',
                 'heading': work.title,
                 'content': ' '.join(work.description.split(' ')[:15]) + '...'
             })
 
         for person in Person.objects.filter(**{'name_' + lang + '__icontains': query}):
+            if lang == 'ru':
+                name = person.name_ru
+            else:
+                name = person.name_en
             result.append({
-                'href':    'persons/#%d' % person.id,
+                'href':    reverse('team') + '#%s' % transliterate(name),
                 'image':   person.image.url,
                 'heading': person.name,
                 'content': ' '.join(person.bio.split(' ')[:15]) + '...'
