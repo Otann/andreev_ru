@@ -31,7 +31,7 @@ App = {
             var template =
                 '<li>' +
                 '    <a class="search-popover-link" href="@href">' +
-                '    <div class="search-popover-image"><img src="holder.js/100x100"></div>' +
+                '    <div class="search-popover-image"><img src="@image"></div>' +
                 '    <div class="search-popover-description"><h5>@heading</h5>@content</div>' +
                 '    </a>' +
                 '</li>';

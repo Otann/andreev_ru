@@ -31,7 +31,7 @@ class Work(models.Model):
 
     categories   = models.ManyToManyField(Category, verbose_name = u'Категории', blank=True)
 
-    slug = models.SlugField(verbose_name = u'Относительный URL', max_length = 200, unique=True)
+    slug  = models.SlugField(verbose_name = u'Относительный URL', max_length = 200, unique=True)
 
     image = models.ImageField(verbose_name = u'Миниатюра объекта', blank=True, null=True, upload_to='uploaded_images')
     thumb = ImageRatioField('image', '300x300')
@@ -82,17 +82,17 @@ class Person(models.Model):
     bio        = RichTextField(verbose_name = u'История', blank=True)
     image      = models.ImageField(verbose_name = u'Фотография', upload_to = 'team')
 
-    position = models.ForeignKey(Department, verbose_name = u'Отдел')
+    position   = models.ForeignKey(Department, verbose_name = u'Отдел')
 
     class Meta:
         verbose_name = u'Сотрудник'
         verbose_name_plural = u'Сотрудники'
 
 class News(models.Model):
-    title    = models.CharField(verbose_name = u'Заголовок', max_length = 1024)
-    content  = RichTextField(verbose_name = u'Содержание')
-    slug     = models.SlugField(verbose_name = u'Относительный URL', max_length = 200, unique=True)
-    pub_date = models.DateTimeField(verbose_name = u'Дата публикации', default = datetime.now)
+    title       = models.CharField(verbose_name = u'Заголовок', max_length = 1024)
+    content     = RichTextField(verbose_name = u'Содержание')
+    slug        = models.SlugField(verbose_name = u'Относительный URL', max_length = 200, unique=True)
+    pub_date    = models.DateTimeField(verbose_name = u'Дата публикации', default = datetime.now)
     is_featured = models.BooleanField(verbose_name = u'Показывать на главной?')
 
     class Meta:
