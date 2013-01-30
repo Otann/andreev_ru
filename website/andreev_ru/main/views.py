@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse
 from easy_thumbnails.files import get_thumbnailer
 from andreev_ru.main.templatetags.custom_tags import transliterate
 
-from andreev_ru.main.models import Work, Category, Person, Department, CustomPage, News
+from andreev_ru.main.models import *
 from andreev_ru.settings import IMAGE_CROPPING_THUMB_SIZE
 
 
@@ -18,7 +18,7 @@ def prepare_base():
 
 def home(request):
     context = {
-        'works': Work.objects.all(),
+        'icons': TimelineIcon.objects.all(),
         'is_main': True,
     }
     return render_to_response('home.html', context, context_instance=RequestContext(request))

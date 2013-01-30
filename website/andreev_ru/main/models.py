@@ -2,6 +2,7 @@
 # coding: utf-8
 
 from django.db import models
+from django.core.exceptions import ValidationError
 from datetime import datetime
 from ckeditor.fields import RichTextField
 from image_cropping import ImageRatioField
@@ -42,6 +43,24 @@ class Work(models.Model):
     class Meta:
         verbose_name = u'Объект'
         verbose_name_plural = u'Объекты'
+
+class TimelineIcon(models.Model):
+    title = models.CharField(verbose_name = u'Название', max_length = 200)
+    icon = models.ImageField(verbose_name = u'Иконка объекта', upload_to='project_icons')
+    position = models.PositiveSmallIntegerField(verbose_name = u'Позиция на таймлайне', default = 0)
+    work = models.ForeignKey(Work, verbose_name = u'Проект')
+
+    def clean(self):
+        if TimelineIcon.objects.count() > 4:
+            raise ValidationError(u'Можно создать только пять иконок, отредактируйте или удалите существующие иконки')
+
+    def __unicode__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = u'Иконка таймлайна'
+        verbose_name_plural = u'Иконки таймлайна'
+        ordering = ('position',)
 
 class WorkImage(models.Model):
     work     = models.ForeignKey(Work, verbose_name = u'Фотографии', related_name = 'images')
@@ -98,6 +117,7 @@ class News(models.Model):
     class Meta:
         verbose_name = u'Новость'
         verbose_name_plural = u'Новости'
+        ordering = ('pub_date',)
 
 class CustomPage(models.Model):
     title    = models.CharField(verbose_name = u'Заголовок', max_length = 1024)

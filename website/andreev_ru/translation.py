@@ -32,3 +32,7 @@ translator.register(Person, PersonTranslationOptions)
 class AuthorsTranslationOptions(TranslationOptions):
     fields = ('title', 'names')
 translator.register(WorkAuthors, AuthorsTranslationOptions)
+
+class TimelineIconTranslationOptions(TranslationOptions):
+    fields = ('title',)
+translator.register(TimelineIcon, TimelineIconTranslationOptions)
