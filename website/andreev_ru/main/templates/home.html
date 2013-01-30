@@ -14,8 +14,10 @@
 
 				{% for icon in icons %}
 					<li>
-						<div class="skyline-icons-gum skyline-icon">
-							<a href="{% url andreev_ru.main.views.work icon.work.slug %}#project"></a>
+						<div class="skyline-icon">
+							<a href="{% url andreev_ru.main.views.work icon.work.slug %}#project">
+								<img src="{{ icon.icon.url }}">
+							</a>
 						</div>
 						<a class="skyline-description" href="{% url andreev_ru.main.views.work icon.work.slug %}#project">
 							{{ icon.title }}
