@@ -60,8 +60,8 @@
         {% for lang_code, lang_name in LANGUAGES %}
             {% language lang_code %}
                 <a href="/{{ lang_code }}/{{ request.get_full_path|slice:"4:" }}"
-                   {% if lang_code == LANGUAGE_CODE %}class="active-lang"{% endif %}
-                        >{% trans lang_name %}</a>
+                   class="{% if lang_code == LANGUAGE_CODE %}active-lang {% endif %}{{ lang_code }}-flag"
+                >{% trans lang_name %}</a>
             {% endlanguage %}
         {% endfor %}
     </div>
@@ -134,7 +134,7 @@
 
         <footer class="bottom-footer row-1">
             <address class="address-columns">
-                <div class="address-col-1"><a href="{% url andreev_ru.main.views.contacts %}"><img src="{{ STATIC_URL }}/map.png" width="60"></a></div>
+                <div class="address-col-1"><a href="{% url andreev_ru.main.views.contacts %}"><img src="{{ STATIC_URL }}/map2.png" width="60"></a></div>
                 <div class="address-col-2"><a href="{% url andreev_ru.main.views.contacts %}">{% custom_string "address_city" %}<br>{% custom_string "address_street" %}</a></div>
                 <div class="address-col-3">{% custom_string "address_company_name" %}</div>
                 <div class="address-col-4">{% custom_string "address_phone" %}<br>

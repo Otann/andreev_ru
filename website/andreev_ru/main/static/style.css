@@ -51,20 +51,22 @@ a:hover {
 
 blockquote {
 	margin-left: 4em;
-	/*border-left: 4px solid #e0e0e0;
-	padding-left: 1em;*/
+	font-style: italic;
 	position: relative;
+	color: #606060;
+
 }
 
 blockquote:before {
 	content: "“";
 	position: absolute;
-	left: -.72em;
+	left: -.75em;
 	top: .0;
-	font-size: 4em;
+	font-size: 3em;
 	font-family: Georgia;
 	font-weight: bold;
-	color: #828282;
+	font-style: normal;
+	color: #787878;
 }
 
 .wrapper {
@@ -368,7 +370,6 @@ blockquote:before {
 	}
 
 .skyline {
-	/*width: 1000px;*/
 	width: 100%;
 	height: 200px;
 	margin: 2em auto;
@@ -391,13 +392,13 @@ blockquote:before {
 	.skyline-icons li {
 		display: inline-block;
 		vertical-align: bottom;
-		margin: 0 1em;
+		margin: 0 1.1em;
 		text-align: center;
 		position: relative;
 	}
 
 	.skyline-icon {
-		/*background-size: 70%;*/
+		background-size: contain;
 	}
 
 	.skyline-icon a {
@@ -419,20 +420,32 @@ blockquote:before {
 
 	.skyline-icons-gum {
 		background: url('skyline-icons/gum.svg') no-repeat;
-		width: 245px;
-		height: 146px;
+		width: 196px;
+		height: 116px;
 	}
 
 	.skyline-icons-detmir {
 		background: url('skyline-icons/detmir.svg') no-repeat;
-		width: 238px;
-		height: 92px;
+		width: 190px;
+		height: 73px;
 	}
 
 	.skyline-icons-manezh {
 		background: url('skyline-icons/manezh.svg') no-repeat;
-		width: 246px;
-		height: 98px;
+		width: 197px;
+		height: 78px;
+	}
+
+	.skyline-icons-hals {
+		background: url('skyline-icons/hals.svg') no-repeat;
+		width: 77px;
+		height: 192px;
+	}
+
+	.skyline-icons-enthusiast {
+		background: url('skyline-icons/enthusiast.svg') no-repeat;
+		width: 147px;
+		height: 178px;
 	}
 
 
@@ -641,12 +654,19 @@ blockquote:before {
 
 	.project-authors {
 		margin-top: 3em;
+		margin-left: 0 !important;
+	}
+
+	.project-authors li:before {
+		content: "" !important;
+		margin-right: 0 !important;
 	}
 
 	.project-authors li {
 		list-style: none;
 		margin-bottom: .9em;
 		line-height: 1.35em;
+		text-indent: 0 !important;
 	}
 
 	.project-section-title {
@@ -791,40 +811,35 @@ blockquote:before {
 	}
 
 /* single page */
-.page {
-	font-size: 17px;
+.page-header {
 	font-family: 'PT Serif', serif;
+	font-size: 1.8em;
+	font-weight: normal;
+	text-align: center;
+	margin-bottom: 1.5em;
 }
 
-	.page header h2 {
-		font-family: 'PT Serif', serif;
-		font-size: 1.8em;
-		font-weight: normal;
-		text-align: center;
-		margin-bottom: 2em;
-	}
-
-	.page ul {
+	.content-area ul {
 		margin-left: 2em;
 	}
 		
-		.page ul li {
+		.content-area ul li {
 			list-style: none;
 			text-indent: -1.4em;
 			margin-bottom: 0.7em;
 			line-height: 1.45em;
 		}
 		
-		.page ul li::before {
+		.content-area ul li::before {
 			content: "—";
 			margin-right: 0.5em;
 		}
 			
-		.page ul li p:first-child {
+		.content-area ul li p:first-child {
 			display: inline;
 		}
 		
-		.page ol {
+		.content-area ol {
 			margin-left: 2em;
 		}
 
@@ -880,4 +895,27 @@ blockquote:before {
 		font-weight: normal;
 		font-style: italic;
 		margin-bottom: .5em;
+	}
+
+.news-list {
+	width: 65%;
+}
+
+	.news-list-item {
+		list-style: none;
+		margin-bottom: 3.5em;
+	}
+
+	.news-list-title {
+		text-align: left;
+		font-family: 'PT Sans';
+		font-size: 1.1em;
+		font-weight: bold;
+	}
+
+	.news-list-time {
+		display: block;
+		color: #8f8f8f;
+		font-size: .7em;
+		margin-top: .6em;
 	}

@@ -6,17 +6,18 @@
 
 {% block content %}
 
-	<article class="page row-1">
-		<header>
-			<h2>Новости</h2>
-		</header>
+	<article class="row-1">
 
+		<ul class="news-list">
         {% for news_item in news %}
-            {{ news_item.title }}
-            {{ news_item.content|safe }}
+        	<li class="news-list-item">
+            	<h4 class="news-list-title">{{ news_item.title }}</h4>
+            	<time class="news-list-time">{{ news_item.pub_date }}</time>
+            	{{ news_item.content|safe }}
+        	</li>
         {% endfor%}
+    	</ul>
 
-		новость
 	</article>
 
 {% endblock %}
