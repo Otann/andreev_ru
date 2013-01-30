@@ -19,7 +19,7 @@
     {% block css %}{% endblock css %}
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="{{ STATIC_URL }}js/holder.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.mobile.custom.min.js"></script>
     <script src="{{ STATIC_URL }}js/underscore-min.js"></script>
     <script type="text/javascript">
         window.Config = {
@@ -71,16 +71,16 @@
             <div class="search-popover">
             <h4 class="search-popover-title">{% trans "Quick Search" %}</h4>
                 <ul class="search-popover-results">
-                    <li>
+<!--                     <li>
                         <a class="search-popover-link" href="@href">
-                            <span class="search-popover-image"><img src="holder.js/80x80"></span>
+                            <span class="search-popover-image"><img src="#"></span>
                             <span class="search-popover-description">
                                 <h5>@heading</h5>
                                 @content
                             </span>
                         </a>
                     </li>
-                </ul>
+ -->                </ul>
             <a class="search-popover-all-results" href="{% url andreev_ru.main.views.search %}"></a>
             </div>
         </form>
