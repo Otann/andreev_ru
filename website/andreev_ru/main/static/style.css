@@ -387,6 +387,7 @@ blockquote:before {
 		position: absolute;
 		bottom: 0;
 		width: 100%;
+		min-width: 1024px;
 	}
 
 	.skyline-icons li {
