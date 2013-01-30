@@ -1,24 +1,8 @@
 from django.contrib import admin
-from django import forms
-from django.contrib.admin.widgets import AdminFileWidget
-from django.utils.safestring import mark_safe
 from modeltranslation.admin import TranslationAdmin
 from andreev_ru.main.models import *
 from andreev_ru.main.forms import WorkImageForm
 from image_cropping import ImageCroppingMixin
-
-
-class AdminImageFieldWithThumbWidget(AdminFileWidget):
-    def __init__(self, thumb_width=50, thumb_height=50, **kwargs):
-        self.width = thumb_width
-        self.height = thumb_height
-        super(AdminImageFieldWithThumbWidget, self).__init__({})
-
-    def render(self, name, value, attrs=None):
-        thumb_html = ''
-        if value and hasattr(value, "url"):
-            thumb_html = '<img src="%s" width="%s" width="%s"/>' % (value.url, self.width, self.height)
-        return mark_safe("%s%s" % (thumb_html, super(AdminImageFieldWithThumbWidget, self).render(name, value, attrs)))
 
 
 class WorkImageAdmin(admin.TabularInline):
@@ -85,9 +69,4 @@ admin.site.register(News, NewsAdmin)
 class TimelineIconAdmin(TranslationAdmin):
     list_display = ('title_ru', 'title_en', 'position', 'icon', 'work')
     list_editable = ('position',)
-
-    def formfield_for_dbfield(self, db_field, **kwargs):
-        if db_field.name == 'image' or db_field.name == 'icon':
-            return forms.CharField(widget=AdminImageFieldWithThumbWidget(**kwargs))
-        return super(TimelineIconAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 admin.site.register(TimelineIcon, TimelineIconAdmin)
