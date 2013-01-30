@@ -55,7 +55,7 @@ App = {
                 if ($(e.target).closest(App.search.container_selector).length) return;
                 $(document).unbind(App.search.container_selector);
                 App.search.hide();
-                
+
             });
         },
         hide: function(){
@@ -76,6 +76,13 @@ App = {
 
 
 $(function(){
+
+    $(document).bind('tap.search-container', function(e){
+        if ($(e.target).closest(App.search.container_selector).length === 0) {
+            App.search.hide();
+            $('form').blur();
+        }
+    });
 
     // Prepare ui
     var search_box = $(App.search.container_selector);
