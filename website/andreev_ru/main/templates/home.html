@@ -4,27 +4,52 @@
 {% block content %}
 
 		<!-- <section class="what-we-do">
-			<ol>
+			<ul>
 				<li>Архитектурное и комплексное планирование жилых и общественных зданий, генеральное проектирование, консалтинг, сопровождение проектов</li>
-			</ol>
+			</ul>
 		</section> -->
 
 		<section class="skyline">
+
 			<ul class="skyline-icons">
 
 				{% for icon in icons %}
 					<li>
-						<div class="skyline-icon">
-							<a href="{% url andreev_ru.main.views.work icon.work.slug %}#project">
-								<img src="{{ icon.icon.url }}">
-							</a>
+						<div class="skyline-icon" style="background: url('{{ icon.icon.url }}') no-repeat; width: 200px; height: 200px;">
+							<a href="{% url andreev_ru.main.views.work icon.work.slug %}#project"></a>
 						</div>
 						<a class="skyline-description" href="{% url andreev_ru.main.views.work icon.work.slug %}#project">
 							{{ icon.title }}
 						</a>
 					</li>
 				{% endfor%}
+
 			</ul>
+
+
+			<!-- <ul class="skyline-icons">
+				<li>
+					<div class="skyline-icons-gum skyline-icon"><a href="#"></a></div>
+					<a class="skyline-description" href="#">Торговый дом ГУМ</a>
+				</li>
+				<li>
+					<div class="skyline-icons-detmir skyline-icon"><a href="#"></a></div>
+					<a class="skyline-description" href="#">Детский мир</a>
+				</li>
+				<li>
+					<div class="skyline-icons-manezh skyline-icon"><a href="#"></a></div>
+					<a class="skyline-description" href="#">Реконструкция центрального выставочного зала «Манеж»</a>
+				</li>
+				<li>
+					<div class="skyline-icons-hals skyline-icon"><a href="#"></a></div>
+					<a class="skyline-description" href="#">Галс Тауэр</a>
+				</li>
+				<li>
+					<div class="skyline-icons-enthusiast skyline-icon"><a href="#"></a></div>
+					<a class="skyline-description" href="#">Многофункциональный комплекс на Шоссе Энтузиастов</a>
+				</li>
+			</ul> -->
+
 		</section>
 
 		<section id="real_skyline">
