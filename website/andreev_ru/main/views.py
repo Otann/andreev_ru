@@ -15,12 +15,14 @@ from andreev_ru.settings import IMAGE_CROPPING_THUMB_SIZE
 def prepare_base():
     return {}
 
+
 def home(request):
     context = {
         'works': Work.objects.all(),
         'is_main': True,
     }
     return render_to_response('home.html', context, context_instance=RequestContext(request))
+
 
 def works(request):
 
@@ -33,7 +35,7 @@ def works(request):
         category = Category.objects.get(pk=category_id)
         works = Work.objects.filter(categories__in=category_id)
     except ObjectDoesNotExist:
-        category = { 'id': 0 }
+        category = {'id': 0}
         works = Work.objects.all()
 
     context = {
@@ -46,6 +48,7 @@ def works(request):
 
     return render_to_response('works.html', context, context_instance=RequestContext(request))
 
+
 def work(request, slug):
     work = get_object_or_404(Work, slug=slug)
     more_amount = 5
@@ -55,7 +58,7 @@ def work(request, slug):
 
     # if works in same categories is not enough
     if len(more_works) < more_amount:
-        for item in Work.objects.exclude(id=work.id).order_by('?')[:more_amount-len(more_works)]:
+        for item in Work.objects.exclude(id=work.id).order_by('?')[:more_amount - len(more_works)]:
             more_works[item.id] = item
 
     context = {
@@ -65,11 +68,13 @@ def work(request, slug):
     }
     return render_to_response('work.html', context, context_instance=RequestContext(request))
 
+
 def page(request, slug):
     context = {
         'page': get_object_or_404(CustomPage, slug=slug)
     }
     return render_to_response('page.html', context, context_instance=RequestContext(request))
+
 
 def team(request):
     all_persons = Person.objects.all()
@@ -82,9 +87,10 @@ def team(request):
     }
     return render_to_response('team.html', context, context_instance=RequestContext(request))
 
+
 def search_json(request):
     query = request.REQUEST.get('query', None).lower()
-    lang  = request.LANGUAGE_CODE
+    lang = request.LANGUAGE_CODE
     result = []
     if query:
         works = {}
@@ -103,7 +109,7 @@ def search_json(request):
             }
 
             result.append({
-                'href':    reverse('work', args={'slug': work.slug}),
+                'href':    reverse('work', args=[work.slug]),
                 'image':   get_thumbnailer(work.image).get_thumbnail(thumb_options).url if work.image else '',
                 'heading': work.title,
                 'content': ' '.join(work.description.split(' ')[:15]) + '...'
@@ -123,17 +129,21 @@ def search_json(request):
 
     return HttpResponse(json.dumps(result), mimetype="application/json")
 
+
 def search(request):
-    context = { 'page': 'search', }
+    context = {'page': 'search'}
     return render_to_response('search.html', context, context_instance=RequestContext(request))
 
+
 def about(request):
-    context = { 'page': 'about', }
+    context = {'page': 'about'}
     return render_to_response('about.html', context, context_instance=RequestContext(request))
 
+
 def contacts(request):
-    context = { 'page': 'contacts', }
+    context = {'page': 'contacts'}
     return render_to_response('contacts.html', context, context_instance=RequestContext(request))
+
 
 def news(request):
     context = {
