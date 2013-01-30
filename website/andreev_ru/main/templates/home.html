@@ -11,10 +11,18 @@
 
 		<section class="skyline">
 			<ul class="skyline-icons">
-				<li>
-					<div class="skyline-icons-gum skyline-icon"><a href="#"></a></div>
-					<a class="skyline-description" href="#">Торговый дом ГУМ</a>
-				</li>
+
+				{% for icon in icons %}
+					<li>
+						<div class="skyline-icons-gum skyline-icon">
+							<a href="{% url andreev_ru.main.views.work icon.work.slug %}#project"></a>
+						</div>
+						<a class="skyline-description" href="{% url andreev_ru.main.views.work icon.work.slug %}#project">
+							{{ icon.title }}
+						</a>
+					</li>
+				{% endfor%}
+
 				<li>
 					<div class="skyline-icons-detmir skyline-icon"><a href="#"></a></div>
 					<a class="skyline-description" href="#">Детский мир</a>
@@ -32,6 +40,10 @@
 					<a class="skyline-description" href="#">Многофункциональный комплекс на Шоссе Энтузиастов</a>
 				</li>
 			</ul>
+		</section>
+
+		<section id="real_skyline">
+
 		</section>
 
 {% endblock %}
