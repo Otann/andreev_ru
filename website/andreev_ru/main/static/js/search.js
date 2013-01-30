@@ -60,6 +60,7 @@ App = {
         },
         hide: function(){
             $(App.search.popover_selector).removeClass(App.search.hidden_marker_class);
+            $(document).unbind(App.search.container_selector);
         },
         on_activity: function(){
             var query = $(App.search.selector).val();
@@ -80,7 +81,8 @@ $(function(){
     $(document).bind('tap.search-container', function(e){
         if ($(e.target).closest(App.search.container_selector).length === 0) {
             App.search.hide();
-            $('form').blur();
+        } else {
+            App.search.show();
         }
     });
 
