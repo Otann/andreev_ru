@@ -78,11 +78,11 @@ App = {
 
 $(function(){
 
-    $(document).bind('tap.search-container', function(e){
+    $(document).bind('tap', function(e){
         if ($(e.target).closest(App.search.container_selector).length === 0) {
             App.search.hide();
         } else {
-            App.search.show();
+            App.search.on_activity();
         }
     });
 
