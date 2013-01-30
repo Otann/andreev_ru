@@ -46,7 +46,7 @@ class Work(models.Model):
 
 class TimelineIcon(models.Model):
     title = models.CharField(verbose_name = u'Название', max_length = 200)
-    icon = models.ImageField(verbose_name = u'Иконка объекта', upload_to='project_icons')
+    icon = models.FileField(verbose_name = u'Иконка объекта', upload_to='project_icons')
     position = models.PositiveSmallIntegerField(verbose_name = u'Позиция на таймлайне', default = 0)
     work = models.ForeignKey(Work, verbose_name = u'Проект')
 
