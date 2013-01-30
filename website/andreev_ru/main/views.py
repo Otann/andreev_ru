@@ -109,7 +109,7 @@ def search_json(request):
             }
 
             result.append({
-                'href':    reverse('work', args=[work.slug]),
+                'href':    reverse('work', args=[work.slug]) + '#project',
                 'image':   get_thumbnailer(work.image).get_thumbnail(thumb_options).url if work.image else '',
                 'heading': work.title,
                 'content': ' '.join(work.description.split(' ')[:15]) + '...'
