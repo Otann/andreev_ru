@@ -83,6 +83,7 @@ TEMPLATE_LOADERS = (
     )
 
 MIDDLEWARE_CLASSES = (
+    'andreev_ru.main.middleware.ForceDefaultLanguageMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
