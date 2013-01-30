@@ -118,7 +118,7 @@ CKEDITOR_CONFIGS = {
                     'Link', 'Unlink','RemoveFormat','-',
                     'NumberedList', 'BulletedList','Blockquote','-',
                     'Maximize',
-                    # 'ImageButton'
+                    'ImageButton'
                     # 'Find','Replace'
                 ]
             }
