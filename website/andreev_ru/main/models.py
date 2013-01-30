@@ -3,6 +3,7 @@
 
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.core.files.images import get_image_dimensions
 from datetime import datetime
 from ckeditor.fields import RichTextField
 from image_cropping import ImageRatioField
@@ -46,13 +47,21 @@ class Work(models.Model):
 
 class TimelineIcon(models.Model):
     title = models.CharField(verbose_name = u'Название', max_length = 200)
-    icon = models.FileField(verbose_name = u'Иконка объекта', upload_to='project_icons')
+    svg_icon = models.FileField(verbose_name = u'Иконка объекта (SVG)', upload_to='project_icons')
+    png_icon = models.FileField(verbose_name = u'Иконка объекта (PNG)', upload_to='project_icons')
     position = models.PositiveSmallIntegerField(verbose_name = u'Позиция на таймлайне', default = 0)
     work = models.ForeignKey(Work, verbose_name = u'Проект')
+
+    width  = models.PositiveSmallIntegerField()
+    height = models.PositiveSmallIntegerField()
 
     def clean(self):
         if TimelineIcon.objects.count() > 4:
             raise ValidationError(u'Можно создать только пять иконок, отредактируйте или удалите существующие иконки')
+
+    def save(self, *args, **kwargs):
+            self.width, self.height = get_image_dimensions(self.png_icon)
+            super(TimelineIcon, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return self.title
