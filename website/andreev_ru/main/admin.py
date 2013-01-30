@@ -67,6 +67,7 @@ admin.site.register(News, NewsAdmin)
 
 
 class TimelineIconAdmin(TranslationAdmin):
-    list_display = ('title_ru', 'title_en', 'position', 'icon', 'work')
+    fields = ('title', 'position', 'svg_icon', 'png_icon', 'work')
+    list_display = ('title_ru', 'title_en', 'position', 'work')
     list_editable = ('position',)
 admin.site.register(TimelineIcon, TimelineIconAdmin)
