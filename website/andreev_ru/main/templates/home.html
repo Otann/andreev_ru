@@ -15,7 +15,7 @@
 
 				{% for icon in icons %}
 					<li>
-						<div class="skyline-icon" style="background: url('{{ icon.icon.url }}') no-repeat; width: 200px; height: 200px;">
+						<div class="skyline-icon" style="background: url('{{ icon.png_icon.url }}'); background: rgba(0, 0, 0, 0) url('{{ icon.svg_icon.url }}'); width: {{ icon.width }}px; height: {{ icon.height }}px;">
 							<a href="{% url andreev_ru.main.views.work icon.work.slug %}#project"></a>
 						</div>
 						<a class="skyline-description" href="{% url andreev_ru.main.views.work icon.work.slug %}#project">
