@@ -2,7 +2,7 @@
 import os
 import socket
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -26,7 +26,9 @@ DATABASES = {
     }
 }
 
-if 'nest-frontend' != socket.gethostname():
+if 'nest-frontend' != socket.gethostname() and 'pavel-andreev.ru' != socket.gethostname():
+    DEBUG = True
+    TEMPLATE_DEBUG = True
     DATABASES['default'] = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'local-database',
@@ -47,12 +49,11 @@ USE_TZ = True
 
 PROJECT_ROOT = os.path.dirname(__file__)
 PROJECT_NAME = os.path.basename(PROJECT_ROOT)
-#STORAGE_ROOT = os.path.join('/static', PROJECT_NAME)
 
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media') #todo(Anton) replace with STORAGE_ROOT
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static') #todo(Anton) replace with STORAGE_ROOT
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 STATIC_URL = '/static/'
 
 # Settings for django-modeltranslation
