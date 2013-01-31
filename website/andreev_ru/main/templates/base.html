@@ -44,18 +44,18 @@
             <div class="small-gray-text-top">{% trans "National Chamber of Architects" %}</div>
 
             {% if is_main %}
-                <h1>Pavel Andreev</h1>
-                <h2>architectual workshop</h2>
+                <h1>{% trans "Pavel Andreev" %}</h1>
+                <h2>{% trans "architectual workshop" %}</h2>
             {% else %}
                 <a href="{% url andreev_ru.main.views.home %}">
                     <h1>{% trans "Pavel Andreev" %}</h1>
-                    <h2>architectual workshop</h2>
+                    <h2>{% trans "architectual workshop" %}</h2>
                 </a>
             {% endif %}
             {#{{ request }}#}
         </header>
 
- 
+
     <div class="lang-switcher">
         {% for lang_code, lang_name in LANGUAGES %}
             {% language lang_code %}

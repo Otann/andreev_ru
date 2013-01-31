@@ -17,10 +17,10 @@ class CustomIndexDashboard(Dashboard):
     """
     Custom index dashboard for www.
     """
-    
+
     def init_with_context(self, context):
         site_name = get_admin_site_name(context)
-        
+
         # append an app list module for "Administration"
         self.children.append(modules.ModelList(
             _('Site administration'),
@@ -29,7 +29,7 @@ class CustomIndexDashboard(Dashboard):
             models=('django.contrib.flatpages.models.*',
                     'andreev_ru.main.models.*',),
         ))
-        
+
         # append another link list module for "support".
 #        self.children.append(modules.LinkList(
 #            _('Support'),
@@ -52,13 +52,13 @@ class CustomIndexDashboard(Dashboard):
 #                },
 #            ]
 #        ))
-        
+
         # append a recent actions module
-        self.children.append(modules.RecentActions(
-            _('Recent Actions'),
-            limit=5,
-            collapsible=True,
-            column=2,
-        ))
+        # self.children.append(modules.RecentActions(
+        #     _('Recent Actions'),
+        #     limit=5,
+        #     collapsible=True,
+        #     column=2,
+        # ))
 
 

@@ -136,8 +136,8 @@ IMAGE_CROPPING_THUMB_SIZE = (300, 300)
 INSTALLED_APPS = (
 
     'grappelli.dashboard',
-    'grappelli',
     'andreev_ru.main',
+    'grappelli',
 
     'django.contrib.admin',
     'django.contrib.admindocs',
