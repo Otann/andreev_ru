@@ -1,3 +1,4 @@
 .small-gray-text-top, .search-popover-image, .search-popover-description, .search-page-image, .search-page-description, .project-list, .project-list-image, .project-list-meta-data, .project-list-meta-items li, .project-categories, .skyline-icons li, .address-columns div, .project-body, .meta-data, .more-works-block {
-	*display: inline; zoom: 1;
+	display: inline; 
+	zoom: 1;
 }
