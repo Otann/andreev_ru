@@ -5,12 +5,14 @@
 
 	<div class="row-1" style="margin-top: 1.5em; margin-bottom: 3em;">
 
+		{% if news_text %}
 		<div class="news-featured">
 			<a href="{% url andreev_ru.main.views.news %}">
-				<h3 class="news-featured-title">Павел Андреев стал победителем Московской Архитектурной Регаты</h3>
+				<h3 class="news-featured-title">{{ news_text }}</h3>
 				<span class="news-featured-arrow"></span>
 			</a>
 		</div>
+		{% endif %}
 
 		<div class="what-we-do">
 			<ul>

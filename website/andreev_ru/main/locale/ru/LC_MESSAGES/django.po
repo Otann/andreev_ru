@@ -109,7 +109,7 @@ msgstr "Посмотреть панораму"
 
 #: templates/work.html:89
 msgid "Other Projects"
-msgstr "Дрегие проекты"
+msgstr "Другие проекты"
 
 #: templates/works.html:49
 msgid "Addres"
