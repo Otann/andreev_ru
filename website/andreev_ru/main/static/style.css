@@ -70,12 +70,14 @@ blockquote:before {
 }
 
 .wrapper {
-	min-width: 960px;
+	min-width: 1000px;
 }
 
 .row-1 {
-	width: 960px;
+	width: 1000px;
 	margin: 0 auto;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 .lang-switcher {
@@ -144,7 +146,7 @@ blockquote:before {
 	.main-menu li {
 		display: inline;
 		margin: 0 1em;
-		font-size: .90em;
+		font-size: .95em;
 		font-weight: bold;
 	}
 
@@ -570,7 +572,7 @@ blockquote:before {
 
 	.project-list-item {
 		list-style: none;
-		margin-bottom: 2em;
+		margin-bottom: 3em;
 	}
 
 	.project-list-image {
@@ -904,7 +906,7 @@ blockquote:before {
 	.team-members li {
 		float: left;
 		clear: both;
-		margin-bottom: 2.6em;
+		margin-bottom: 2.8em;
 	}
 
 	.team-members-photo {
