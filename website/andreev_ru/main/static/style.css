@@ -384,7 +384,7 @@ blockquote:before {
 .news-featured {
 	display: inline-block;
 	vertical-align: middle;
-	width: 260px;
+	width: 270px;
 	min-height: 40px;
 	max-height: 70px;
 	background: #ebebeb url('small-arrow.png') no-repeat right center;
