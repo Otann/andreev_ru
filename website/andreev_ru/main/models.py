@@ -126,7 +126,7 @@ class News(models.Model):
     class Meta:
         verbose_name = u'Новость'
         verbose_name_plural = u'Новости'
-        ordering = ('pub_date',)
+        ordering = ('-pub_date',)
 
 class CustomPage(models.Model):
     title    = models.CharField(verbose_name = u'Заголовок', max_length = 1024)
