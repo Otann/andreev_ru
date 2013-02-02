@@ -2,7 +2,6 @@
 {% load i18n %}
 
 {% block content %}
-
 	<div class="row-1" style="margin-top: 3em; margin-bottom: 3em;">
 
 		{% if news_text %}
@@ -33,9 +32,11 @@
 		</div>
 
 	</div>
+</div>
+
+	<div class="skyline-wrapper">
 
 		<section class="skyline">
-
 			<ul class="skyline-icons">
 
 				{% for icon in icons %}
@@ -50,35 +51,25 @@
 				{% endfor%}
 
 			</ul>
-
-
-			<!-- <ul class="skyline-icons">
-				<li>
-					<div class="skyline-icons-gum skyline-icon"><a href="#"></a></div>
-					<a class="skyline-description" href="#">Торговый дом ГУМ</a>
-				</li>
-				<li>
-					<div class="skyline-icons-detmir skyline-icon"><a href="#"></a></div>
-					<a class="skyline-description" href="#">Детский мир</a>
-				</li>
-				<li>
-					<div class="skyline-icons-manezh skyline-icon"><a href="#"></a></div>
-					<a class="skyline-description" href="#">Реконструкция центрального выставочного зала «Манеж»</a>
-				</li>
-				<li>
-					<div class="skyline-icons-hals skyline-icon"><a href="#"></a></div>
-					<a class="skyline-description" href="#">Галс Тауэр</a>
-				</li>
-				<li>
-					<div class="skyline-icons-enthusiast skyline-icon"><a href="#"></a></div>
-					<a class="skyline-description" href="#">Многофункциональный комплекс на Шоссе Энтузиастов</a>
-				</li>
-			</ul> -->
-
 		</section>
 
-		<section id="real_skyline">
+	</div>
 
-		</section>
+	<script>
+		var window_height = $(window).height();
+		var header_size = 467;
+		var maximum_window_height = 1500;
+		var margin_size;
+
+		if (window_height > header_size && window_height < maximum_window_height) {
+			margin_size = window_height - header_size;
+		} else {
+			margin_size = 0;
+		};
+
+		$(".skyline-wrapper").css("margin-top", margin_size +"px");
+
+		//alert (window_height);
+	</script>
 
 {% endblock %}

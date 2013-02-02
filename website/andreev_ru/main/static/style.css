@@ -76,8 +76,8 @@ blockquote:before {
 .row-1 {
 	width: 1000px;
 	margin: 0 auto;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding-left: 1em;
+	padding-right: 1em;
 }
 
 .lang-switcher {
@@ -792,10 +792,6 @@ blockquote:before {
 
 .fotorama {
  	margin-bottom: 2em !important;
-<<<<<<< HEAD
-=======
-
->>>>>>> 5bbadb8d7dc59e2d09474d996292ac34f51168a8
  	padding: 2px !important;
 }
 
