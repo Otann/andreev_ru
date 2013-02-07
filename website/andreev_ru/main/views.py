@@ -1,21 +1,20 @@
 import json
 
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponse
-from django.template import RequestContext
-from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
-from easy_thumbnails.files import get_thumbnailer
-from andreev_ru.main.templatetags.custom_tags import transliterate
+from django.http import HttpResponse
+from django.shortcuts import render_to_response, get_object_or_404
+from django.template import RequestContext
+from django.views.decorators.cache import cache_page
 
+from easy_thumbnails.files import get_thumbnailer
+
+from andreev_ru.main.templatetags.custom_tags import transliterate
 from andreev_ru.main.models import *
 from andreev_ru.settings import IMAGE_CROPPING_THUMB_SIZE
 
 
-def prepare_base():
-    return {}
-
-
+@cache_page(60)
 def home(request):
     top_news = News.objects.filter(is_featured=True)[:1]
     if len(top_news) > 0:
@@ -33,6 +32,7 @@ def home(request):
     return render_to_response('home.html', context, context_instance=RequestContext(request))
 
 
+@cache_page(60)
 def works(request):
 
     categories = []
@@ -58,6 +58,7 @@ def works(request):
     return render_to_response('works.html', context, context_instance=RequestContext(request))
 
 
+@cache_page(60)
 def work(request, slug):
     work = get_object_or_404(Work, slug=slug)
     more_amount = 5
@@ -78,6 +79,7 @@ def work(request, slug):
     return render_to_response('work.html', context, context_instance=RequestContext(request))
 
 
+@cache_page(60)
 def page(request, slug):
     context = {
         'page': get_object_or_404(CustomPage, slug=slug)
@@ -85,6 +87,7 @@ def page(request, slug):
     return render_to_response('page.html', context, context_instance=RequestContext(request))
 
 
+@cache_page(60)
 def team(request):
     all_persons = Person.objects.all()
     all_positions = Department.objects.all()
@@ -139,21 +142,25 @@ def search_json(request):
     return HttpResponse(json.dumps(result), mimetype="application/json")
 
 
+@cache_page(60)
 def search(request):
     context = {'page': 'search'}
     return render_to_response('search.html', context, context_instance=RequestContext(request))
 
 
+@cache_page(60)
 def about(request):
     context = {'page': 'about'}
     return render_to_response('about.html', context, context_instance=RequestContext(request))
 
 
+@cache_page(60)
 def contacts(request):
     context = {'page': 'contacts'}
     return render_to_response('contacts.html', context, context_instance=RequestContext(request))
 
 
+@cache_page(60)
 def news(request):
     context = {
         'page': 'news',
