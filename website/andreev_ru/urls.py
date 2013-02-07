@@ -3,29 +3,31 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
+from django.views.decorators.cache import cache_page
+from andreev_ru.main.views import *
 
 admin.autodiscover()
 
 urlpatterns = i18n_patterns('',
 
-    url(r'^$',                       'andreev_ru.main.views.home',              name='home'),
-    url(r'^/$',                      'andreev_ru.main.views.home',              name='home'),
+    url(r'^$',                       cache_page(60)(home),              name='home'),
+    url(r'^/$',                      cache_page(60)(home),              name='home'),
 
-    url(r'^works/$',                 'andreev_ru.main.views.works',             name='works'),
-    url(r'^work/(?P<slug>[-\w]+)/$', 'andreev_ru.main.views.work',              name='work'),
+    url(r'^works/$',                 cache_page(60)(works),             name='works'),
+    url(r'^work/(?P<slug>[-\w]+)/$', cache_page(60)(work),              name='work'),
+
+    url(r'^search/$',                cache_page(60)(search),            name='search'),
+    url(r'^search_json/$',           search_json,                       name='search_json'),
+
+    url(r'^news/$',                  cache_page(60)(news),              name='news'),
+    url(r'^about/$',                 cache_page(60)(about),             name='about'),
+    url(r'^contacts/$',              cache_page(60)(contacts),          name='contacts'),
+    url(r'^team/',                   cache_page(60)(team),              name='team'),
 
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/',     include(admin.site.urls)),
 
-    url(r'^search/$',                'andreev_ru.main.views.search',            name='search'),
-    url(r'^search_json/$',           'andreev_ru.main.views.search_json',       name='search_json'),
-
-    url(r'^news/$',                  'andreev_ru.main.views.news',              name='news'),
-    url(r'^about/$',                 'andreev_ru.main.views.about',             name='about'),
-    url(r'^contacts/$',              'andreev_ru.main.views.contacts',          name='contacts'),
-    url(r'^team/',                   'andreev_ru.main.views.team',              name='team'),
-
-    url(r'^(?P<slug>[-\w]+)$',       'andreev_ru.main.views.page',              name='page'),
+    url(r'^(?P<slug>[-\w]+)$',       cache_page(60)(page),              name='page'),
 )
 
 urlpatterns += patterns('',
