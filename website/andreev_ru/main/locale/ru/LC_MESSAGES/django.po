@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-25 15:15+0400\n"
+"POT-Creation-Date: 2013-01-31 13:22+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,87 +19,102 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: templates/base.html:37
-msgid "National thing this is yeah"
-msgstr "Национальная палата архитекторов"
+#: templates/about.html:11
+msgid "About us"
+msgstr "О компании"
 
-#: templates/base.html:40 templates/base.html.py:44
+#: templates/base.html:28
+msgid "All results"
+msgstr "Все результаты"
+
+#: templates/base.html:29
+msgid "No results"
+msgstr "Нет результатов"
+
+#: templates/base.html:44
+msgid "National Chamber of Architects"
+msgstr "Национальная палата Архитекторов"
+
+#: templates/base.html:47 templates/base.html.py:51
 msgid "Pavel Andreev"
 msgstr "Павел Андреев"
 
-#: templates/base.html:67
+#: templates/base.html:48 templates/base.html.py:52
+msgid "architectual workshop"
+msgstr "Архитектурная мастерская"
+
+#: templates/base.html:70
+msgid "Search"
+msgstr "Поиск"
+
+#: templates/base.html:72
+msgid "Quick Search"
+msgstr "Быстрый поиск"
+
+#: templates/base.html:94
 msgid "Projects"
 msgstr "Проекты"
 
-#: templates/base.html:72
+#: templates/base.html:99
 msgid "Team"
 msgstr "Команда"
 
-#: templates/base.html:96
-msgid "Россия, Москва<br>ул. 1-Бресткая 17, офис 214"
+#: templates/base.html:104
+msgid "News"
+msgstr "Новости"
+
+#: templates/base.html:109
+msgid "About"
+msgstr "О компании"
+
+#: templates/base.html:114 templates/contacts.html:11
+msgid "Contacts"
+msgstr "Контакты"
+
+#: templates/base.html:142
+msgid "Дизайн и разработка:"
 msgstr ""
 
-#: templates/base.html:97
-msgid "Павел Андреев<br> Архитектурная мастерская"
+#: templates/work.html:25
+msgid "Authors"
+msgstr "Авторы"
+
+#: templates/work.html:37 templates/works.html:24
+msgid "Construction Date"
+msgstr "Дата постройки"
+
+#: templates/work.html:40 templates/works.html:28
+msgid "настоящее время"
 msgstr ""
 
-#: templates/home.html:8
-msgid "Архитектурное планирование, генеральное проектирование"
+#: templates/work.html:51 templates/works.html:37
+msgid "Square"
+msgstr "Площадь"
+
+#: templates/work.html:54 templates/works.html:40
+msgid "m²"
+msgstr "м²"
+
+#: templates/work.html:64
+msgid "Client"
+msgstr "Заказчик"
+
+#: templates/work.html:77
+msgid "Address"
+msgstr "Адрес"
+
+#: templates/work.html:79
+msgid "Посмотреть панораму"
+msgstr "Посмотреть панораму"
+
+#: templates/work.html:89
+msgid "Other Projects"
+msgstr "Другие проекты"
+
+#: templates/works.html:49
+msgid "Addres"
 msgstr ""
 
-#: templates/home.html:9
-msgid "Комплексное планирование жилых и общественных зданий"
-msgstr ""
-
-#: templates/home.html:10
-msgid "Консалтинг, комлпексное сопровождение проектов"
-msgstr ""
-
-#: templates/work.html:25 templates/works.html:27
-msgid "Год постройки"
-msgstr ""
-
-#: templates/work.html:32 templates/works.html:32
-msgid "Площадь"
-msgstr ""
-
-#: templates/work.html:38 templates/works.html:37
-msgid "Адрес"
-msgstr ""
-
-#: templates/work.html:40
-msgid "Посмотреть панораму на карте"
-msgstr ""
-
-#: templates/works.html:42
-msgid "Авторы"
-msgstr ""
-
-#: templates/admin/inlineimage.html:9
-msgid "Add Another"
-msgstr ""
-
-#: templates/admin/inlineimage.html:66
-msgid "Move Item"
-msgstr ""
-
-#: templates/admin/inlineimage.html:74
-msgid "View on Site"
-msgstr ""
-
-#: templates/admin/inlineimage.html:77 templates/admin/inlineimage.html:82
-msgid "Delete Item"
-msgstr ""
-
-#: templates/admin/inlineimage.html:96
-#, python-format
-msgid "Add another %(verbose_name)s"
-msgstr ""
-
-#: templates/admin/inlineimage.html:98
-msgid "Add Item"
-msgstr ""
-
-#~ msgid "National thing it is"
-#~ msgstr ""
-#~ "Нациоальная Всероссийская Палата Архитекторов и Союз Добра во всем мире"
+#: templates/works.html:60 templates/works.html.py:62
+msgid "All projects"
+msgstr "Все проекты"

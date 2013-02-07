@@ -2,33 +2,74 @@
 {% load i18n %}
 
 {% block content %}
+	<div class="row-1" style="margin-top: 3em; margin-bottom: 3em;">
 
-		<!-- <section class="what-we-do">
-			<ol>
-				<li>Архитектурное и комплексное планирование жилых и общественных зданий, генеральное проектирование, консалтинг, сопровождение проектов</li>
-			</ol>
-		</section> -->
+		{% if news_text %}
+		<div class="news-featured">
+			<a href="{% url andreev_ru.main.views.news %}">
+				<h3 class="news-featured-title">{{ news_text }}</h3>
+				<span class="news-featured-arrow"></span>
+			</a>
+		</div>
+		{% endif %}
+
+		<div class="what-we-do">
+			<ul>
+				<li>Архитектурное планирование</li>
+				<li>Комплексное проектирование</li>
+			</ul>
+
+			<ul>
+				<li>Сопровождение проектов</li>
+				<li>Консалтинг</li>
+			</ul>
+
+			<ul>
+				<li>Генеральное проектирование</li>
+				<li>Дизайн интерьеров</li>
+			</ul>
+
+		</div>
+
+	</div>
+</div>
+
+	<div class="skyline-wrapper">
 
 		<section class="skyline">
 			<ul class="skyline-icons">
 
 				{% for icon in icons %}
 					<li>
-						<div class="skyline-icon">
-							<a href="{% url andreev_ru.main.views.work icon.work.slug %}#project">
-								<img src="{{ icon.icon.url }}">
-							</a>
+						<div class="skyline-icon" style="background: url('{{ icon.png_icon.url }}'); background: rgba(0, 0, 0, 0) url('{{ icon.svg_icon.url }}'); width: {{ icon.width }}px; height: {{ icon.height }}px;">
+							<a href="{% url andreev_ru.main.views.work icon.work.slug %}#project"></a>
 						</div>
 						<a class="skyline-description" href="{% url andreev_ru.main.views.work icon.work.slug %}#project">
 							{{ icon.title }}
 						</a>
 					</li>
 				{% endfor%}
+
 			</ul>
 		</section>
 
-		<section id="real_skyline">
+	</div>
 
-		</section>
+	<script>
+		var window_height = $(window).height();
+		var header_size = 467;
+		var maximum_window_height = 1500;
+		var margin_size;
+
+		if (window_height > header_size && window_height < maximum_window_height) {
+			margin_size = window_height - header_size;
+		} else {
+			margin_size = 0;
+		};
+
+		$(".skyline-wrapper").css("margin-top", margin_size +"px");
+
+		//alert (window_height);
+	</script>
 
 {% endblock %}

@@ -22,13 +22,13 @@ small {font-size: 80%;}
 img, object, embed {
 	max-width: 100%;
 }
-  
+
 /* main */
 body {
 	font-size: 16px;
 	font-family: 'PT Serif', serif;
 	background-color: #F7F7F7;
-	background-image: url('noisy-texture-transperent.png');  
+	background-image: url('noisy-texture-transperent.png');
 	border-top: 6px solid #821A17;
 }
 
@@ -51,7 +51,7 @@ a:hover {
 
 blockquote {
 	margin-left: 4em;
-	font-style: italic;
+	font-style: normal;
 	position: relative;
 	color: #606060;
 
@@ -70,12 +70,14 @@ blockquote:before {
 }
 
 .wrapper {
-	min-width: 960px;
+	min-width: 1000px;
 }
 
 .row-1 {
-	width: 960px;
+	width: 1000px;
 	margin: 0 auto;
+	padding-left: 1em;
+	padding-right: 1em;
 }
 
 .lang-switcher {
@@ -99,23 +101,23 @@ blockquote:before {
 .logo {
 	text-align: center;
 	font-family: Futura, sans-serif;
-	margin-top: 1em; 
+	margin-top: 1em;
 	position: relative;
 }
 
 	.logo h1 {
 		font-size: 2.2em;
-		font-family: Futura;
-		text-transform: uppercase;
+		font-family: 'PT Serif', Futura;
+		/*text-transform: uppercase;*/
 		font-weight: normal;
 	}
 
 	.logo h2 {
 		font-size: 1em;
-		font-family: Futura;
+		font-family: 'PT Serif', Futura;
 		font-weight: 400;
 		text-transform: lowercase;
-		margin-top: .6em;
+		margin-top: .7em;
 	}
 
 	.logo a {
@@ -129,7 +131,7 @@ blockquote:before {
 		font-family: 'PT Sans', sans-serif;
 		color: #666;
 		text-align: center;
-		margin-bottom: 2em;
+		margin-bottom: 1.6em;
 		border-bottom: 2px solid #383838;
 		padding-bottom: .3em;
 	}
@@ -300,7 +302,7 @@ blockquote:before {
 		color: #888;
 		text-transform: none;
 		border: none;
-		text-decoration: underline; 
+		text-decoration: underline;
 		margin-top: 1.2em;
 		margin-bottom: 1em;
 		text-align: center;
@@ -353,29 +355,76 @@ blockquote:before {
 
 
 .what-we-do {
-	width: 600px;
-	margin: 60px auto 0;
-	font-size: 17px;
-	line-height: 26px;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: .8em;
+	line-height: 1.2em;
 	text-align: center;
 	color: #5d5d5d;
 }
 
-	.what-we-do ol {
-		list-style: none;
+	.what-we-do ul {
+		display: inline-block;
+		vertical-align: top;
+		max-width: 200px;
+		min-height: 45px;
+		border-right: 1px solid #C6C6C6;
+		padding-left: 1.4em;
+		padding-right: 1.4em;
+	}
+
+	.what-we-do ul:last-child {
+		border-right: none;
 	}
 
 	.what-we-do li {
-		margin-top: 10px;
+		list-style: none;
+		text-align: center;
+		margin-bottom: .4em;
 	}
+
+.news-featured {
+	display: inline-block;
+	vertical-align: middle;
+	width: 270px;
+	min-height: 20px;
+	max-height: 70px;
+	background: #ebebeb url('small-arrow.png') no-repeat right center;
+	border-radius: 12px;
+	margin-right: 3em;
+	overflow: hidden;
+	padding-left: 1.3em;
+	padding-top: .8em;
+	padding-bottom: .6em;
+	font-size: .7em;
+	position: relative;
+}
+
+	.news-featured-title {
+		font-family: 'PT Sans', serif;
+		font-size: 1.15em;
+		line-height: 1.5em;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: #525252;
+		padding-right: 1.3em;
+	}
+
+	.news-featured a {
+		text-decoration: none;
+	}
+
+	.news-featured a:hover .news-featured-title {
+		color: #000;
+	}
+
 
 .skyline {
 	width: 100%;
 	height: 200px;
-	margin: 2em auto;
+	margin: 1em auto;
 	background: url('skyline2.svg');
 	position: relative;
-	margin-bottom: 10em;
 }
 
 	.skyline a {
@@ -396,6 +445,7 @@ blockquote:before {
 		margin: 0 1.1em;
 		text-align: center;
 		position: relative;
+		list-style: none;
 	}
 
 	.skyline-icon {
@@ -419,7 +469,7 @@ blockquote:before {
 		text-decoration: none;
 	}
 
-	.skyline-icons-gum {
+/*	.skyline-icons-gum {
 		background: url('skyline-icons/gum.svg') no-repeat;
 		width: 196px;
 		height: 116px;
@@ -447,11 +497,11 @@ blockquote:before {
 		background: url('skyline-icons/enthusiast.svg') no-repeat;
 		width: 147px;
 		height: 178px;
-	}
+	}*/
 
 
 .bottom-footer {
-	margin-top: 2em;
+	margin-top: 10em;
 	margin-bottom: 1em;
 	text-align: center;
 	font-family: 'PT Sans', sans-serif;
@@ -475,20 +525,15 @@ blockquote:before {
 		}
 
 		.address-col-1 {
-			width: 60px;
-			height: 60px;
+			width: 50px;
+			height: 50px;
 			border-radius: 50%;
-
-			border: 2px solid #c4c4c4;
-			
-			/*-webkit-box-shadow: inset 0 2px 5px 1px rgba(128,128,128,0.4);
-			-moz-box-shadow: inset 0 2px 5px 1px rgba(128,128,128,0.4);
-			box-shadow: inset 0 2px 5px 1px rgba(128,128,128,0.4);*/
+			border: 1px solid #c4c4c4;
 		}
 
 		.address-col-2 {
 			margin-left: 12px;
-			width: 120px;
+			width: 170px;
 			text-align: left;
 		}
 
@@ -527,7 +572,7 @@ blockquote:before {
 
 	.project-list-item {
 		list-style: none;
-		margin-bottom: 2em;
+		margin-bottom: 3em;
 	}
 
 	.project-list-image {
@@ -747,7 +792,6 @@ blockquote:before {
 
 .fotorama {
  	margin-bottom: 2em !important;
- 	
  	padding: 2px !important;
 }
 
@@ -779,7 +823,7 @@ blockquote:before {
 		margin-right: 2.3em;
 		margin-top: .4em;
 	}
-	
+
 	.more-works-title {
 		font-size: .8em;
 		line-height: 1.5em;
@@ -817,37 +861,37 @@ blockquote:before {
 	font-size: 1.8em;
 	font-weight: normal;
 	text-align: center;
-	margin-bottom: 1.5em;
+	margin-bottom: 1.1em;
 }
 
 	.content-area ul {
 		margin-left: 2em;
 	}
-		
+
 		.content-area ul li {
 			list-style: none;
 			text-indent: -1.4em;
 			margin-bottom: 0.7em;
 			line-height: 1.45em;
 		}
-		
+
 		.content-area ul li::before {
 			content: "—";
 			margin-right: 0.5em;
 		}
-			
+
 		.content-area ul li p:first-child {
 			display: inline;
 		}
-		
+
 		.content-area ol {
 			margin-left: 2em;
 		}
 
 /* team members */
 .team-members {
-	list-style: none;
-	margin-top: 60px;
+	float: left;
+	margin-bottom: 3em;
 	clear: both;
 }
 
@@ -856,12 +900,15 @@ blockquote:before {
 		font-size: 1.6em;
 		font-weight: normal;
 		text-align: center;
+		clear: both;
+		margin-bottom: 2em;
 	}
 
 	.team-members li {
 		float: left;
 		clear: both;
-		margin-bottom: 2.6em;
+		margin-bottom: 2.8em;
+		list-style: none;
 	}
 
 	.team-members-photo {
@@ -890,7 +937,7 @@ blockquote:before {
 		font-size: 1.5em;
 		font-weight: normal;
 	}
-	 
+
 	.team-members-description h5 {
 		font-size: .8em;
 		font-weight: normal;
@@ -899,12 +946,19 @@ blockquote:before {
 	}
 
 .news-list {
-	width: 65%;
+	margin-top: 3em; 
+	text-align: center;
 }
 
 	.news-list-item {
+		display: inline-block;
+		vertical-align: top;
 		list-style: none;
 		margin-bottom: 3.5em;
+		width: 260px;
+		margin-left: 3em;
+		font-size: .9em;
+		text-align: left;
 	}
 
 	.news-list-title {

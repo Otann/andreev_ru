@@ -17,8 +17,17 @@ def prepare_base():
 
 
 def home(request):
+    top_news = News.objects.filter(is_featured=True)[:1]
+    if len(top_news) > 0:
+        news = top_news[0]
+        news_text = news.title
+        # if len(news_text) < 60:
+        #     news_text += u'. ' + news.content[:60-len(news_text)] + u'...'
+    else:
+        news_text = None
     context = {
         'icons': TimelineIcon.objects.all(),
+        'news_text': news_text,
         'is_main': True,
     }
     return render_to_response('home.html', context, context_instance=RequestContext(request))
