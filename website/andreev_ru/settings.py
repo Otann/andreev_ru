@@ -2,7 +2,14 @@
 import os
 import socket
 
-DEBUG = False
+DEV_MODE = 'nest-frontend' != socket.gethostname() and 'pavel-andreev.ru' != socket.gethostname()
+if DEV_MODE:
+    DEBUG = True
+    from settings_dev import *
+else:
+    DEBUG = False
+    from settings_prod import *
+
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -11,32 +18,6 @@ ADMINS = (
     )
 
 MANAGERS = ADMINS
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'andreev_ru',                 # Or path to database file if using sqlite3.
-        'USER': 'root',                       # Not used with sqlite3.
-        'PASSWORD': 'password',               # Not used with sqlite3.
-        'HOST': 'localhost',                  # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                           # Set to empty string for default. Not used with sqlite3.
-        'OPTIONS': {
-           "init_command": "SET storage_engine=MyISAM", # for fulltext search
-        }
-    }
-}
-
-if 'nest-frontend' != socket.gethostname() and 'pavel-andreev.ru' != socket.gethostname():
-    DEBUG = True
-    TEMPLATE_DEBUG = True
-    DATABASES['default'] = {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'local-database',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
-    }
 
 TIME_ZONE = 'Europe/Moscow'
 LANGUAGE_CODE = 'ru-ru'
@@ -84,6 +65,9 @@ TEMPLATE_LOADERS = (
     )
 
 MIDDLEWARE_CLASSES = (
+    # Before using site cache consider amount of quick searches and how fast they will stale cache
+    # 'django.middleware.cache.UpdateCacheMiddleware',  # This should be first allways
+
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -92,6 +76,11 @@ MIDDLEWARE_CLASSES = (
 
     'andreev_ru.main.middleware.ForceDefaultLanguageMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+
+    'django.middleware.http.ConditionalGetMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
+
+    # 'django.middleware.cache.FetchFromCacheMiddleware',  # This should be last allways
     )
 
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
