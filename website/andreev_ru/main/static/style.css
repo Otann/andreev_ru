@@ -113,11 +113,11 @@ blockquote:before {
 	}
 
 	.logo h2 {
-		font-size: 1em;
-		font-family: 'PT Serif', Futura;
+		font-size: .85em;
+		font-family: 'PT Serif', sans-serif;
 		font-weight: 400;
 		text-transform: lowercase;
-		margin-top: .7em;
+		margin-top: .75em;
 	}
 
 	.logo a {
