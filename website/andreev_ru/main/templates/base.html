@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <link rel="icon" type="image/png" href="favicon.png">
     <!--[if lt IE 9]>]>
 		<script src="{{ STATIC_URL }}js/html5.js"></script>
@@ -86,8 +86,6 @@
 
     <div class="wrapper">
 
-<div>
-
         <header class="logo row-1">
             <div class="small-gray-text-top">{% trans "National Chamber of Architects" %}</div>
 
@@ -115,7 +113,7 @@
     </div>
 
         <form class="search-container">
-            <input id="pa-search" class="search-box" type="search" name="query" placeholder="{% trans "Search" %}" autocomplete="off">
+            <input id="pa-search" class="search-box" type="text" name="query" placeholder="{% trans "Search" %}" autocomplete="off">
             <div class="search-popover">
             <h4 class="search-popover-title">{% trans "Search Results" %}</h4>
                 <ul class="search-popover-results">
@@ -128,7 +126,7 @@
                             </span>
                         </a>
                     </li>
- -->                </ul>
+ -->            </ul>
             <!-- <a class="search-popover-all-results" href="{% url andreev_ru.main.views.search %}"></a> -->
             </div>
         </form>

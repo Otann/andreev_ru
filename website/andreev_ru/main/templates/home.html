@@ -28,15 +28,11 @@
 				<li>Генеральное проектирование</li>
 				<li>Дизайн интерьеров</li>
 			</ul>
-
 		</div>
-	
+
 	</div>
 
-
-	<div class="skyline-wrapper">
-
-		<section class="skyline">
+	<section class="skyline">
 			<ul class="skyline-icons">
 
 				{% for icon in icons %}
@@ -51,25 +47,31 @@
 				{% endfor%}
 
 			</ul>
-		</section>
-
-	</div>
+	</section>
 
 	<script>
-		var window_height = $(window).height();
-		var header_size = 464;
-		var maximum_window_height = 1500;
-		var margin_size;
+		function set_margin_for_skyline() {
+			var window_height = $(window).height();
+			var header_size = 463;
+			var maximum_window_height = 1500;
+			var margin_size;
 
-		if (window_height > header_size && window_height < maximum_window_height) {
-			margin_size = window_height - header_size;
-		} else {
-			margin_size = 0;
-		};
+			if (window_height > header_size && window_height < maximum_window_height) {
+				margin_size = window_height - header_size;
+			} else {
+				margin_size = 0;
+			};
 
-		$(".skyline-wrapper").css("margin-top", margin_size +"px");
+			$(".skyline").css("margin-top", margin_size +"px");
+		}
 
-		//alert (window_height);
+		set_margin_for_skyline();
+
+		$(window).resize(function() {
+  			set_margin_for_skyline();
+		});
+
+		// alert (margin_size);
 	</script>
 
 {% endblock %}

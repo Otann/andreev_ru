@@ -70,14 +70,14 @@ blockquote:before {
 }
 
 .wrapper {
-	min-width: 1000px;
+	min-width: 960px;
 }
 
 .row-1 {
-	width: 1000px;
+	width: 960px;
 	margin: 0 auto;
-	padding-left: 1em;
-	padding-right: 1em;
+	/*padding-left: 1em;
+	padding-right: 1em;*/
 }
 
 .lang-switcher {
@@ -108,7 +108,6 @@ blockquote:before {
 	.logo h1 {
 		font-size: 2.2em;
 		font-family: 'PT Serif', Futura;
-		/*text-transform: uppercase;*/
 		font-weight: normal;
 	}
 
@@ -179,6 +178,20 @@ blockquote:before {
 
 	.search-box {
 		position: relative;
+		width: 130px;
+		border-radius: 14px;
+		border: 1px solid #efeaea;
+		padding-left: .9em;
+		padding-top: .3em;
+		padding-bottom: .3em;
+		background: #fcfcfc;
+
+		/*-webkit-appearance: caret;*/
+	}
+
+	.search-box:focus {
+		outline: none;
+		background: #fff;
 	}
 
 	.search-popover {
@@ -436,7 +449,7 @@ blockquote:before {
 		position: absolute;
 		bottom: 0;
 		width: 100%;
-		min-width: 1024px;
+		/*min-width: 1024px;*/
 	}
 
 	.skyline-icons li {
@@ -468,36 +481,6 @@ blockquote:before {
 		line-height: 1.35em;
 		text-decoration: none;
 	}
-
-/*	.skyline-icons-gum {
-		background: url('skyline-icons/gum.svg') no-repeat;
-		width: 196px;
-		height: 116px;
-	}
-
-	.skyline-icons-detmir {
-		background: url('skyline-icons/detmir.svg') no-repeat;
-		width: 190px;
-		height: 73px;
-	}
-
-	.skyline-icons-manezh {
-		background: url('skyline-icons/manezh.svg') no-repeat;
-		width: 197px;
-		height: 78px;
-	}
-
-	.skyline-icons-hals {
-		background: url('skyline-icons/hals.svg') no-repeat;
-		width: 77px;
-		height: 192px;
-	}
-
-	.skyline-icons-enthusiast {
-		background: url('skyline-icons/enthusiast.svg') no-repeat;
-		width: 147px;
-		height: 178px;
-	}*/
 
 
 .bottom-footer {
