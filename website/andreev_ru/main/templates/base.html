@@ -140,19 +140,19 @@
                     >{% trans "Projects" %}</a>
                 </li>
                 <li>
-                    <a href="{% url andreev_ru.main.views.team %}"
-                    {% if page == 'team' %}class="active"{% endif %}
-                    >{% trans "Team" %}</a>
+                    <a href="{% url andreev_ru.main.views.about %}"
+                    {% if page == 'about' %}class="active"{% endif %}
+                    >{% trans "About" %}</a>
                 </li>
                 <li>
                     <a href="{% url andreev_ru.main.views.news %}"
                     {% if page == 'news' %}class="active"{% endif %}
                     >{% trans "News" %}</a>
                 </li>
-                <li>
-                    <a href="{% url andreev_ru.main.views.about %}"
-                    {% if page == 'about' %}class="active"{% endif %}
-                    >{% trans "About" %}</a>
+                 <li>
+                    <a href="{% url andreev_ru.main.views.team %}"
+                    {% if page == 'team' %}class="active"{% endif %}
+                    >{% trans "Team" %}</a>
                 </li>
                 <li>
                     <a href="{% url andreev_ru.main.views.contacts %}"

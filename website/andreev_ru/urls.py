@@ -9,7 +9,6 @@ admin.autodiscover()
 urlpatterns = i18n_patterns('',
 
     url(r'^$',                       'andreev_ru.main.views.home',              name='home'),
-    url(r'^/$',                      'andreev_ru.main.views.home',              name='home'),
 
     url(r'^works/$',                 'andreev_ru.main.views.works',             name='works'),
     url(r'^work/(?P<slug>[-\w]+)/$', 'andreev_ru.main.views.work',              name='work'),

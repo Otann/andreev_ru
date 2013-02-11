@@ -23,6 +23,8 @@ img, object, embed {
 	max-width: 100%;
 }
 
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
 /* main */
 body {
 	font-size: 16px;
@@ -76,8 +78,8 @@ blockquote:before {
 .row-1 {
 	width: 960px;
 	margin: 0 auto;
-	/*padding-left: 1em;
-	padding-right: 1em;*/
+	padding-left: 1em;
+	padding-right: 1em;
 }
 
 .lang-switcher {
@@ -180,18 +182,17 @@ blockquote:before {
 		position: relative;
 		width: 130px;
 		border-radius: 14px;
-		border: 1px solid #efeaea;
+		border: 1px solid #d1d1d1;
 		padding-left: .9em;
 		padding-top: .3em;
 		padding-bottom: .3em;
-		background: #fcfcfc;
+		box-shadow: inset 1px 1px 2px rgba(0, 0, 0, .1);
 
 		/*-webkit-appearance: caret;*/
 	}
 
 	.search-box:focus {
 		outline: none;
-		background: #fff;
 	}
 
 	.search-popover {
@@ -379,7 +380,7 @@ blockquote:before {
 	.what-we-do ul {
 		display: inline-block;
 		vertical-align: top;
-		max-width: 200px;
+		max-width: 230px;
 		min-height: 45px;
 		border-right: 1px solid #C6C6C6;
 		padding-left: 1.4em;
@@ -399,7 +400,7 @@ blockquote:before {
 .news-featured {
 	display: inline-block;
 	vertical-align: middle;
-	width: 270px;
+	width: 240px;
 	min-height: 20px;
 	max-height: 70px;
 	background: #ebebeb url('small-arrow.png') no-repeat right center;
@@ -420,7 +421,7 @@ blockquote:before {
 		font-weight: bold;
 		text-transform: uppercase;
 		color: #525252;
-		padding-right: 1.3em;
+		padding-right: 1.5em;
 	}
 
 	.news-featured a {
@@ -618,7 +619,7 @@ blockquote:before {
 		text-transform: uppercase;
 		font-family: Georgia, serif;
 		font-size: .7em;
-		line-height: 1.3em;
+		line-height: 1.45em;
 		font-weight: normal;
 		letter-spacing: 1px;
 	}
@@ -678,7 +679,7 @@ blockquote:before {
 	.project-body {
 		display: inline-block;
 		vertical-align: top;
-		width: 80%;
+		width: 69%;
 	}
 
 	.project-authors {
@@ -710,27 +711,24 @@ blockquote:before {
 .meta-data {
 	display: inline-block;
 	vertical-align: top;
-	width: 19%;
-	text-align: center;
+	width: 30%;
 }
 
-	.meta-data ul {
-		list-style: none;
-		text-align: center;
-	}
-
 	.meta-data li {
-		margin-bottom: 40px;
-		margin-left: auto;
-		margin-right: auto;
-		width: 140px;
-		padding-top: 45px;
+		display: inline-block;
+		vertical-align: top;
+		margin-bottom: 2em;
+		margin-left: 2.3em;
+		width: 100px;
+		text-align: center;
+		list-style: none;
 	}
 
 	.meta-data dt {
 		text-transform: uppercase;
 		font-family: Georgia;
-		font-size: 10px;
+		font-size: .6em;
+		line-height: 1.6em;
 		font-weight: normal;
 		letter-spacing: 1px;
 	}
@@ -738,8 +736,8 @@ blockquote:before {
 	.meta-data dd {
 		margin-top: 7px;
 		font-family: 'PT Sans', sans-serif;
-		font-size: 16px;
-		line-height: 19px;
+		font-size: .8em;
+		line-height: 1.3em;
 		font-weight: bold;
 	}
 
@@ -752,20 +750,26 @@ blockquote:before {
 		font-size: .65em;
 	}
 
-	.icon-built-in {
-		background: url('icons/built-in.png') center top no-repeat;
-	}
-
-	.icon-area {
-		background: url('icons/area.png') center top no-repeat;
+	.meta-icon {
+		background: url('icons/meta-icons.png') no-repeat;
+		background: rgba(0, 0, 0, 0) url('icons/meta-icons.svg') no-repeat;
+		height: 50px;
 	}
 
 	.icon-client {
-		background: url('icons/client.png') center top no-repeat;
+		background-position: 13px -160px;
 	}
 
 	.icon-address {
-		background: url('icons/address.png') center top no-repeat;
+		background-position: 13px -90px;
+	}
+
+	.icon-area {
+		background-position: 13px -233px;
+	}
+
+	.icon-built-in {
+		background-position: 13px -18px;
 	}
 
 	.icon-address dd, .icon-client dd {
@@ -792,7 +796,7 @@ blockquote:before {
 	}
 
 .more-works {
-	width: 80%;
+	width: 100%;
 	margin-top: 3em;
 	border-top: 2px solid #eeeeee;
 	padding-top: 1.1em;
@@ -957,3 +961,27 @@ blockquote:before {
 		font-size: .7em;
 		margin-top: .6em;
 	}
+
+/* 500-pixel layout for smaller screens */
+@media (max-width: 950px) {
+	.row-1 {
+		width: 100%;
+	}
+
+	.wrapper {
+		min-width: 0;
+	}
+
+    .meta-data {
+    	width: 100%;
+    }
+
+    .meta-data li {
+    	margin-left: 0;
+    	margin-right: 1em;
+    }
+
+    .project-body {
+    	width: 100%;
+    }
+}

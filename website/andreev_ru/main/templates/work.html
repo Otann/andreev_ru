@@ -19,20 +19,49 @@
     		{{ work.description|safe }}
             <div style="display: none;"><a href="#" id="arrow-prev">&lt;=</a>
             <a href="#" id="arrow-next">&gt;=</a></div>
-
-            {% if work.authors.all %}
-                <ul class="project-authors">
-                    <h4 class="project-section-title">{% trans "Authors" %}</h4>
-                    {% for author_group in work.authors.all %}
-                        <li>{{ author_group.title }}: {{ author_group.names }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
     	</div>
 
         <aside class="meta-data">
             <ul>
-                <li class="icon-built-in">
+                <li>
+                    <div class="meta-icon icon-client"></div>
+                    <dl>
+                      <dt>{% trans "Client" %}</dt>
+                      <dd>
+                        {% if work.client %}
+                            {{ work.client }}
+                        {% else %}
+                            —
+                        {% endif %}
+                      </dd>
+                    </dl>
+                </li>
+
+                <li>
+                    <div class="meta-icon icon-address"></div>
+                    <dl>
+                      <dt>{% trans "Address" %}</dt>
+                      <dd>{{ work.address }}</dd>
+                      <div class="panorama-link"><a href="{{ work.panorama_url }}">{% trans "Панорама на Яндекс.Картах" %}</a></div>
+                    </dl>
+                </li>
+
+                <li>
+                    <div class="meta-icon icon-area"></div>
+                    <dl>
+                        <dt>{% trans "Square" %}</dt>
+                        <dd>
+                        {% if work.square %}
+                            {{ work.square }} {% trans "m²" %}
+                        {% else %}
+                            —
+                        {% endif %}
+                        </dd>
+                    </dl>
+                </li>
+
+                <li>
+                    <div class="meta-icon icon-built-in"></div>
                     <dl>
                       <dt>{% trans "Construction Date" %}</dt>
                       <dd>
@@ -46,41 +75,17 @@
                     </dl>
                 </li>
 
-                <li class="icon-area">
-                    <dl>
-                        <dt>{% trans "Square" %}</dt>
-                        <dd>
-                        {% if work.square %}
-                            {{ work.square }} {% trans "m²" %}
-                        {% else %}
-                            —
-                        {% endif %}
-                        </dd>
-                    </dl>
-                </li>
-
-                <li class="icon-client">
-                    <dl>
-                      <dt>{% trans "Client" %}</dt>
-                      <dd>
-                        {% if work.client %}
-                            {{ work.client }}
-                        {% else %}
-                            —
-                        {% endif %}
-                      </dd>
-                    </dl>
-                </li>
-
-                <li class="icon-address">
-                    <dl>
-                      <dt>{% trans "Address" %}</dt>
-                      <dd>{{ work.address }}</dd>
-                      <div class="panorama-link"><a href="{{ work.panorama_url }}">{% trans "Посмотреть панораму" %}</a></div>
-                    </dl>
-                </li>
             </ul>
         </aside>
+
+        {% if work.authors.all %}
+            <ul class="project-authors">
+                <h4 class="project-section-title">{% trans "Authors" %}</h4>
+                {% for author_group in work.authors.all %}
+                    <li>{{ author_group.title }}: {{ author_group.names }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
 
     </article>
 

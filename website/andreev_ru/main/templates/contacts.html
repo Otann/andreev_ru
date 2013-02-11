@@ -6,20 +6,13 @@
 
 {% block content %}
 
+	<div style="margin-bottom: 1em;">
+		<iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=%D1%83%D0%BB.+%D0%91%D1%80%D0%B5%D1%81%D1%82%D1%81%D0%BA%D0%B0%D1%8F+2-%D1%8F,+5,+%D1%81%D1%82%D1%80.+1-1%D0%90&amp;aq=&amp;sll=55.75212,37.617665&amp;sspn=0.013308,0.038581&amp;ie=UTF8&amp;hq=&amp;hnear=ulitsa+Brestskaya+2-ya,+5,+Moskva,+Russia&amp;t=m&amp;ll=55.769712,37.593949&amp;spn=0.002414,0.008572&amp;z=17&amp;output=embed&amp;iwloc=near"></iframe>
+	</div>
+
 	<article class="page row-1">
-		<!-- <header>
-			<h2>{% trans "Contacts" %}</h2>
-		</header> -->
-
-		<!-- Этот блок кода нужно вставить в ту часть страницы, где вы хотите разместить карту (начало) -->
-        <div id="ymaps-map-id_1359362743703862886" style="width:100%; height: 350px;"></div>
-        <script type="text/javascript">function fid_1359362743703862886(ymaps) {var map = new ymaps.Map("ymaps-map-id_1359362743703862886", {center: [37.59375537039184, 55.769864129204784], zoom: 16, type: "yandex#map"});map.controls.add("zoomControl").add("mapTools").add(new ymaps.control.TypeSelector(["yandex#map", "yandex#satellite", "yandex#hybrid", "yandex#publicMap"]));map.geoObjects.add(new ymaps.Placemark([37.590901, 55.770092], {balloonContent: ""}, {preset: "twirl#redDotIcon"}));};</script>
-        <script type="text/javascript" src="http://api-maps.yandex.ru/2.0-stable/?lang=ru-RU&coordorder=longlat&load=package.full&wizard=constructor&onload=fid_1359362743703862886"></script>
-        <!-- Этот блок кода нужно вставить в ту часть страницы, где вы хотите разместить карту (конец) -->
-
 		<p>{% custom_string "address_street" %}, {% custom_string "address_city" %}<br>
 		{% custom_string "address_phone" %}</p>
-
 	</article>
 
 {% endblock %}
