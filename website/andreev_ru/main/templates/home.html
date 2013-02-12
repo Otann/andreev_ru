@@ -2,34 +2,35 @@
 {% load i18n %}
 
 {% block content %}
-	<div class="row-1" style="margin-top: 3em; margin-bottom: 3em;">
+		<div class="row-1" style="margin-top: 3em; margin-bottom: 3em;">
 
-		{% if news_text %}
-		<div class="news-featured">
-			<a href="{% url andreev_ru.main.views.news %}">
-				<h3 class="news-featured-title">{{ news_text }}</h3>
-				<span class="news-featured-arrow"></span>
-			</a>
+			{% if news_text %}
+			<div class="news-featured">
+				<a href="{% url andreev_ru.main.views.news %}">
+					<h3 class="news-featured-title">{{ news_text }}</h3>
+					<span class="news-featured-arrow"></span>
+				</a>
+			</div>
+			{% endif %}
+
+			<div class="what-we-do">
+				<ul>
+					<li>Архитектурное планирование</li>
+					<li>Комплексное проектирование</li>
+				</ul>
+
+				<ul>
+					<li>Сопровождение проектов</li>
+					<li>Консалтинг</li>
+				</ul>
+
+				<ul>
+					<li>Генеральное проектирование</li>
+					<li>Дизайн интерьеров</li>
+				</ul>
+			</div>
+
 		</div>
-		{% endif %}
-
-		<div class="what-we-do">
-			<ul>
-				<li>Архитектурное планирование</li>
-				<li>Комплексное проектирование</li>
-			</ul>
-
-			<ul>
-				<li>Сопровождение проектов</li>
-				<li>Консалтинг</li>
-			</ul>
-
-			<ul>
-				<li>Генеральное проектирование</li>
-				<li>Дизайн интерьеров</li>
-			</ul>
-		</div>
-
 	</div>
 
 	<section class="skyline">
@@ -52,7 +53,8 @@
 	<script>
 		function set_margin_for_skyline() {
 			var window_height = $(window).height();
-			var header_size = 463;
+			var header_size = 521;
+			//470
 			var maximum_window_height = 1500;
 			var margin_size;
 

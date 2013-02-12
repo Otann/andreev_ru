@@ -145,8 +145,9 @@ blockquote:before {
 }
 
 	.main-menu li {
-		display: inline;
+		display: inline-block;
 		margin: 0 1em;
+		margin-bottom: .8em;
 		font-size: .95em;
 		font-weight: bold;
 	}
@@ -186,8 +187,7 @@ blockquote:before {
 		padding-left: .9em;
 		padding-top: .3em;
 		padding-bottom: .3em;
-		box-shadow: inset 1px 1px 2px rgba(0, 0, 0, .1);
-
+		box-shadow: inset 1px 1px 2px #e4dfdf;
 		/*-webkit-appearance: caret;*/
 	}
 
@@ -371,6 +371,7 @@ blockquote:before {
 .what-we-do {
 	display: inline-block;
 	vertical-align: middle;
+	width: 70%;
 	font-size: .8em;
 	line-height: 1.2em;
 	text-align: center;
@@ -380,11 +381,10 @@ blockquote:before {
 	.what-we-do ul {
 		display: inline-block;
 		vertical-align: top;
+		width: 33%;
 		max-width: 230px;
 		min-height: 45px;
 		border-right: 1px solid #C6C6C6;
-		padding-left: 1.4em;
-		padding-right: 1.4em;
 	}
 
 	.what-we-do ul:last-child {
@@ -400,12 +400,12 @@ blockquote:before {
 .news-featured {
 	display: inline-block;
 	vertical-align: middle;
-	width: 240px;
+	width: 26%;
 	min-height: 20px;
 	max-height: 70px;
 	background: #ebebeb url('small-arrow.png') no-repeat right center;
 	border-radius: 12px;
-	margin-right: 3em;
+	margin-right: 1em;
 	overflow: hidden;
 	padding-left: 1.3em;
 	padding-top: .8em;
@@ -432,6 +432,10 @@ blockquote:before {
 		color: #000;
 	}
 
+
+.big-header-block {
+	height: 300px;
+}
 
 .skyline {
 	width: 100%;
@@ -665,21 +669,10 @@ blockquote:before {
 	font-family: 'PT Serif', Georgia, 'Times New Roman', serif;
 }
 
-	.project header h2 {
-		width: 80%;
-		margin: auto;
-		font-family: 'PT Serif', serif;
-		font-size: 1.6em;
-		line-height: 1.5em;
-		font-weight: normal;
-		text-align: center;
-		margin-bottom: .85em;
-	}
-
 	.project-body {
 		display: inline-block;
 		vertical-align: top;
-		width: 69%;
+		width: 64%;
 	}
 
 	.project-authors {
@@ -711,7 +704,7 @@ blockquote:before {
 .meta-data {
 	display: inline-block;
 	vertical-align: top;
-	width: 30%;
+	width: 35%;
 }
 
 	.meta-data li {
@@ -719,7 +712,7 @@ blockquote:before {
 		vertical-align: top;
 		margin-bottom: 2em;
 		margin-left: 2.3em;
-		width: 100px;
+		width: 120px;
 		text-align: center;
 		list-style: none;
 	}
@@ -737,7 +730,7 @@ blockquote:before {
 		margin-top: 7px;
 		font-family: 'PT Sans', sans-serif;
 		font-size: .8em;
-		line-height: 1.3em;
+		line-height: 1.35em;
 		font-weight: bold;
 	}
 
@@ -757,19 +750,19 @@ blockquote:before {
 	}
 
 	.icon-client {
-		background-position: 13px -160px;
+		background-position: 23px -160px;
 	}
 
 	.icon-address {
-		background-position: 13px -90px;
+		background-position: 23px -90px;
 	}
 
 	.icon-area {
-		background-position: 13px -233px;
+		background-position: 23px -233px;
 	}
 
 	.icon-built-in {
-		background-position: 13px -18px;
+		background-position: 23px -18px;
 	}
 
 	.icon-address dd, .icon-client dd {
@@ -778,7 +771,7 @@ blockquote:before {
 	}
 
 .fotorama {
- 	margin-bottom: 2em !important;
+ 	margin-bottom: 1.3em !important;
  	padding: 2px !important;
 }
 
@@ -809,6 +802,7 @@ blockquote:before {
 		list-style: none;
 		margin-right: 2.3em;
 		margin-top: .4em;
+		margin-bottom: .6em;
 	}
 
 	.more-works-title {
@@ -844,11 +838,14 @@ blockquote:before {
 
 /* single page */
 .page-header {
+	width: 90%;
+	margin: auto;
 	font-family: 'PT Serif', serif;
-	font-size: 1.8em;
+	font-size: 1.6em;
+	line-height: 1.4em;
 	font-weight: normal;
 	text-align: center;
-	margin-bottom: 1.1em;
+	margin-bottom: .5em;
 }
 
 	.content-area ul {
@@ -962,8 +959,8 @@ blockquote:before {
 		margin-top: .6em;
 	}
 
-/* 500-pixel layout for smaller screens */
-@media (max-width: 950px) {
+/* responsive */
+@media (max-width: 960px) {
 	.row-1 {
 		width: 100%;
 	}

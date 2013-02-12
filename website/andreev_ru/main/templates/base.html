@@ -6,6 +6,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
     <!--[if lt IE 9]>]>
 		<script src="{{ STATIC_URL }}js/html5.js"></script>
@@ -85,94 +86,85 @@
     <!-- /Yandex.Metrika counter -->
 
     <div class="wrapper">
+        <div class="big-header-block">
 
-        <header class="logo row-1">
-            <div class="small-gray-text-top">{% trans "National Chamber of Architects" %}</div>
+            <header class="logo row-1">
+                <div class="small-gray-text-top">{% trans "National Chamber of Architects" %}</div>
 
-            {% if is_main %}
-                <h1>{% trans "Pavel Andreev" %}</h1>
-                <h2>{% trans "architectual workshop" %}</h2>
-            {% else %}
-                <a href="{% url andreev_ru.main.views.home %}">
+                {% if is_main %}
                     <h1>{% trans "Pavel Andreev" %}</h1>
                     <h2>{% trans "architectual workshop" %}</h2>
-                </a>
-            {% endif %}
-            {#{{ request }}#}
-        </header>
+                {% else %}
+                    <a href="{% url andreev_ru.main.views.home %}">
+                        <h1>{% trans "Pavel Andreev" %}</h1>
+                        <h2>{% trans "architectual workshop" %}</h2>
+                    </a>
+                {% endif %}
+                {#{{ request }}#}
+            </header>
 
 
-    <div class="lang-switcher">
-        {% for lang_code, lang_name in LANGUAGES %}
-            {% language lang_code %}
-                <a href="/{{ lang_code }}/{{ request.get_full_path|slice:"4:" }}"
-                   class="{% if lang_code == LANGUAGE_CODE %}active-lang {% endif %}{{ lang_code }}-flag"
-                >{% trans lang_name %}</a>
-            {% endlanguage %}
-        {% endfor %}
-    </div>
-
-        <form class="search-container">
-            <input id="pa-search" class="search-box" type="text" name="query" placeholder="{% trans "Search" %}" autocomplete="off">
-            <div class="search-popover">
-            <h4 class="search-popover-title">{% trans "Search Results" %}</h4>
-                <ul class="search-popover-results">
-<!--                <li>
-                        <a class="search-popover-link" href="@href">
-                            <span class="search-popover-image"><img src="#"></span>
-                            <span class="search-popover-description">
-                                <h5>@heading</h5>
-                                @content
-                            </span>
-                        </a>
-                    </li>
- -->            </ul>
-            <!-- <a class="search-popover-all-results" href="{% url andreev_ru.main.views.search %}"></a> -->
-            </div>
-        </form>
-
-        <nav class="main-menu row-1" role="navigation">
-            <ul>
-                <li>
-                    <a
-                    href="{% url andreev_ru.main.views.works %}?category=1"
-                    {% if page == 'works' %}class="active"{% endif %}
-                    >{% trans "Projects" %}</a>
-                </li>
-                <li>
-                    <a href="{% url andreev_ru.main.views.about %}"
-                    {% if page == 'about' %}class="active"{% endif %}
-                    >{% trans "About" %}</a>
-                </li>
-                <li>
-                    <a href="{% url andreev_ru.main.views.news %}"
-                    {% if page == 'news' %}class="active"{% endif %}
-                    >{% trans "News" %}</a>
-                </li>
-                 <li>
-                    <a href="{% url andreev_ru.main.views.team %}"
-                    {% if page == 'team' %}class="active"{% endif %}
-                    >{% trans "Team" %}</a>
-                </li>
-                <li>
-                    <a href="{% url andreev_ru.main.views.contacts %}"
-                    {% if page == 'contacts' %}class="active"{% endif %}
-                    >{% trans "Contacts" %}</a>
-                </li>
-
-                {% for p in all_pages %}
-                    <li>
-                        <a href="/{{ LANGUAGE_CODE }}/{{ p.slug }}"
-                           {% if request.get_full_path == '/'|add:LANGUAGE_CODE|add:'/'|add:p.slug %}
-                           class="active"
-                           {% endif %}
-                        >{{ p.title }}</a>
-                    </li>
+            <div class="lang-switcher">
+                {% for lang_code, lang_name in LANGUAGES %}
+                    {% language lang_code %}
+                        <a href="/{{ lang_code }}/{{ request.get_full_path|slice:"4:" }}"
+                           class="{% if lang_code == LANGUAGE_CODE %}active-lang {% endif %}{{ lang_code }}-flag"
+                        >{% trans lang_name %}</a>
+                    {% endlanguage %}
                 {% endfor %}
+            </div>
 
-            </ul>
+            <form class="search-container">
+                <input id="pa-search" class="search-box" type="text" name="query" placeholder="{% trans "Search" %}" autocomplete="off">
+                <div class="search-popover">
+                    <h4 class="search-popover-title">{% trans "Search Results" %}</h4>
+                        <ul class="search-popover-results"></ul>
+                        <!-- <a class="search-popover-all-results" href="{% url andreev_ru.main.views.search %}"></a> -->
+                </div>
+            </form>
 
-        </nav>
+            <nav class="main-menu row-1" role="navigation">
+                <ul>
+                    <li>
+                        <a
+                        href="{% url andreev_ru.main.views.works %}?category=1"
+                        {% if page == 'works' %}class="active"{% endif %}
+                        >{% trans "Projects" %}</a>
+                    </li>
+                    <li>
+                        <a href="{% url andreev_ru.main.views.about %}"
+                        {% if page == 'about' %}class="active"{% endif %}
+                        >{% trans "About" %}</a>
+                    </li>
+                    <li>
+                        <a href="{% url andreev_ru.main.views.news %}"
+                        {% if page == 'news' %}class="active"{% endif %}
+                        >{% trans "News" %}</a>
+                    </li>
+                     <li>
+                        <a href="{% url andreev_ru.main.views.team %}"
+                        {% if page == 'team' %}class="active"{% endif %}
+                        >{% trans "Team" %}</a>
+                    </li>
+                    <li>
+                        <a href="{% url andreev_ru.main.views.contacts %}"
+                        {% if page == 'contacts' %}class="active"{% endif %}
+                        >{% trans "Contacts" %}</a>
+                    </li>
+
+                    {% for p in all_pages %}
+                        <li>
+                            <a href="/{{ LANGUAGE_CODE }}/{{ p.slug }}"
+                               {% if request.get_full_path == '/'|add:LANGUAGE_CODE|add:'/'|add:p.slug %}
+                               class="active"
+                               {% endif %}
+                            >{{ p.title }}</a>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+
+            </nav>
 
         {% block content %}{% endblock content %}
 
