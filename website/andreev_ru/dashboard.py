@@ -15,7 +15,7 @@ from grappelli.dashboard.utils import get_admin_site_name
 
 class CustomIndexDashboard(Dashboard):
     """
-    Custom index dashboard for www.
+    Custom index dashboard for pavel-andreev.ru
     """
 
     def init_with_context(self, context):
@@ -23,10 +23,10 @@ class CustomIndexDashboard(Dashboard):
 
         # append an app list module for "Administration"
         self.children.append(modules.ModelList(
-            _('Site administration'),
+            "",
             column=1,
-            collapsible=True,
-            models=('django.contrib.flatpages.models.*',
+            collapsible=False,
+            models=('django.contrib.*',
                     'andreev_ru.main.models.*',),
         ))
 
