@@ -71,3 +71,7 @@ class TimelineIconAdmin(TranslationAdmin):
     list_display = ('title_ru', 'title_en', 'position', 'work')
     list_editable = ('position',)
 admin.site.register(TimelineIcon, TimelineIconAdmin)
+
+class AboutAdmin(TranslationAdmin):
+    pass
+admin.site.register(About, AboutAdmin)

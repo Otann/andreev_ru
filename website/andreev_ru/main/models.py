@@ -71,6 +71,22 @@ class TimelineIcon(models.Model):
         verbose_name_plural = u'Иконки таймлайна'
         ordering = ('position',)
 
+class About(models.Model):
+    image       = models.ImageField(verbose_name = u'Файл', upload_to = 'works')
+    title       = models.CharField(verbose_name = u'Заголовок', max_length = 200)
+    description = RichTextField(verbose_name = u'Описание', blank=True)
+
+    def __unicode__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = u'О компании'
+        verbose_name_plural = u'О компании'
+
+    def clean(self):
+        if About.objects.count() > 1:
+            raise ValidationError(u'Можно создать только одно описание компании')
+
 class WorkImage(models.Model):
     work     = models.ForeignKey(Work, verbose_name = u'Фотографии', related_name = 'images')
     image    = models.ImageField(verbose_name = u'Файл', upload_to = 'works')

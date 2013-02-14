@@ -150,7 +150,10 @@ def search(request):
 
 @cache_page(60)
 def about(request):
-    context = {'page': 'about'}
+    context = {
+        'page': 'about',
+        'data': About.objects.get_or_create(defaults={})[0]
+    }
     return render_to_response('about.html', context, context_instance=RequestContext(request))
 
 

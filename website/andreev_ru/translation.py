@@ -36,3 +36,7 @@ translator.register(WorkAuthors, AuthorsTranslationOptions)
 class TimelineIconTranslationOptions(TranslationOptions):
     fields = ('title',)
 translator.register(TimelineIcon, TimelineIconTranslationOptions)
+
+class AboutTranslationOptions(TranslationOptions):
+    fields = ('title', 'description')
+translator.register(About, AboutTranslationOptions)
