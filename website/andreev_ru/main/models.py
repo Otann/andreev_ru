@@ -56,7 +56,7 @@ class TimelineIcon(models.Model):
     height = models.PositiveSmallIntegerField()
 
     def clean(self):
-        if TimelineIcon.objects.count() > 4:
+        if TimelineIcon.objects.count() > 5:
             raise ValidationError(u'Можно создать только пять иконок, отредактируйте или удалите существующие иконки')
 
     def save(self, *args, **kwargs):
