@@ -29,7 +29,7 @@ class Work(models.Model):
     build_start  = models.DateField(verbose_name = u'Начало строительства', blank = True, null = True)
     build_finish = models.DateField(verbose_name = u'Окончание строительства', blank = True, null = True)
 
-    square       = models.IntegerField(verbose_name = u'Площадь', blank=True, null = True)
+    square       = models.CharField(verbose_name = u'Площадь', max_length = 1024, blank=True, null = True)
 
     categories   = models.ManyToManyField(Category, verbose_name = u'Категории', blank=True)
 
