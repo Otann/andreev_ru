@@ -1,4 +1,6 @@
-# This is repository for Pavel Andreev website
+## NOTE
+
+Pavel Andreev no longer needed this site, so it is no longer accessible, but you still can chechk out contentless version.
 
 ## Environment
 
