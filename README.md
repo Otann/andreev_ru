@@ -1,6 +1,6 @@
 ## NOTE
 
-Pavel Andreev no longer needed this site, so it is no longer accessible, but you still can chechk out contentless version.
+Pavel Andreev no longer needed this site, so it is no longer accessible, but you still can check out contentless version.
 
 ## Environment
 
